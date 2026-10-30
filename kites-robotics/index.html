@@ -1,0 +1,1650 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#0f172a"><title>Kites Robotics</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet"><style>:root{--bg:#fff7e6;--card:#fff;--tx:#2b2250;--mut:#6b6490;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1838;--card:#2b2552;--tx:#fff6e0;--mut:#b9b2e0;color-scheme:dark}}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;font-family:"Trebuchet MS","Comic Sans MS",system-ui,sans-serif;background:var(--bg);color:var(--tx)}
+header{background:linear-gradient(120deg,#ff4d8d,#ff9f1c,#2ec4b6,#4361ee);padding:18px 16px;color:#fff;text-align:center;position:relative}.logo{background:transparent!important;object-fit:contain;max-width:min(150px,25vw);height:auto}.ttl h1{text-transform:uppercase}.hd .logo{background:none;box-shadow:none}
+header h1{margin:0;font-size:clamp(24px,5vw,40px);text-shadow:2px 2px 0 rgba(0,0,0,.25)}
+header p{margin:4px 0 0;font-weight:bold}
+nav{display:flex;gap:10px;justify-content:center;padding:12px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5}
+button{font:inherit;cursor:pointer;border:0;border-radius:999px;padding:10px 18px;font-weight:bold;color:#fff;background:#4361ee}
+nav button{background:var(--card);color:var(--tx);box-shadow:0 3px 0 rgba(0,0,0,.2)}
+nav button.on{background:#ff4d8d;color:#fff}
+main{max-width:1100px;margin:auto;padding:8px 14px 40px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.card{background:var(--card);border-radius:20px;overflow:hidden;box-shadow:0 5px 0 rgba(0,0,0,.18);cursor:pointer;transition:transform .15s}
+.card:hover{transform:translateY(-4px) rotate(-1deg)}
+.card .top{font-size:48px;text-align:center;padding:16px;color:#fff}
+.card .bd{padding:10px 14px 14px}.card h3{margin:0 0 4px;font-size:17px}
+.tag{display:inline-block;font-size:12px;font-weight:bold;padding:2px 10px;border-radius:99px;background:#ffd23f;color:#2b2250}
+.mut{color:var(--mut);font-size:14px}
+.modal{position:fixed;inset:0;background:rgba(20,10,50,.65);display:none;align-items:center;justify-content:center;padding:12px;z-index:20}
+.modal.show{display:flex}
+.box{background:var(--card);border-radius:24px;width:min(720px,100%);max-height:92vh;overflow:auto;padding:18px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.tabs button{background:var(--bg);color:var(--tx);padding:8px 12px;font-size:14px}
+.tabs button.on{background:#2ec4b6;color:#fff}
+.chip{display:inline-block;margin:4px;padding:8px 14px;border-radius:14px;color:#fff;font-weight:bold}
+.step{display:flex;gap:10px;align-items:center;margin:8px 0;background:var(--bg);padding:8px 12px;border-radius:14px}
+.step b{background:#ff4d8d;color:#fff;border-radius:50%;min-width:28px;height:28px;display:grid;place-items:center}
+pre{background:#2b2250;color:#9dffb0;padding:12px;border-radius:14px;overflow-x:auto;font-size:13px}
+.vid{display:block;text-align:center;padding:30px;border-radius:18px;background:linear-gradient(135deg,#ff4d8d,#4361ee);color:#fff;text-decoration:none;font-weight:bold;font-size:20px}
+.svgw{overflow-x:auto;background:#e8fff8;border-radius:16px}
+.shop{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.price{font-size:32px;font-weight:bold;color:#ff4d8d}
+.cart{background:var(--card);border-radius:20px;padding:16px;box-shadow:0 5px 0 rgba(0,0,0,.18)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:8px 0}
+.q{background:#ffd23f;color:#2b2250;padding:2px 10px}
+.x{float:right;background:#ff4d8d}
+button{min-height:44px;-webkit-tap-highlight-color:transparent}html{-webkit-text-size-adjust:100%}
+@media (max-width:600px){
+header{padding:14px 10px}header p{font-size:13px}
+nav{position:fixed;top:auto;bottom:0;left:0;right:0;padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px));box-shadow:0 -4px 14px rgba(0,0,0,.25);z-index:15}
+nav button{flex:1;font-size:16px}main{padding-bottom:90px}
+.grid{grid-template-columns:repeat(2,1fr);gap:10px}.card .top{font-size:38px;padding:10px}.card h3{font-size:14px}.card .mut{font-size:12px}
+.modal{padding:0;align-items:flex-end}.box{border-radius:24px 24px 0 0;max-height:94vh;width:100%;padding-bottom:calc(18px + env(safe-area-inset-bottom,0px))}
+.tabs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}.tabs button{white-space:nowrap;flex:none}
+.price{font-size:28px}}
+
+/* Professional solid theme */
+:root{--bg:#f1f5f9;--card:#fff;--tx:#0f172a;--mut:#475569}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1220;--card:#162033;--tx:#e8eef7;--mut:#9fb0c8}}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+header{background:#0f172a}header h1{text-shadow:none;font-weight:700}
+button{border-radius:8px;background:#1d4ed8}nav button{box-shadow:none;border:1px solid #cbd5e1;background:var(--card);color:var(--tx)}nav button.on{background:#1d4ed8;border-color:#1d4ed8;color:#fff}
+.card{border-radius:12px;box-shadow:0 1px 3px rgba(15,23,42,.2)}.card:hover{transform:translateY(-2px)}.card .top{font-size:30px;font-weight:700;text-align:left;padding:14px}
+.tag{background:#e2e8f0;color:#0f172a;border-radius:6px}.box{border-radius:14px}.modal{background:rgba(15,23,42,.7)}
+.tabs button{background:var(--bg);color:var(--tx);border:1px solid #cbd5e1}.tabs button.on{background:#0f172a;color:#fff}
+.chip{border-radius:6px}.step{border-radius:8px}.step b{background:#0f172a;border-radius:6px}
+pre{background:#0f172a;color:#e2e8f0;border-radius:8px;font-family:Consolas,Menlo,monospace;line-height:1.5}
+.vid{background:#1d4ed8;border-radius:10px;font-size:18px}.svgw{background:#f1f5f9;border-radius:10px}
+.price{color:#1d4ed8}.cart{border-radius:12px;box-shadow:0 1px 3px rgba(15,23,42,.2)}.q{background:#e2e8f0;color:#0f172a}.x{background:#475569}
+table{width:100%;border-collapse:collapse}td{padding:8px;border-bottom:1px solid #cbd5e1}h4{margin:14px 0 6px}
+/* portal */
+:root{--ac:#1d4ed8}
+:root[data-theme=dark]{--bg:#0b1220;--card:#162033;--tx:#e8eef7;--mut:#9fb0c8;--ac:#3b82f6}
+:root[data-theme=ocean]{--bg:#e0f2fe;--card:#fff;--tx:#0c4a6e;--mut:#0369a1;--ac:#0284c7}
+:root[data-theme=sunset]{--bg:#fff1e6;--card:#fff;--tx:#431407;--mut:#9a3412;--ac:#ea580c}
+button{background:var(--ac)}nav button.on{background:var(--ac);border-color:var(--ac)}.red{background:#dc2626}button:disabled{opacity:.5}
+header #who{margin-top:6px;font-weight:600}header #who button{padding:4px 12px;min-height:30px;background:#fff;color:#0f172a}
+.hero{display:flex;gap:20px;align-items:center;justify-content:space-between;background:var(--card);padding:24px;border-radius:14px;flex-wrap:wrap;margin-bottom:12px}
+.bar{height:12px;background:var(--bg);border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ac);transition:width .6s}
+.panel{background:var(--card);border-radius:12px;padding:16px;margin:12px 0;box-shadow:0 1px 3px rgba(15,23,42,.2)}.narrow{max-width:460px;margin:20px auto}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+label{display:block;margin:10px 0;font-weight:600}input,select,textarea{display:block;width:100%;padding:10px;border-radius:8px;border:1px solid #94a3b8;background:var(--bg);color:var(--tx);font:inherit;margin-top:4px}
+.err{color:#dc2626;font-weight:600}.tag.good{background:#16a34a;color:#fff}.tag.bad{background:#dc2626;color:#fff}.tw{overflow-x:auto}th,td{text-align:left;vertical-align:top;padding:8px;border-bottom:1px solid #cbd5e1}
+#toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#0f172a;color:#fff;padding:12px 18px;border-radius:10px;opacity:0;pointer-events:none;transition:.3s;max-width:92%;z-index:50}#toast.show{opacity:1}
+.shop2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}.prod{background:var(--ac);color:#fff;border-radius:10px;padding:28px;text-align:center;font-size:28px;font-weight:700}.prod small{display:block;font-size:14px}
+.price{font-size:30px;font-weight:700;color:var(--ac)}details{margin:8px 0}
+.bot{position:relative;width:150px;height:170px;perspective:600px;animation:fl 3s ease-in-out infinite}
+.head{position:absolute;left:30px;top:10px;width:90px;height:70px;background:var(--ac);border-radius:16px;display:flex;gap:18px;align-items:center;justify-content:center;box-shadow:8px 8px 0 rgba(0,0,0,.25);animation:sw 4s ease-in-out infinite}
+.head i{width:16px;height:16px;border-radius:50%;background:#fff;animation:bl 3s infinite}.body{position:absolute;left:40px;top:90px;width:70px;height:70px;background:#0f172a;border-radius:12px;animation:sw 4s ease-in-out infinite reverse}
+.gear{position:absolute;right:-14px;top:70px;width:46px;height:46px;border:8px dashed #f59e0b;border-radius:50%;animation:sp 6s linear infinite}
+@keyframes fl{50%{transform:translateY(-10px)}}@keyframes sw{50%{transform:rotateY(25deg)}}@keyframes sp{to{transform:rotate(360deg)}}@keyframes bl{45%,55%{transform:scaleY(.1)}}.noan *{animation:none!important}
+.lnk{color:var(--ac);cursor:pointer;font-weight:600;display:inline-block;margin:4px 0 12px}.ok{color:#16a34a;font-weight:600}.alert{border-left:6px solid #dc2626}.ghost{background:transparent;color:var(--tx);border:1px solid #94a3b8}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:12px 0}.stat{background:var(--card);border-radius:12px;padding:14px;box-shadow:0 1px 3px rgba(15,23,42,.2)}.stat b{display:block;font-size:24px;color:var(--ac)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}.comp{background:var(--bg);border-radius:10px;padding:12px;margin:8px 0}.comp p{margin:4px 0}.lead{font-size:1.1em}.facts{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.step span{flex:1}code{background:var(--bg);padding:1px 6px;border-radius:4px}
+.models{display:flex;gap:30px;align-items:center;flex-wrap:wrap}.scene{width:90px;height:90px;perspective:500px}.cube{position:relative;width:90px;height:90px;transform-style:preserve-3d;animation:rc 10s linear infinite}
+.cube div{position:absolute;width:90px;height:90px;display:grid;place-items:center;font-weight:700;color:#fff;border:2px solid rgba(255,255,255,.4);font-size:12px}
+.f1{transform:translateZ(45px);background:#1d4ed8}.f2{transform:rotateY(180deg) translateZ(45px);background:#0f766e}.f3{transform:rotateY(90deg) translateZ(45px);background:#b45309}.f4{transform:rotateY(-90deg) translateZ(45px);background:#6d28d9}.f5{transform:rotateX(90deg) translateZ(45px);background:#be123c}.f6{transform:rotateX(-90deg) translateZ(45px);background:#15803d}
+.sc2{width:120px;height:120px}.stack{position:relative;width:110px;height:110px;transform-style:preserve-3d;transform:rotateX(60deg);animation:rs 8s linear infinite}.stack i{position:absolute;inset:0;border-radius:10px;border:3px solid #fff}
+.stack i:nth-child(1){background:#1d4ed8}.stack i:nth-child(2){background:#0f766e;transform:translateZ(22px)}.stack i:nth-child(3){background:#be123c;transform:translateZ(44px)}
+@keyframes rc{to{transform:rotateX(360deg) rotateY(360deg)}}@keyframes rs{to{transform:rotateX(60deg) rotateZ(360deg)}}
+.card{transition:transform .25s}.tilt:hover{transform:perspective(600px) rotateX(5deg) rotateY(-5deg) translateY(-4px)}.card .top small{display:block;font-size:12px;font-weight:600}
+.hd{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;text-align:left}.hd .ttl{text-align:center}.hd h1{margin:0;font-size:clamp(18px,4vw,32px)}.hd p{margin:2px 0 0;font-size:12px}.hd #who{text-align:right;margin:0}
+.logo{height:42px;max-width:150px;object-fit:contain;background:#fff;border-radius:8px;padding:4px}.logo.big{height:80px;max-width:260px;margin-bottom:10px}.logo.txt{background:#fff;color:#0f172a;padding:8px 12px;font-size:18px}
+@media(max-width:600px){.hd p{display:none}.hd{grid-template-columns:auto 1fr auto}}
+.stage{border-radius:16px;overflow:hidden;margin:0 auto -60px;max-width:900px;box-shadow:0 6px 20px rgba(0,0,0,.25)}.stage svg{display:block;width:100%;height:auto}
+.float{animation:fl 5s ease-in-out infinite;position:relative;box-shadow:0 14px 34px rgba(15,23,42,.4)}
+.cam{transform-box:fill-box;transform-origin:center;animation:pan 12s ease-in-out infinite}@keyframes pan{50%{transform:scale(1.05) translateX(-10px)}}
+.kid{animation:walk 12s ease-in-out infinite}@keyframes walk{0%{transform:translateX(-420px);opacity:0}4%{opacity:1}30%,92%{transform:translateX(0);opacity:1}100%{transform:translateX(0);opacity:0}}
+.lg{transform-box:fill-box;transform-origin:50% 0;animation:lgA 12s linear infinite}.lg.r{animation-delay:-.36s}@keyframes lgA{0%,6%,12%,18%,24%{transform:rotate(-25deg)}3%,9%,15%,21%,27%{transform:rotate(25deg)}30%,100%{transform:rotate(0)}}
+.arm{transform-box:fill-box;transform-origin:50% 6%}.wave{animation:wv 12s ease-in-out infinite}.kw{animation-delay:.5s}@keyframes wv{0%,50%,84%,100%{transform:rotate(0)}54%,62%,70%,78%{transform:rotate(-150deg)}58%,66%,74%{transform:rotate(-115deg)}}
+.stir{animation:st .7s ease-in-out infinite alternate}@keyframes st{from{transform:rotate(-95deg)}to{transform:rotate(-65deg)}}.paint{animation:pt 1.2s ease-in-out infinite alternate}@keyframes pt{from{transform:rotate(-110deg)}to{transform:rotate(-75deg)}}.sweep{animation:sw2 1s ease-in-out infinite alternate}@keyframes sw2{from{transform:rotate(-20deg)}to{transform:rotate(-70deg)}}
+.bub{transform-box:fill-box;transform-origin:50% 100%;animation:bb 12s ease-in-out infinite}@keyframes bb{0%,52%{opacity:0;transform:scale(.4)}56%,84%{opacity:1;transform:scale(1)}90%,100%{opacity:0}}
+.steam{animation:stm 2s linear infinite}@keyframes stm{from{transform:translateY(0);opacity:.8}to{transform:translateY(-30px);opacity:0}}.blink{animation:bl2 1s steps(2) infinite}@keyframes bl2{50%{opacity:.2}}
+.gr{transform-box:fill-box;transform-origin:center;animation:sp 8s linear infinite}.fl2{animation:fy 4s ease-in-out infinite alternate}@keyframes fy{to{transform:translate(12px,-16px)}}.cl{animation:cd 40s linear infinite}@keyframes cd{from{transform:translateX(-120px)}to{transform:translateX(900px)}}.win{animation:bl2 3s steps(2) infinite}
+.agree{max-width:640px;margin:12px auto;text-align:center}.scr{text-align:left;background:var(--bg);border-radius:10px;padding:12px;max-height:260px;overflow:auto}.minis{display:flex;gap:10px;justify-content:center;margin:8px 0}
+.mini{width:40px;height:48px;background:var(--ac);border-radius:10px;position:relative;animation:jp 1s ease-in-out infinite}.mini::before,.mini::after{content:"";position:absolute;top:12px;width:9px;height:9px;border-radius:50%;background:#fff}.mini::before{left:8px}.mini::after{right:8px}.mini:nth-child(2n){background:#0f766e;animation-delay:.2s}.mini:nth-child(3n){background:#be123c;animation-delay:.4s}.mini:nth-child(4){background:#b45309}@keyframes jp{50%{transform:translateY(-14px) rotate(6deg)}}
+.fp{width:110px;height:110px;margin:12px auto;border-radius:50%;border:3px dashed var(--ac);display:grid;place-items:center;color:var(--ac);cursor:pointer;position:relative;overflow:hidden;animation:pu 1.6s ease-in-out infinite}.fp.scan::after{content:"";position:absolute;left:0;right:0;height:6px;background:#16a34a;animation:sc 1s linear infinite}.fp.ok{color:#16a34a;border-color:#16a34a;animation:none}@keyframes pu{50%{transform:scale(1.07)}}@keyframes sc{from{top:0}to{top:100%}}
+#wl{position:fixed;inset:0;background:#0f172a;color:#fff;display:grid;place-items:center;z-index:100;text-align:center;padding:20px;animation:wi .5s}#wl.out{opacity:0;transition:opacity .6s}.wbox>*{animation:up .8s both}.wbox>:nth-child(2){animation-delay:.25s}.wbox>:nth-child(3){animation-delay:.5s}.wbox>:nth-child(4){animation-delay:.75s}@keyframes up{from{opacity:0;transform:translateY(20px)}}@keyframes wi{from{opacity:0}}
+.peek{position:fixed;right:10px;bottom:76px;width:46px;height:40px;background:var(--ac);border-radius:12px 12px 0 0;z-index:4;pointer-events:none;animation:pk 6s ease-in-out infinite}.peek::before,.peek::after{content:"";position:absolute;top:12px;width:9px;height:9px;border-radius:50%;background:#fff;animation:bl2 3s infinite}.peek::before{left:10px}.peek::after{right:10px}@keyframes pk{0%,60%,100%{transform:translateY(44px)}70%,90%{transform:translateY(0)}}
+/* ===== v4 colourful kids theme ===== */
+:root,:root[data-theme=light],:root[data-theme=candy]{--bg:#fff4d6;--card:#fff;--tx:#2d1b69;--mut:#6b5aa5;--ac:#ff4fa3;--bt:#fff}
+:root[data-theme=dark]{--bg:#1b1340;--card:#2a1f5e;--tx:#fff3d6;--mut:#c9bdf5;--ac:#ffd400;--bt:#2d1b69}
+:root[data-theme=ocean]{--bg:#d7f3ff;--card:#fff;--tx:#08306b;--mut:#2b6cb0;--ac:#2f80ff;--bt:#fff}
+:root[data-theme=sunset]{--bg:#ffe5d0;--card:#fff;--tx:#5a1a00;--mut:#a4501f;--ac:#ff7a1a;--bt:#fff}
+body{font-family:"Fredoka","Comic Sans MS","Trebuchet MS",system-ui,sans-serif;background-color:var(--bg);background-image:radial-gradient(#ff4fa340 12px,transparent 13px),radial-gradient(#2f80ff35 10px,transparent 11px),radial-gradient(#ffd40055 9px,transparent 10px),radial-gradient(#2ecc7140 11px,transparent 12px);background-size:260px 260px,310px 310px,190px 190px,340px 340px;background-position:0 0,90px 120px,40px 200px,200px 40px;background-attachment:fixed;color:var(--tx)}
+header{background:linear-gradient(90deg,#ff4fa3,#ff8a1f,#ffd400,#2ecc71,#2f80ff,#8a4dff);border-radius:0 0 40px 40px;box-shadow:0 6px 0 rgba(0,0,0,.18)}header h1{text-shadow:3px 3px 0 #2d1b69;font-weight:700}header p{font-weight:600;text-shadow:1px 1px 0 #2d1b69}
+button{border:0;border-radius:999px;padding:12px 24px;font:700 16px "Fredoka","Comic Sans MS",system-ui,sans-serif;background:var(--ac);color:var(--bt);box-shadow:0 5px 0 rgba(0,0,0,.25);transition:transform .15s}
+button:hover{transform:translateY(-3px) rotate(-2deg) scale(1.05)}button:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}button:disabled{opacity:.5}
+.gear{width:46px;height:46px;padding:0;font-size:26px;background:#fff!important;color:#2d1b69!important;border-radius:50%;min-height:0!important}.gear:hover{transform:rotate(90deg) scale(1.12)}
+header #who button{min-height:0;padding:6px 14px}header #who{display:flex;gap:10px;align-items:center;justify-content:flex-end;flex-wrap:wrap}
+nav button{color:#fff;box-shadow:0 6px 0 rgba(0,0,0,.25);border:0;border-radius:999px}nav button::before{margin-right:8px}
+nav button[data-k=home]{background:#ff4fa3}nav button[data-k=courses]{background:#ff8a1f}nav button[data-k=shop]{background:#2ecc71}nav button[data-k=login]{background:#2f80ff}nav button[data-k=students]{background:#8a4dff}nav button[data-k=ashop]{background:#00b8c2}
+nav [data-k=home]::before{content:"🏠"}nav [data-k=courses]::before{content:"📚"}nav [data-k=shop]::before{content:"🛒"}nav [data-k=login]::before{content:"🔑"}nav [data-k=students]::before{content:"🎒"}nav [data-k=ashop]::before{content:"🛍️"}
+nav button.on{transform:scale(1.12);outline:5px solid #fff;box-shadow:0 8px 0 rgba(0,0,0,.3)}
+@media(min-width:701px){nav{position:fixed;left:18px;top:130px;bottom:auto;right:auto;width:auto;display:flex;flex-direction:column;gap:32px;padding:0;background:transparent;box-shadow:none;z-index:15}nav button{width:158px;height:58px;font-size:18px}main{margin:0 20px 40px 210px;max-width:none}}
+@media(max-width:700px){nav{position:fixed;left:0;right:0;bottom:0;top:auto;display:flex;flex-direction:row;justify-content:space-evenly;gap:18px;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:var(--card);box-shadow:0 -4px 0 rgba(0,0,0,.12);border-radius:26px 26px 0 0;z-index:15}nav button{flex:1;padding:8px 2px;font-size:12px;min-height:50px}nav button::before{display:block;margin:0 0 2px;font-size:22px}main{padding-bottom:120px}.peek{bottom:100px}}
+.card{border:4px solid #ff4fa3;border-radius:26px;box-shadow:0 7px 0 rgba(0,0,0,.18);overflow:hidden;background:var(--card)}.card:nth-child(7n+2){border-color:#ff8a1f}.card:nth-child(7n+3){border-color:#ffd400}.card:nth-child(7n+4){border-color:#2ecc71}.card:nth-child(7n+5){border-color:#00b8c2}.card:nth-child(7n+6){border-color:#2f80ff}.card:nth-child(7n){border-color:#8a4dff}
+.tilt:hover{transform:scale(1.05) rotate(-1.5deg)}.card .top{font-size:34px}
+.panel,.stat{border-radius:26px;box-shadow:0 6px 0 rgba(0,0,0,.14);border:3px solid #ffd400}.stat{color:#2d1b69}.stat:nth-child(4n+1){background:#ffd1e8;border-color:#ff4fa3}.stat:nth-child(4n+2){background:#ffe3b8;border-color:#ff8a1f}.stat:nth-child(4n+3){background:#c8f5d6;border-color:#2ecc71}.stat:nth-child(4n){background:#d3e4ff;border-color:#2f80ff}.stat b{color:#2d1b69}
+.two .panel:nth-child(1){border-color:#2ecc71}.two .panel:nth-child(2){border-color:#2f80ff}.hero{border-radius:32px;border:4px solid #ff8a1f;box-shadow:0 8px 0 rgba(0,0,0,.14)}
+input,select,textarea{border:3px solid #c9bdf5;border-radius:16px;background:var(--card);color:var(--tx)}input:focus,select:focus,textarea:focus{outline:none;border-color:var(--ac)}
+.tag{background:#ffe27a;color:#2d1b69;border-radius:999px;font-weight:700}.step b{background:#ff8a1f;border-radius:50%}.step:nth-child(2n) b{background:#2ecc71}.step:nth-child(3n) b{background:#2f80ff}.step{border-radius:18px}
+.tabs button{background:var(--card);color:var(--tx);border:3px solid var(--ac);box-shadow:0 4px 0 rgba(0,0,0,.15)}.tabs button.on{background:var(--ac);color:var(--bt)}
+.bar{height:18px;border-radius:12px;background:#ffe3b8}.bar i{background:repeating-linear-gradient(45deg,#ff4fa3 0 14px,#ff8a1f 14px 28px)}
+.comp{border-radius:20px;border:3px dashed #2f80ff}.comp:nth-child(2n){border-color:#ff4fa3}.comp:nth-child(3n){border-color:#2ecc71}
+.vid{background:#8a4dff;border-radius:26px}.price{color:#ff4fa3}.prod{background:#8a4dff;border-radius:22px}
+#wl{background:linear-gradient(135deg,#8a4dff,#ff4fa3,#ff8a1f)}
+.modal.show .box{animation:aRise .45s cubic-bezier(.2,1.2,.4,1)}.box{border-radius:30px;border:5px solid #ff4fa3}
+.modal.big{padding:0}.modal.big .box{width:100vw;max-width:none;height:100vh;max-height:none;border-radius:0;border:0;padding:20px 5vw 40px;font-size:1.1rem}
+.modal.big .tabs button{font-size:18px;padding:12px 22px}.modal.big pre{font-size:16px}.modal.big .x{position:sticky;top:0;z-index:3;font-size:18px}.modal.big h2{font-size:2rem}
+#main.in-pop{animation:aPop .55s cubic-bezier(.2,1.4,.4,1)}#main.in-slide{animation:aSlide .5s cubic-bezier(.2,.9,.3,1.2)}#main.in-slideL{animation:aSlideL .5s cubic-bezier(.2,.9,.3,1.2)}#main.in-rise{animation:aRise .5s ease-out}#main.in-wob{animation:aWob .6s ease-out}#main.in-spin{animation:aSpin .6s cubic-bezier(.2,1.2,.4,1)}
+@keyframes aPop{from{opacity:0;transform:scale(.6)}}@keyframes aSlide{from{opacity:0;transform:translateX(140px)}}@keyframes aSlideL{from{opacity:0;transform:translateX(-140px)}}@keyframes aRise{from{opacity:0;transform:translateY(110px)}}@keyframes aWob{from{opacity:0;transform:scale(.8) rotate(8deg)}}@keyframes aSpin{from{opacity:0;transform:rotate(-14deg) scale(.6)}}
+.fun{position:relative;width:200px;height:200px}.toy{position:absolute;left:50px;top:34px;width:100px;height:86px;background:#2f80ff;border-radius:28px;border:5px solid #1c56b3;display:flex;gap:16px;align-items:flex-start;justify-content:center;padding-top:16px;animation:bob 2s ease-in-out infinite}
+.toy i{width:22px;height:26px;background:#fff;border-radius:50%;position:relative;animation:bl2 3s infinite}.toy i::after{content:"";position:absolute;left:6px;top:8px;width:10px;height:10px;border-radius:50%;background:#2d1b69}
+.toy::before{content:"";position:absolute;top:-32px;left:40px;width:6px;height:28px;background:#1c56b3}.toy::after{content:"";position:absolute;top:-44px;left:32px;width:22px;height:22px;border-radius:50%;background:#ffd400}
+.smile{position:absolute;left:78px;top:92px;width:44px;height:18px;border-bottom:6px solid #fff;border-radius:0 0 40px 40px;animation:bob 2s ease-in-out infinite}
+.tb{position:absolute;left:62px;top:126px;width:76px;height:64px;background:#ff8a1f;border-radius:20px;border:5px solid #c25f00;box-shadow:inset 0 0 0 14px #ffb866}.ta{position:absolute;top:130px;width:16px;height:50px;background:#ff8a1f;border-radius:10px;border:4px solid #c25f00}.ta.l{left:36px;transform-origin:50% 0;animation:wv2 1.2s ease-in-out infinite alternate}.ta.r{left:148px}
+.ball{position:absolute;width:34px;height:42px;border-radius:50%;animation:flt 3s ease-in-out infinite alternate}.st{position:absolute;font-size:22px;animation:bl2 1s steps(2) infinite}
+@keyframes bob{50%{transform:translateY(-8px)}}@keyframes flt{to{transform:translateY(-16px)}}@keyframes wv2{from{transform:rotate(20deg)}to{transform:rotate(150deg)}}
+.stage{perspective:900px;background:#6ec6ff}.rig{position:relative;aspect-ratio:5/2;transform-style:preserve-3d;animation:orbit 12s ease-in-out infinite}.stage svg.lay{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+@keyframes orbit{0%,100%{transform:rotateY(-7deg) rotateX(3deg) translateZ(0)}50%{transform:rotateY(7deg) rotateX(1deg) translateZ(45px)}}
+
+/* Responsive, immersive account creation: layered depth instead of cartoon pop-up styling. */
+.signup-form{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(220px,.72fr) minmax(0,1.28fr);gap:14px 24px;min-height:0}
+.signup-form:before,.signup-form:after{content:"";position:fixed;z-index:-1;pointer-events:none;border-radius:50%;filter:blur(3px);opacity:.32;animation:depthDrift 12s ease-in-out infinite alternate}
+.signup-form:before{width:38vw;height:38vw;max-width:440px;max-height:440px;left:-8vw;top:8vh;background:radial-gradient(circle at 35% 35%,#60a5fa,transparent 68%);transform:translateZ(-100px)}
+.signup-form:after{width:34vw;height:34vw;max-width:380px;max-height:380px;right:-5vw;bottom:-8vh;background:radial-gradient(circle at 45% 45%,#c084fc,transparent 68%);animation-delay:-5s}
+.signup-copy{align-self:center;padding:16px 8px}.signup-copy h2{font-size:clamp(1.8rem,3vw,2.7rem);line-height:1.05;margin:12px 0}.signup-copy p{color:var(--mut);line-height:1.5}.eyebrow{font-size:.72rem;letter-spacing:.12em;font-weight:800;color:var(--ac)}
+.signup-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px;align-content:center}.signup-fields label{display:flex;flex-direction:column;gap:4px;font-size:.86rem;font-weight:650;min-width:0}.signup-fields input,.signup-fields select,.signup-fields textarea{width:100%;min-width:0;padding:9px 10px;border-width:1px;border-radius:9px;font:inherit;min-height:39px}.signup-fields textarea{resize:vertical}.signup-fields label:nth-child(3),.signup-fields label:nth-child(7){grid-column:1/-1}.signup-fields label:nth-child(6) input{margin-top:5px}
+.signup-actions{grid-column:2}.signup-actions>button{width:100%;padding:12px;font-weight:800;background:linear-gradient(100deg,#2563eb,#7c3aed);box-shadow:0 7px 22px #2563eb35;transition:transform .2s,box-shadow .2s}.signup-actions>button:hover{transform:translateY(-2px) scale(1.01);box-shadow:0 12px 30px #7c3aed50}.signup-actions p{margin:7px 0;font-size:.88rem}
+#mb:has(.signup-form){position:relative}.modal:has(.signup-form){background:rgba(7,13,30,.76);backdrop-filter:blur(12px) saturate(1.25);-webkit-backdrop-filter:blur(12px) saturate(1.25)}.modal:has(.signup-form) .box{width:min(1000px,96vw);max-height:min(90dvh,820px);overflow:auto;padding:clamp(18px,3vw,34px);background:color-mix(in srgb,var(--card) 92%,transparent);box-shadow:0 30px 100px #02061780;transform-style:preserve-3d;animation:authLand .7s cubic-bezier(.16,1,.3,1)}
+@keyframes depthDrift{0%{translate:-1vw -1vh;scale:.96}50%{translate:2vw 1vh;scale:1.04}100%{translate:0 2vh;scale:1.02}}@keyframes authLand{0%{opacity:0;transform:perspective(1200px) translateY(35px) translateZ(-120px) rotateX(7deg) scale(.96);filter:blur(8px)}100%{opacity:1;transform:perspective(1200px) translateY(0) translateZ(0) rotateX(0) scale(1);filter:blur(0)}}
+@media(max-width:760px){.modal:has(.signup-form){padding:0;align-items:center}.modal:has(.signup-form) .box{width:100%;max-height:100dvh;height:100dvh;border-radius:0;padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(18px + env(safe-area-inset-bottom,0px));overflow-y:auto}.signup-form{grid-template-columns:1fr;gap:8px}.signup-copy{padding:4px 0}.signup-copy h2{font-size:1.8rem;margin:7px 0}.signup-copy p{margin:4px 0}.signup-fields{gap:8px}.signup-fields label{font-size:.8rem}.signup-fields input,.signup-fields select,.signup-fields textarea{padding:8px;min-height:38px}.signup-actions{grid-column:1}.signup-fields label:nth-child(3){grid-column:1/-1}}
+@media(max-width:420px){.signup-fields{grid-template-columns:1fr}.signup-fields label:nth-child(3),.signup-fields label:nth-child(7){grid-column:auto}.signup-copy .eyebrow{font-size:.62rem}.signup-fields label{font-size:.86rem}.signup-fields input,.signup-fields select,.signup-fields textarea{min-height:42px}}
+@media(min-width:761px) and (max-height:760px){.modal:has(.signup-form) .box{max-height:96dvh;padding:14px 24px}.signup-copy{padding:4px}.signup-copy h2{font-size:1.8rem}.signup-fields{gap:5px 10px}.signup-fields input,.signup-fields select,.signup-fields textarea{padding:6px 9px;min-height:34px}.signup-actions p{margin:4px 0}}
+@media(prefers-reduced-motion:reduce){.signup-form:before,.signup-form:after,.modal:has(.signup-form) .box{animation:none!important;transition:none!important}}
+
+.panel.narrow:has(.signup-form){width:min(1000px,calc(100% - 24px));max-width:1000px;margin:18px auto;position:relative;z-index:2;background:color-mix(in srgb,var(--card) 90%,transparent);backdrop-filter:blur(14px) saturate(1.25);-webkit-backdrop-filter:blur(14px) saturate(1.25);box-shadow:0 28px 80px #0f172a25;animation:authLand .7s cubic-bezier(.16,1,.3,1)}
+body:has(.panel.narrow .signup-form) main{position:relative;min-height:calc(100dvh - 110px);display:flex;align-items:center;justify-content:center;overflow:hidden}
+body:has(.panel.narrow .signup-form) main:before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle at 18% 35%,#60a5fa55,transparent 32%),radial-gradient(circle at 82% 62%,#c084fc55,transparent 34%);filter:blur(18px);animation:depthDrift 14s ease-in-out infinite alternate}
+@media(max-width:760px){.panel.narrow:has(.signup-form){width:100%;margin:8px auto;padding:16px}.panel.narrow:has(.signup-form) .signup-form{grid-template-columns:1fr}.panel.narrow:has(.signup-form) .signup-actions{grid-column:1}body:has(.panel.narrow .signup-form) main{display:block;min-height:0;padding-bottom:110px}}
+@media(max-width:760px){.modal:has(.signup-form) .signup-actions{position:sticky;bottom:calc(-18px - env(safe-area-inset-bottom,0px));padding:10px 0 calc(10px + env(safe-area-inset-bottom,0px));background:color-mix(in srgb,var(--card) 96%,transparent);backdrop-filter:blur(10px);z-index:5}}
+
+
+/* v5: compact, no-scroll signup and cinematic 3D robot scene */
+.signup-scene-backdrop{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;filter:blur(5px) saturate(1.15);opacity:.42;transform:scale(1.08);perspective:1200px}
+.signup-scene-backdrop .stage{height:100%;min-height:100%;border-radius:0;background:radial-gradient(ellipse at 50% 35%,#a5f3fc,#172554 75%);transform-style:preserve-3d}
+.signup-scene-backdrop .rig{height:100%;min-height:100%;aspect-ratio:auto;transform-style:preserve-3d;animation:cinemaFloat 8s ease-in-out infinite}
+.signup-scene-backdrop .lay{overflow:visible}
+@keyframes cinemaFloat{0%,100%{transform:perspective(1000px) rotateY(-8deg) rotateX(3deg) translate3d(-1%,0,0) scale(1.03)}50%{transform:perspective(1000px) rotateY(8deg) rotateX(-2deg) translate3d(1%,-1%,45px) scale(1.1)}}
+.panel.narrow.signup-panel{position:relative;z-index:2;width:min(900px,calc(100% - 28px));max-width:900px;margin:clamp(8px,2.5dvh,24px) auto;padding:clamp(12px,2.2dvh,24px) clamp(12px,2vw,24px);background:rgba(255,255,255,.88);backdrop-filter:blur(22px) saturate(1.4);-webkit-backdrop-filter:blur(22px) saturate(1.4);border:1px solid #ffffffa8;border-radius:22px;box-shadow:0 25px 90px #02061755;max-height:calc(100dvh - 16px);overflow:hidden}
+.signup-panel .signup-form{grid-template-columns:1fr;gap:7px}
+.signup-panel .signup-copy{padding:0;text-align:center}
+.signup-panel .signup-copy .eyebrow{font-size:.62rem}
+.signup-panel .signup-copy h2{font-size:clamp(1.25rem,2.4dvh,1.8rem);margin:3px 0}
+.signup-panel .signup-copy p{display:none}
+.signup-panel .signup-fields{grid-template-columns:repeat(2,minmax(0,1fr));gap:5px 10px}
+.signup-panel .signup-fields label{font-size:clamp(.66rem,1.45dvh,.82rem);gap:2px;line-height:1.1}
+.signup-panel .signup-fields input,.signup-panel .signup-fields select,.signup-panel .signup-fields textarea{min-height:clamp(28px,4.2dvh,37px);height:clamp(28px,4.2dvh,37px);padding:4px 8px;font-size:clamp(.72rem,1.55dvh,.88rem);border-radius:8px}
+.signup-panel .signup-fields label:nth-child(3),.signup-panel .signup-fields label:nth-child(7){grid-column:auto}
+.signup-panel .signup-fields label:nth-child(6){display:grid;grid-template-columns:78px minmax(0,1fr);align-items:end;gap:4px}
+.signup-panel .signup-fields label:nth-child(6) select{grid-column:1;grid-row:2}
+.signup-panel .signup-fields label:nth-child(6) input{grid-column:2;grid-row:2;margin:0}
+.signup-panel .signup-actions{grid-column:1;margin-top:2px;text-align:center}
+.signup-panel .signup-actions>button{padding:9px 12px;min-height:36px}
+.signup-panel .signup-actions p{display:inline-block;margin:4px 8px;font-size:.76rem}
+.signup-panel #smsg,.signup-panel #msg{margin:2px 0;font-size:.75rem}
+body:has(.signup-panel) main{position:relative;min-height:calc(100dvh - 110px);display:flex;align-items:center;justify-content:center;overflow:hidden}
+body:has(.signup-panel) main:before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 15% 25%,#38bdf855,transparent 38%),radial-gradient(circle at 85% 75%,#c084fc55,transparent 38%);filter:blur(24px);pointer-events:none}
+/* Keep the signup form on one screen on phones, tablets, foldables and desktops. */
+@media(max-width:760px){.panel.narrow.signup-panel{width:calc(100% - 16px);margin:8px auto;padding:10px;max-height:calc(100dvh - 16px);overflow:hidden;border-radius:16px}.signup-panel .signup-fields{grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 7px}.signup-panel .signup-fields label{font-size:clamp(.61rem,1.45dvh,.75rem)}.signup-panel .signup-fields input,.signup-panel .signup-fields select{min-height:clamp(26px,4dvh,34px);height:clamp(26px,4dvh,34px);padding:3px 6px;font-size:clamp(.68rem,1.55dvh,.8rem)}.signup-panel .signup-fields label:nth-child(3),.signup-panel .signup-fields label:nth-child(7){grid-column:auto}.signup-panel .signup-copy h2{font-size:clamp(1.1rem,2.5dvh,1.45rem)}.signup-panel .signup-actions>button{width:100%;min-height:34px;padding:7px}}
+@media(max-width:360px){.signup-panel .signup-fields{gap:3px 5px}.signup-panel .signup-fields label{font-size:.59rem}.signup-panel .signup-fields input,.signup-panel .signup-fields select{padding:2px 4px;font-size:.66rem}.signup-panel .signup-actions p{font-size:.68rem;margin:3px}}
+@media(max-height:620px){.panel.narrow.signup-panel{margin:4px auto;padding:7px 12px}.signup-panel .signup-copy .eyebrow{display:none}.signup-panel .signup-copy h2{font-size:1.1rem}.signup-panel .signup-fields{gap:3px 8px}.signup-panel .signup-fields input,.signup-panel .signup-fields select{height:27px;min-height:27px}.signup-panel .signup-actions>button{min-height:30px;padding:5px}}
+@media(prefers-reduced-motion:reduce){.signup-scene-backdrop .rig{animation:none!important}}
+
+/* v6 auth experience: five-second cinematic intro + clean inside-out reveal */
+.auth-scene-backdrop{opacity:.34;filter:blur(2px) saturate(1.18);background:#071126}
+.auth-scene-backdrop .stage{background:radial-gradient(ellipse at 50% 30%,#183b69,#080f24 78%)}
+.auth-scene-backdrop .rig{animation:authOrbit 16s ease-in-out infinite}
+@keyframes authOrbit{0%,100%{transform:perspective(1100px) rotateY(-5deg) rotateX(1deg) scale(1.02)}50%{transform:perspective(1100px) rotateY(5deg) rotateX(-1deg) translateY(-8px) scale(1.08)}}
+.login-panel{width:min(430px,calc(100% - 28px));margin:clamp(20px,6vh,70px) auto;padding:clamp(22px,4vw,38px);border:1px solid #ffffff55;border-radius:24px;background:rgba(8,17,39,.84);color:#f8fafc;backdrop-filter:blur(22px) saturate(1.35);-webkit-backdrop-filter:blur(22px) saturate(1.35);box-shadow:0 26px 90px #0008;position:relative;z-index:2;transform-style:preserve-3d}
+.login-panel h2{font-size:clamp(1.65rem,4vw,2.2rem);margin:0 0 18px;letter-spacing:-.035em;color:#fff}
+.login-panel label{display:flex;flex-direction:column;gap:7px;margin:12px 0;color:#dbeafe;font-size:.9rem;font-weight:650}
+.login-panel input{width:100%;min-width:0;min-height:46px;padding:11px 13px;border:1px solid #64748b88;border-radius:12px;background:#0f1b35;color:#fff;font:inherit;outline:none;transition:border-color .2s,box-shadow .2s}
+.login-panel input:focus{border-color:#38bdf8;box-shadow:0 0 0 3px #38bdf833}
+.login-panel button{min-height:44px;border:0;border-radius:12px;padding:11px 18px;background:linear-gradient(110deg,#0ea5e9,#6366f1);color:#fff;font-weight:800;cursor:pointer;transition:transform .2s,filter .2s}
+.login-panel button:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.login-panel .lnk{color:#7dd3fc;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.login-panel p{color:#cbd5e1}
+.auth-intro{position:relative;min-height:calc(100dvh - 120px);width:100%;overflow:hidden;border-radius:24px;background:#071126;color:#fff;isolation:isolate}
+.intro-scene{position:absolute;inset:0;perspective:1200px;overflow:hidden}
+.intro-scene .stage{height:100%;min-height:calc(100dvh - 120px);border-radius:0;background:radial-gradient(ellipse at 50% 30%,#17406d,#060b1a 80%)}
+.intro-scene .rig{height:100%;min-height:calc(100dvh - 120px);aspect-ratio:auto;animation:introFly 5s cubic-bezier(.2,.7,.2,1) both}
+.intro-scene .lay{overflow:visible}
+@keyframes introFly{0%{transform:perspective(900px) scale(.72) rotateY(-16deg) translateZ(-180px);filter:blur(5px);opacity:.3}35%{opacity:1;filter:blur(0)}65%{transform:perspective(900px) scale(1.08) rotateY(8deg) translateZ(55px)}100%{transform:perspective(900px) scale(1.02) rotateY(0) translateZ(0);opacity:1}}
+.intro-caption{position:absolute;z-index:3;left:clamp(18px,6vw,72px);right:clamp(18px,6vw,72px);bottom:clamp(22px,7vh,70px);text-align:center;text-shadow:0 3px 24px #000b;animation:captionIn 1s .3s both}
+.intro-mark{display:inline-block;font-size:.7rem;letter-spacing:.28em;font-weight:900;color:#7dd3fc;border:1px solid #7dd3fc66;border-radius:999px;padding:7px 12px}
+.intro-caption h2{font-size:clamp(1.6rem,4.5vw,3.3rem);line-height:1.05;margin:16px 0 8px;color:#fff}
+.intro-caption p{margin:0;color:#dbeafe}
+.intro-progress{height:3px;max-width:220px;margin:20px auto 0;background:#ffffff35;border-radius:9px;overflow:hidden}.intro-progress i{display:block;width:100%;height:100%;background:#67e8f9;transform-origin:left;animation:progress5 5s linear forwards}
+@keyframes progress5{from{transform:scaleX(0)}to{transform:scaleX(1)}}@keyframes captionIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.auth-reveal{animation:insideOut .72s cubic-bezier(.16,1,.3,1) both!important;transform-origin:center center}
+@keyframes insideOut{0%{opacity:0;clip-path:inset(48% 48% 48% 48% round 24px);transform:scale(.94) translateY(10px);filter:blur(8px)}65%{clip-path:inset(0 0 0 0 round 24px);filter:blur(0)}100%{opacity:1;transform:scale(1) translateY(0);clip-path:inset(0 0 0 0 round 24px);filter:blur(0)}}
+.signup-panel{z-index:2}
+@media(max-width:600px){.auth-intro{min-height:calc(100dvh - 90px);border-radius:12px}.intro-scene .stage,.intro-scene .rig{min-height:calc(100dvh - 90px)}.intro-caption{bottom:24px}.login-panel{margin:16px auto;padding:22px 18px}.login-panel h2{margin-bottom:14px}}
+@media(prefers-reduced-motion:reduce){.auth-scene-backdrop .rig,.intro-scene .rig,.intro-caption,.intro-progress i,.auth-reveal{animation:none!important}.auth-reveal{opacity:1;clip-path:none;filter:none}}
+</style></head><body><header class="hd"><img class="logo" alt="Kites" src="images/kites-logo.png" onerror="logoFail(this)"><div class="ttl"><h1>Kites Robotics</h1><p>40 hands-on robotics projects with wiring, code and logic</p></div><div id="who"></div></header><nav id="nav"></nav><main id="main"></main><div class="modal" id="m" onclick="if(event.target===this)closeM()"><div class="box" id="mb"></div></div><div id="toast"></div><script>// Colours and the 40 projects: [name, emoji, level, parts, description, logic steps separated by |]
+const C=["#1d4ed8","#0f766e","#b45309","#6d28d9","#be123c","#15803d"];
+const P=[
+["Blinking LED","💡","Easy","LED,Resistor","Make an LED blink on and off like a tiny lighthouse.","Set LED pin as output|Turn LED on|Wait 1 second|Turn LED off|Wait 1 second, repeat"],
+["Traffic Light","🚦","Easy","3 LEDs,Resistor","Red, yellow and green lights that change in order.","Set 3 pins as output|Red on for 3s|Yellow on for 1s|Green on for 3s|Repeat forever"],
+["Button Light","🔘","Easy","LED,Button,Resistor","Press the button and the light turns on.","Read button pin|If pressed, LED on|Else LED off|Repeat quickly"],
+["Buzzer Alarm","🚨","Easy","Buzzer,Button","Press a button to sound a loud alarm.","Read button|If pressed, play tone|Else silence"],
+["Night Lamp","🌙","Easy","LDR,LED,Resistor","A lamp that turns on by itself when it gets dark.","Read light level|If below limit, LED on|Else LED off"],
+["Rainbow RGB","🌈","Easy","RGB LED,Resistor","Fade an RGB LED through every colour.","Set R,G,B pins|Change brightness of each with PWM|Blend colours smoothly|Loop"],
+["Mood Dimmer","🎚️","Easy","Potentiometer,LED","Turn a knob to make an LED brighter or dimmer.","Read knob value 0-1023|Map to 0-255|Write brightness to LED"],
+["Piano Keys","🎹","Medium","3 Buttons,Buzzer","Play musical notes by pressing buttons.","Read each button|Pick a note frequency|Play tone while pressed"],
+["Servo Sweep","🦾","Easy","Servo","A servo arm swings left and right.","Attach servo|Move 0° to 180°|Move back to 0°|Repeat"],
+["Knob Servo","🎛️","Medium","Servo,Potentiometer","Control a servo arm with a knob.","Read knob|Map value to angle|Move servo to angle"],
+["Distance Meter","📏","Medium","Ultrasonic,LCD","Measure how far an object is and show it on screen.","Send ultrasonic pulse|Time the echo|Distance = time × speed ÷ 2|Print on LCD"],
+["Parking Sensor","🚗","Medium","Ultrasonic,Buzzer","Beeps faster as an object gets closer.","Measure distance|Closer = shorter delay|Beep using the delay"],
+["Smart Dustbin","🗑️","Medium","Ultrasonic,Servo","The lid opens when your hand comes near.","Measure distance|If under 20cm, open lid|Wait 3s, close lid"],
+["Spinning Fan","🌀","Easy","DC Motor,Motor Driver","Spin a motor like a tiny fan.","Set motor pins|Enable driver|Spin forward|Stop"],
+["Speed Control","⚡","Medium","DC Motor,Motor Driver,Potentiometer","Change motor speed with a knob.","Read knob|Map to PWM speed|Write speed to driver"],
+["Line Follower","🏁","Hard","2 IR Sensors,2 DC Motors,Motor Driver","A robot car that follows a black line.","Read left and right IR|Both on line: go forward|Left sees line: turn left|Right sees line: turn right"],
+["Obstacle Avoider","🚙","Hard","Ultrasonic,2 DC Motors,Motor Driver","A car that drives and turns away from walls.","Measure distance ahead|If clear, drive forward|If close, stop and turn|Continue"],
+["Remote Car","📱","Hard","Bluetooth,2 DC Motors,Motor Driver","Drive your robot from a phone app.","Listen for Bluetooth letters|F=forward B=back|L=left R=right|S=stop"],
+["Thermometer","🌡️","Medium","Temp Sensor,LCD","Show the room temperature on a screen.","Read sensor voltage|Convert to °C|Show on LCD|Update every second"],
+["Fire Alarm","🔥","Medium","Temp Sensor,Buzzer,LED","Sounds an alarm when it gets too hot.","Read temperature|If above 50°C, buzzer and LED on|Else all off"],
+["Plant Waterer","🌱","Hard","Soil Sensor,Relay,Pump","Waters a plant automatically when soil is dry.","Read soil moisture|If dry, relay on (pump runs)|If wet, relay off"],
+["Motion Alarm","👀","Medium","PIR Sensor,Buzzer,LED","Detects movement and rings an alarm.","Read PIR output|If motion, buzzer and LED on|Else off"],
+["Clap Switch","👏","Medium","Sound Sensor,LED","Clap once to switch a light on or off.","Read sound level|If loud, flip LED state|Wait a bit to avoid double clap"],
+["Reaction Game","🎮","Medium","2 LEDs,Button,Buzzer","Press as fast as you can when the light turns on!","Wait random time|Light LED, start timer|Button press stops timer|Show reaction score"],
+["Joystick Servo","🕹️","Medium","Joystick,Servo","Steer a servo arm with a joystick.","Read X axis|Map to angle|Move servo"],
+["Robot Arm","🦿","Hard","2 Servos,Joystick","A mini arm you move with a joystick.","Read joystick X and Y|Map X to base servo|Map Y to arm servo|Update smoothly"],
+["Door Lock","🔐","Hard","Servo,Button,LED","A secret button code unlocks a servo door.","Count button presses|If code matches, unlock servo|Green LED on|Else stay locked"],
+["Mini Radar","📡","Hard","Servo,Ultrasonic,LCD","Scan the room and find objects around you.","Rotate servo in steps|Measure distance at each angle|Show closest object"],
+["Sound Lights","🎵","Medium","Sound Sensor,3 LEDs","Lights dance to the loudness of music.","Read sound level|Low: 1 LED, medium: 2, loud: 3|Repeat fast"],
+["Weather Station","⛅","Hard","Temp Sensor,LDR,LCD","Shows temperature and light level together.","Read temperature|Read light|Display both on LCD|Refresh every 2s"],
+["LED Fade","🌅","Easy","LED,Resistor","Fade an LED smoothly from dim to bright and back.","Set LED pin for PWM|Increase brightness from 0 to 255|Decrease brightness to 0|Repeat the fade"],
+["Distance Warning","📣","Medium","Ultrasonic Sensor,Buzzer,LED","Warn when an object comes too close.","Send an ultrasonic pulse|Calculate distance from echo time|If under 15 cm turn on LED and buzzer|Otherwise keep alarm off"],
+["Digital Dice","🎲","Easy","Button,LEDs","Press a button to show a random dice-like LED result.","Wait for button press|Choose a random number from 1 to 6|Show the number as LED flashes|Wait for the next press"],
+["Temperature Alert","🌡️","Medium","LM35,LED,Buzzer","Sound an alert when temperature passes a safe threshold.","Read the LM35 analog voltage|Convert voltage to Celsius|Compare temperature with 30°C|Turn on alarm when too hot"],
+["Automatic Night Light","🌃","Easy","LDR,LED,Resistor","Use a light sensor to turn a lamp on in darkness.","Read the LDR analog value|Compare with the darkness threshold|Turn on LED when dark|Turn off LED in bright light"],
+["Servo Barrier","🚧","Medium","Ultrasonic Sensor,Servo","Lift a small barrier when a vehicle or hand approaches.","Measure distance ahead|If object is within 15 cm move servo to 90°|Wait briefly|Return servo to 0°"],
+["Soil Moisture Monitor","🪴","Medium","Soil Sensor,LED","Show whether soil is dry or moist with an indicator LED.","Read soil moisture value|Compare value with dry threshold|Light LED when soil is dry|Repeat readings"],
+["Motion Night Lamp","🚶","Medium","PIR Sensor,LED","Turn a light on when motion is detected.","Read PIR sensor output|If motion is detected turn LED on|Keep light on briefly|Turn LED off when area is still"],
+["Bluetooth LED Control","📲","Hard","HC-05 Bluetooth,LED","Control an LED using simple commands from a Bluetooth serial app.","Listen for Bluetooth serial characters|Receive 1 to turn LED on|Receive 0 to turn LED off|Wait for the next command"],
+["Robot Signal Sequence","🚥","Medium","3 LEDs,Buzzer","Build a traffic signal with a sound cue for each phase.","Turn red LED on and wait|Switch to yellow LED|Switch to green LED and beep|Repeat the signal sequence"]
+];
+// W = wiring (Part:Pin; ...)   K = full Arduino sketch for each of the 40 projects (same order as projects.js)
+const W=["LED + 220Ω:D9","Red LED:D8;Yellow LED:D9;Green LED:D10","Button:D2;LED + 220Ω:D9","Button:D2;Buzzer:D8","LDR + 10kΩ:A0;LED + 220Ω:D9","RGB LED (R):D9;RGB LED (G):D10;RGB LED (B):D11","Potentiometer:A0;LED + 220Ω:D9","Button 1:D2;Button 2:D3;Button 3:D4;Buzzer:D8","Servo:D9","Servo:D9;Potentiometer:A0","Ultrasonic Trig:D9;Ultrasonic Echo:D10;LCD RS,E:D12,D11;LCD D4-D7:D5-D2","Ultrasonic Trig:D9;Ultrasonic Echo:D10;Buzzer:D8","Ultrasonic Trig:D9;Ultrasonic Echo:D10;Servo:D6","Driver ENA:D9;Driver IN1:D7;Driver IN2:D8;Motor:Driver OUT","Driver ENA:D9;Driver IN1:D7;Driver IN2:D8;Potentiometer:A0","Left IR:D2;Right IR:D3;Driver ENA/ENB:D5,D10;Driver IN1-IN4:D6-D9","Ultrasonic Trig:A1;Ultrasonic Echo:A2;Driver ENA/ENB:D5,D10;Driver IN1-IN4:D6-D9","HC-05 TX:D2;HC-05 RX:D3;Driver ENA/ENB:D5,D10;Driver IN1-IN4:D6-D9","LM35 signal:A0;LCD RS,E:D12,D11;LCD D4-D7:D5-D2","LM35 signal:A0;Buzzer:D8;LED + 220Ω:D9","Soil sensor:A0;Relay IN:D7;Pump:Relay output","PIR OUT:D2;Buzzer:D8;LED + 220Ω:D9","Sound sensor DO:D2;LED + 220Ω:D9","Button:D2;Ready LED:D10;Go LED:D9;Buzzer:D8","Joystick VRx:A0;Servo:D9","Joystick VRx:A0;Joystick VRy:A1;Base servo:D9;Arm servo:D10","Button:D2;Green LED:D8;Servo:D9","Ultrasonic Trig:D9;Ultrasonic Echo:D10;Servo:D6;LCD RS,E:D12,D11;LCD D4-D7:D5-D2","Sound sensor AO:A0;LED 1:D8;LED 2:D9;LED 3:D10","LM35 signal:A0;LDR + 10kΩ:A1;LCD RS,E:D12,D11;LCD D4-D7:D5-D2",
+"LED + 220Ω:D9 (PWM)",
+"Ultrasonic Trig:D9;Ultrasonic Echo:D10;Buzzer:D8;LED + 220Ω:D7",
+"Button:D2;LEDs:D5-D10 (use 6 LEDs)",
+"LM35 signal:A0;Buzzer:D8;LED + 220Ω:D9",
+"LDR + 10kΩ:A0;LED + 220Ω:D9",
+"Ultrasonic Trig:D9;Ultrasonic Echo:D10;Servo:D6",
+"Soil sensor AO:A0;LED + 220Ω:D9",
+"PIR OUT:D2;LED + 220Ω:D9",
+"HC-05 TX:D2;HC-05 RX:D3;LED + 220Ω:D9",
+"Red LED:D8;Yellow LED:D9;Green LED:D10;Buzzer:D11"];
+const DIST=(t,e)=>`long dist(){ // distance in cm
+  digitalWrite(${t},HIGH);delayMicroseconds(10);digitalWrite(${t},LOW); // 10us pulse
+  return pulseIn(${e},HIGH)*0.034/2; // echo time -> cm
+}`;
+const LCD=`#include <LiquidCrystal.h>
+LiquidCrystal lcd(12,11,5,4,3,2); // RS,E,D4,D5,D6,D7`;
+const MOT=`void drive(int a,int b,int c,int d){ // left motor a,b | right motor c,d
+  digitalWrite(6,a);digitalWrite(7,b);digitalWrite(8,c);digitalWrite(9,d);
+}`;
+const MSET=`for(int i=5;i<=10;i++)pinMode(i,OUTPUT);
+  analogWrite(5,150);analogWrite(10,150); // motor speed 0-255`;
+const K=[
+`void setup(){
+  pinMode(9,OUTPUT);
+}
+void loop(){
+  digitalWrite(9,HIGH); // LED on
+  delay(1000);
+  digitalWrite(9,LOW);  // LED off
+  delay(1000);
+}`,
+`int pins[]={8,9,10};          // red, yellow, green
+int wait[]={3000,1000,3000};  // how long each stays on
+void setup(){
+  for(int i=0;i<3;i++)pinMode(pins[i],OUTPUT);
+}
+void loop(){
+  for(int i=0;i<3;i++){
+    digitalWrite(pins[i],HIGH);delay(wait[i]);digitalWrite(pins[i],LOW);
+  }
+}`,
+`void setup(){
+  pinMode(9,OUTPUT);
+  pinMode(2,INPUT_PULLUP); // button to GND: pressed = LOW
+}
+void loop(){
+  digitalWrite(9,!digitalRead(2)); // pressed -> LED on
+}`,
+`void setup(){
+  pinMode(2,INPUT_PULLUP);
+}
+void loop(){
+  if(!digitalRead(2))tone(8,1000); // 1000 Hz alarm while pressed
+  else noTone(8);
+}`,
+`void setup(){
+  pinMode(9,OUTPUT);
+}
+void loop(){
+  int light=analogRead(A0);          // 0 (dark) - 1023 (bright)
+  digitalWrite(9,light<400);         // dark -> LED on
+  delay(100);
+}`,
+`int pins[]={9,10,11}; // R,G,B (common cathode LED)
+void setup(){
+  for(int i=0;i<3;i++)pinMode(pins[i],OUTPUT);
+}
+void loop(){
+  for(int h=0;h<768;h++){ // walk around the colour wheel
+    int r=h<256?255-h:(h<512?0:h-512);
+    int g=h<256?h:(h<512?511-h:0);
+    int b=h<256?0:(h<512?h-256:767-h);
+    analogWrite(9,r);analogWrite(10,g);analogWrite(11,b);
+    delay(5);
+  }
+}`,
+`void setup(){
+  pinMode(9,OUTPUT);
+}
+void loop(){
+  analogWrite(9,analogRead(A0)/4); // 0-1023 -> 0-255 brightness
+}`,
+`int btn[]={2,3,4};
+int note[]={262,330,392}; // C, E, G
+void setup(){
+  for(int i=0;i<3;i++)pinMode(btn[i],INPUT_PULLUP);
+}
+void loop(){
+  bool on=false;
+  for(int i=0;i<3;i++)if(!digitalRead(btn[i])){tone(8,note[i]);on=true;}
+  if(!on)noTone(8);
+}`,
+`#include <Servo.h>
+Servo s;
+void setup(){
+  s.attach(9);
+}
+void loop(){
+  for(int a=0;a<=180;a++){s.write(a);delay(10);}   // sweep right
+  for(int a=180;a>=0;a--){s.write(a);delay(10);}   // sweep back
+}`,
+`#include <Servo.h>
+Servo s;
+void setup(){
+  s.attach(9);
+}
+void loop(){
+  s.write(map(analogRead(A0),0,1023,0,180)); // knob -> angle
+  delay(15);
+}`,
+`${LCD}
+void setup(){
+  lcd.begin(16,2);
+  pinMode(9,OUTPUT);pinMode(10,INPUT);
+}
+${DIST(9,10)}
+void loop(){
+  lcd.clear();
+  lcd.print("Distance: ");lcd.print(dist());lcd.print("cm");
+  delay(300);
+}`,
+`void setup(){
+  pinMode(9,OUTPUT);pinMode(10,INPUT);pinMode(8,OUTPUT);
+}
+${DIST(9,10)}
+void loop(){
+  long d=dist();
+  tone(8,1000,50);                      // short beep
+  delay(constrain(d*10,50,1000));       // closer = faster beeps
+}`,
+`#include <Servo.h>
+Servo lid;
+void setup(){
+  pinMode(9,OUTPUT);pinMode(10,INPUT);lid.attach(6);lid.write(0);
+}
+${DIST(9,10)}
+void loop(){
+  long d=dist();
+  if(d>0&&d<20){lid.write(90);delay(3000);lid.write(0);} // open, wait, close
+  delay(100);
+}`,
+`void setup(){
+  pinMode(7,OUTPUT);pinMode(8,OUTPUT);pinMode(9,OUTPUT);
+}
+void loop(){
+  digitalWrite(7,HIGH);digitalWrite(8,LOW); // direction
+  analogWrite(9,255);delay(5000);           // full speed 5s
+  analogWrite(9,0);delay(2000);             // stop 2s
+}`,
+`void setup(){
+  pinMode(7,OUTPUT);pinMode(8,OUTPUT);pinMode(9,OUTPUT);
+  digitalWrite(7,HIGH);digitalWrite(8,LOW);
+}
+void loop(){
+  analogWrite(9,analogRead(A0)/4); // knob sets speed
+}`,
+`${MOT}
+void setup(){
+  ${MSET}
+  pinMode(2,INPUT);pinMode(3,INPUT);
+}
+void loop(){
+  bool l=digitalRead(2),r=digitalRead(3); // 1 = sees the line (flip if reversed)
+  if(l&&r)drive(1,0,1,0);       // forward
+  else if(l)drive(0,0,1,0);     // turn left
+  else if(r)drive(1,0,0,0);     // turn right
+  else drive(0,0,0,0);          // lost: stop
+}`,
+`${MOT}
+void setup(){
+  ${MSET}
+  pinMode(A1,OUTPUT);pinMode(A2,INPUT);
+}
+${DIST("A1","A2")}
+void loop(){
+  if(dist()>20)drive(1,0,1,0);          // clear: forward
+  else{drive(0,1,1,0);delay(400);}      // blocked: spin to turn
+}`,
+`#include <SoftwareSerial.h>
+SoftwareSerial bt(2,3); // RX,TX
+${MOT}
+void setup(){
+  ${MSET}
+  bt.begin(9600);
+}
+void loop(){
+  if(bt.available()){
+    char c=bt.read();
+    if(c=='F')drive(1,0,1,0);
+    else if(c=='B')drive(0,1,0,1);
+    else if(c=='L')drive(0,0,1,0);
+    else if(c=='R')drive(1,0,0,0);
+    else drive(0,0,0,0);  // S or anything else
+  }
+}`,
+`${LCD}
+void setup(){
+  lcd.begin(16,2);
+}
+void loop(){
+  float t=analogRead(A0)*5.0*100/1024; // LM35: 10mV per °C
+  lcd.clear();lcd.print("Temp: ");lcd.print(t,1);lcd.print(" C");
+  delay(1000);
+}`,
+`void setup(){
+  pinMode(8,OUTPUT);pinMode(9,OUTPUT);
+}
+void loop(){
+  float t=analogRead(A0)*0.488;  // LM35 reading in °C
+  bool hot=t>50;
+  digitalWrite(9,hot);
+  if(hot)tone(8,2000);else noTone(8);
+  delay(200);
+}`,
+`void setup(){
+  pinMode(7,OUTPUT);
+}
+void loop(){
+  bool dry=analogRead(A0)>600;  // higher value = drier soil
+  digitalWrite(7,dry);          // pump on (if your relay is active-LOW, use !dry)
+  delay(1000);
+}`,
+`void setup(){
+  pinMode(2,INPUT);pinMode(8,OUTPUT);pinMode(9,OUTPUT);
+}
+void loop(){
+  bool motion=digitalRead(2);
+  digitalWrite(9,motion);
+  if(motion)tone(8,1500);else noTone(8);
+}`,
+`bool lightOn=false;
+void setup(){
+  pinMode(2,INPUT);pinMode(9,OUTPUT);
+}
+void loop(){
+  if(digitalRead(2)){            // loud sound detected
+    lightOn=!lightOn;            // flip the state
+    digitalWrite(9,lightOn);
+    delay(500);                  // ignore echoes
+  }
+}`,
+`void setup(){
+  Serial.begin(9600);
+  pinMode(9,OUTPUT);pinMode(10,OUTPUT);pinMode(8,OUTPUT);
+  pinMode(2,INPUT_PULLUP);randomSeed(analogRead(A0));
+}
+void loop(){
+  digitalWrite(10,HIGH);             // "get ready" LED
+  delay(random(2000,6000));
+  digitalWrite(10,LOW);digitalWrite(9,HIGH);  // GO!
+  unsigned long t=millis();
+  while(digitalRead(2));             // wait for press
+  Serial.print("Reaction (ms): ");Serial.println(millis()-t); // see in Serial Monitor
+  digitalWrite(9,LOW);tone(8,1500,200);
+  delay(2000);
+}`,
+`#include <Servo.h>
+Servo s;
+void setup(){
+  s.attach(9);
+}
+void loop(){
+  s.write(map(analogRead(A0),0,1023,0,180)); // joystick X -> angle
+  delay(15);
+}`,
+`#include <Servo.h>
+Servo base,arm;
+void setup(){
+  base.attach(9);arm.attach(10);
+}
+void loop(){
+  base.write(map(analogRead(A0),0,1023,0,180)); // X moves base
+  arm.write(map(analogRead(A1),0,1023,0,180));  // Y moves arm
+  delay(15);
+}`,
+`#include <Servo.h>
+Servo door;
+int presses=0;unsigned long last=0;
+void setup(){
+  pinMode(2,INPUT_PULLUP);pinMode(8,OUTPUT);door.attach(9);door.write(0);
+}
+void loop(){
+  if(!digitalRead(2)){presses++;last=millis();delay(250);}  // count presses
+  if(presses>=3){                                           // secret code: 3 presses
+    door.write(90);digitalWrite(8,HIGH);delay(5000);
+    door.write(0);digitalWrite(8,LOW);presses=0;
+  }
+  if(presses&&millis()-last>3000)presses=0;                 // too slow: reset
+}`,
+`#include <Servo.h>
+${LCD}
+Servo s;int best,bestAngle;
+void setup(){
+  lcd.begin(16,2);s.attach(6);pinMode(9,OUTPUT);pinMode(10,INPUT);
+}
+${DIST(9,10)}
+void loop(){
+  best=999;
+  for(int a=15;a<=165;a+=15){          // scan left to right
+    s.write(a);delay(300);
+    int d=dist();
+    if(d>0&&d<best){best=d;bestAngle=a;}  // remember the closest object
+  }
+  lcd.clear();lcd.print("Near: ");lcd.print(best);lcd.print("cm");
+  lcd.setCursor(0,1);lcd.print("Angle: ");lcd.print(bestAngle);
+}`,
+`void setup(){
+  pinMode(8,OUTPUT);pinMode(9,OUTPUT);pinMode(10,OUTPUT);
+}
+void loop(){
+  unsigned long t=millis();int hi=0,lo=1023;
+  while(millis()-t<50){                  // measure loudness for 50 ms
+    int v=analogRead(A0);hi=max(hi,v);lo=min(lo,v);
+  }
+  int loud=hi-lo;
+  digitalWrite(8,loud>30);digitalWrite(9,loud>80);digitalWrite(10,loud>150);
+}`,
+`${LCD}
+void setup(){
+  lcd.begin(16,2);
+}
+void loop(){
+  float t=analogRead(A0)*0.488;   // LM35 -> °C
+  int light=analogRead(A1)/10;    // 0-102 brightness
+  lcd.clear();
+  lcd.print("Temp: ");lcd.print(t,1);lcd.print(" C");
+  lcd.setCursor(0,1);lcd.print("Light: ");lcd.print(light);
+  delay(2000);
+}`,
+`void setup(){pinMode(9,OUTPUT);}
+void loop(){for(int b=0;b<=255;b+=5){analogWrite(9,b);delay(20);}for(int b=255;b>=0;b-=5){analogWrite(9,b);delay(20);}}`,
+`long readDistance(){digitalWrite(9,LOW);delayMicroseconds(2);digitalWrite(9,HIGH);delayMicroseconds(10);digitalWrite(9,LOW);return pulseIn(10,HIGH,30000)*0.034/2;}
+void setup(){pinMode(9,OUTPUT);pinMode(10,INPUT);pinMode(8,OUTPUT);pinMode(7,OUTPUT);}
+void loop(){long d=readDistance();if(d>0&&d<15){digitalWrite(7,HIGH);tone(8,1000);}else{digitalWrite(7,LOW);noTone(8);}delay(80);}`, 
+`const int btn=2;const int leds[]={5,6,7,8,9,10};
+void setup(){pinMode(btn,INPUT_PULLUP);for(int i=0;i<6;i++)pinMode(leds[i],OUTPUT);randomSeed(analogRead(A0));}
+void loop(){if(digitalRead(btn)==LOW){int n=random(1,7);for(int i=0;i<6;i++)digitalWrite(leds[i],i<n);delay(700);while(digitalRead(btn)==LOW)delay(10);for(int i=0;i<6;i++)digitalWrite(leds[i],LOW);}}`,
+`void setup(){pinMode(8,OUTPUT);pinMode(9,OUTPUT);Serial.begin(9600);}
+void loop(){float c=analogRead(A0)*(5.0/1023.0)*100.0;Serial.print("Temperature C: ");Serial.println(c);if(c>30){digitalWrite(9,HIGH);tone(8,1200);}else{digitalWrite(9,LOW);noTone(8);}delay(500);}`,
+`void setup(){pinMode(9,OUTPUT);Serial.begin(9600);}
+void loop(){int light=analogRead(A0);if(light<450)digitalWrite(9,HIGH);else digitalWrite(9,LOW);Serial.println(light);delay(100);}`,
+`#include <Servo.h>
+Servo barrier;
+long readDistance(){digitalWrite(9,LOW);delayMicroseconds(2);digitalWrite(9,HIGH);delayMicroseconds(10);digitalWrite(9,LOW);return pulseIn(10,HIGH,30000)*0.034/2;}
+void setup(){pinMode(9,OUTPUT);pinMode(10,INPUT);barrier.attach(6);barrier.write(0);}
+void loop(){long d=readDistance();if(d>0&&d<15){barrier.write(90);delay(2000);}else barrier.write(0);delay(100);}`,
+`void setup(){pinMode(9,OUTPUT);Serial.begin(9600);}
+void loop(){int moisture=analogRead(A0);Serial.print("Soil reading: ");Serial.println(moisture);digitalWrite(9,moisture>600?HIGH:LOW);delay(500);}`,
+`void setup(){pinMode(2,INPUT);pinMode(9,OUTPUT);}
+void loop(){if(digitalRead(2)==HIGH){digitalWrite(9,HIGH);delay(5000);}else digitalWrite(9,LOW);}`,
+`#include <SoftwareSerial.h>
+SoftwareSerial bt(2,3); // Arduino RX, TX
+void setup(){pinMode(9,OUTPUT);bt.begin(9600);}
+void loop(){if(bt.available()){char c=bt.read();if(c=='1')digitalWrite(9,HIGH);if(c=='0')digitalWrite(9,LOW);}}`,
+`void setup(){pinMode(8,OUTPUT);pinMode(9,OUTPUT);pinMode(10,OUTPUT);pinMode(11,OUTPUT);}
+void loop(){digitalWrite(8,HIGH);digitalWrite(9,LOW);digitalWrite(10,LOW);noTone(11);delay(3000);digitalWrite(8,LOW);digitalWrite(9,HIGH);delay(1000);digitalWrite(9,LOW);digitalWrite(10,HIGH);tone(11,880,250);delay(3000);digitalWrite(10,LOW);}`];
+const $=i=>document.getElementById(i);
+let cur=0,tab=0;
+function openM(i){cur=i;tab=0;$("m").classList.add("show");render()}
+function closeM(){$("m").classList.remove("show")}
+function circuit(i){
+ const e=W[i].split(";").map(x=>x.split(":")),h=Math.max(190,e.length*62+30);
+ let s=`<svg viewBox="0 0 420 ${h}" width="100%" style="min-width:360px"><rect x="12" y="12" width="100" height="${h-24}" rx="8" fill="#0f172a"/><text x="62" y="${h/2}" fill="#fff" text-anchor="middle" font-size="14" font-weight="bold">Arduino</text><text x="62" y="${h/2+16}" fill="#93c5fd" text-anchor="middle" font-size="11">Uno board</text>`;
+ e.forEach((t,k)=>{const y=38+k*62,c=C[k%C.length];s+=`<line x1="112" y1="${y}" x2="270" y2="${y}" stroke="${c}" stroke-width="3"/><circle cx="112" cy="${y}" r="4" fill="${c}"/><text x="125" y="${y-7}" font-size="11" fill="#334155">${t[1]}</text><rect x="270" y="${y-20}" width="140" height="40" rx="6" fill="${c}"/><text x="340" y="${y+4}" text-anchor="middle" font-size="11" fill="#fff" font-weight="bold">${t[0]}</text>`});
+ return s+"</svg>"}
+function copyCode(){try{navigator.clipboard.writeText(K[cur]);$("cp").textContent="Copied!"}catch(e){}}
+/* ===== RoboKit secure portal (front-end prototype; data kept in this browser's localStorage) ===== */
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const rnd=n=>{const a="ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789",r=crypto.getRandomValues(new Uint8Array(n));return [...r].map(x=>a[x%a.length]).join("")};
+const ld=k=>{try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}};
+let DB=initDB();
+// One-time restock requested by the site owner: set inventory to 50, then preserve future stock changes.
+if(!DB.stock50Applied){DB.stock=50;DB.stock50Applied=true;try{localStorage.setItem("rk_db",JSON.stringify(DB))}catch(e){}}
+const save=()=>{try{localStorage.setItem("rk_db",JSON.stringify(DB))}catch(e){}};
+let DEV;try{DEV=localStorage.getItem("rk_dev")||rnd(12);localStorage.setItem("rk_dev",DEV)}catch(e){DEV=rnd(12)}
+const DT=/Mobi|Android|iPhone|iPad/.test(navigator.userAgent)?"Phone":"Laptop";
+let S=ldS(),V="home",L="login",OT=null,CQ=0,PAY="UPI";
+const kit=()=>DB.kits.find(k=>k.id==S.id);
+const log=(rk,m)=>{DB.act.unshift({t:Date.now(),rk,m});DB.act=DB.act.slice(0,150);save()};
+const tm=t=>new Date(t).toLocaleString(),fmt=s=>s>=60?Math.floor(s/60)+"m "+s%60+"s":s+"s";
+const er=m=>{$("msg").textContent=m};
+function toast(m,d=5000){const t=$("toast");t.textContent=m;t.className="show";clearTimeout(toast.h);toast.h=setTimeout(()=>t.className="",d)}
+async function hash(pw,salt){const e=new TextEncoder(),k=await crypto.subtle.importKey("raw",e.encode(pw),"PBKDF2",false,["deriveBits"]);const b=await crypto.subtle.deriveBits({name:"PBKDF2",salt:e.encode(salt),iterations:150000,hash:"SHA-256"},k,256);return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}
+const pwOk=p=>/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@_*#$!%&^?\-]).{8,}$/.test(p);
+let PF=ld("rk_pf")||{th:"candy",fs:16,an:true};
+function applyPF(){document.documentElement.dataset.theme=PF.th;document.documentElement.style.fontSize=PF.fs+"px";document.body.classList.toggle("noan",!PF.an);try{localStorage.setItem("rk_pf",JSON.stringify(PF))}catch(e){}}
+function go(v){V=v;draw()}
+function draw(){
+ const ad=S.role=="admin",cl=S.role=="client";
+ if(ad&&!["students","ashop"].includes(V))V="students";
+ const it=ad?[["students","Students & Projects"],["ashop","Shop"]]:[["home","Home"],["courses","Your products"],["shop","Shop"]].concat(cl?[]:[["login","Login"]]);
+ $("nav").innerHTML=it.map(([k,t])=>`<button class="${V==k?"on":""}" data-k="${k}" onclick="go('${k}')">${t}</button>`).join("");
+ $("who").innerHTML=ad?`Control panel <button onclick="logout()">Log out</button>`:cl?`${esc((kit()||{}).name)} <button class="gear" title="Settings" onclick="go('settings')">⚙</button> <button onclick="logout()">Log out</button>`:"";
+ $("main").innerHTML=({home,courses,shop,settings,login,students,ashop,agree})[V]();
+ if(V=="login"&&L=="login")hook()}
+/* ---------- client pages ---------- */
+function home(){
+ const cl=S.role=="client",k=kit()||{},d=cl?Object.values(DB.prog[S.id]||{}).filter(x=>x.done).length:0;
+ const inbox=cl?DB.notes.map(n=>({t:n.t,x:"Notice: "+n.x})).concat(DB.msgs.filter(m=>m.to==S.id).map(m=>({t:m.t,x:"Support: "+m.x}))).sort((a,b)=>b.t-a.t).slice(0,6):[];
+ return `<div class="hero"><div><h1>${cl?"Welcome, "+esc(k.name)+"!":"Welcome to RoboKit Learning Hub"}</h1><p>${cl?"Your RKID: <b>"+esc(k.id)+"</b>. Build one project at a time.":"Scanned the QR on your kit box? Log in with your RKID to unlock all 40 projects."}</p>${cl?`<div class="bar"><i style="width:${d/P.length*100}%"></i></div><p>${d} of ${P.length} projects completed</p>`:`<button onclick="go('login')">Log in</button> <button onclick="L='signup';go('login')">Sign up</button>`}</div><div class="bot"><div class="gear"></div><div class="head"><i></i><i></i></div><div class="body"></div></div></div>
+ <div class="feat"><div class="panel"><h3>40 projects</h3><p class="mut">From a blinking LED to a mini radar.</p></div><div class="panel"><h3>Wiring + code</h3><p class="mut">Circuit, Arduino sketch and logic for each.</p></div><div class="panel"><h3>Track progress</h3><p class="mut">Your time per project is recorded.</p></div></div>`+
+ (cl?`<h3>Inbox</h3>`+(inbox.map(m=>`<div class="step">${esc(m.x)} <span class="mut">${tm(m.t)}</span></div>`).join("")||'<p class="mut">No messages yet.</p>'):"")}
+function courses(){const pr=DB.prog[S.id]||{};return `<h2>Courses: 40 robotics projects</h2>`+(S.role=="client"?"":`<p class="mut">Log in with your RKID to open projects.</p>`)+`<div class="grid">`+P.map((p,i)=>`<div class="card" onclick="gate(${i})"><div class="top" style="background:${C[i%C.length]}">${String(i+1).padStart(2,"0")}</div><div class="bd"><h3>${p[0]}</h3><span class="tag">${p[2]}</span> ${(pr[i]||{}).done?'<span class="tag good">Done</span>':""}<p class="mut">${p[4]}</p></div></div>`).join("")+"</div>"}
+function gate(i){
+ if(S.role!="client"){$("mb").innerHTML=`<h2>Login required</h2><p>Please log in with your RKID to open this project.</p><button onclick="closeM();L='login';go('login')">Go to login</button> <button onclick="closeM()">Cancel</button>`;$("m").classList.add("show");return}
+ const pr=DB.prog[S.id]=DB.prog[S.id]||{};if(!pr[i]){pr[i]={start:Date.now()};log(S.id,"Started project "+(i+1)+": "+P[i][0])}
+ kit().cur=i;save();openM(i)}
+function done(i){const d=DB.prog[S.id][i];d.done=1;d.secs=Math.round((Date.now()-d.start)/1000);kit().cur=null;log(S.id,"Completed project "+(i+1)+" in "+fmt(d.secs));save();render()}
+function settings(){
+ if(S.role!="client")return `<h2>Settings</h2><p>Please log in to use settings.</p><button onclick="go('login')">Log in</button>`;
+ const k=kit();
+ return `<h2>Settings</h2><div class="panel"><h3>Profile</h3><label>Name<input id="pn" value="${esc(k.name)}"></label><label>Email<input id="pe" value="${esc(k.email)}"></label><label>Phone<input id="pph" value="${esc(k.phone)}"></label><p class="mut">RKID: ${esc(k.id)} | Linked devices: ${Object.keys(k.devs||{}).join(", ")||"none"}</p><button onclick="saveProf()">Save profile</button></div>
+ <div class="panel"><h3>Appearance</h3><label>Theme<select onchange="PF.th=this.value;applyPF()">${["candy","dark","ocean","sunset"].map(t=>`<option ${PF.th==t?"selected":""}>${t}</option>`).join("")}</select></label><label>Text size<input type="range" min="14" max="20" value="${PF.fs}" oninput="PF.fs=+this.value;applyPF()"></label><label><input type="checkbox" style="display:inline;width:auto" ${PF.an?"checked":""} onchange="PF.an=this.checked;applyPF()"> Animations</label></div>
+ <div class="panel"><h3>Help: complaint or question (goes to support)</h3><label>Type<select id="ck"><option>Complaint</option><option>Question</option></select></label><textarea id="cm" rows="3" placeholder="Write here"></textarea><br><button onclick="sendC()">Send to support</button></div>
+ <div class="panel"><h3>FAQ</h3>${[["How many devices can I use?","One phone and one laptop per RKID, one at a time. A new device needs support approval."],["I forgot my password","Use Forgot password on the login page. An OTP is sent to your registered phone and expires in 5 minutes."],["Where is my RKID?","Printed on the box of your kit, below the QR code."],["Can I share my RKID?","No. Sharing can get your account banned."]].map(f=>`<details><summary>${f[0]}</summary><p class="mut">${f[1]}</p></details>`).join("")}</div>
+ <button class="red" onclick="logout()">Log out</button>`}
+function saveProf(){const k=kit(),n=$("pn").value.trim(),e=$("pe").value.trim(),p=$("pph").value.trim();if(!n||!/^\S+@\S+\.\S+$/.test(e)||!/^\d{10}$/.test(p))return toast("Enter a name, valid email and 10-digit phone.");Object.assign(k,{name:n,email:e,phone:p});log(k.id,"Updated profile");save();draw();toast("Profile saved.")}
+function sendC(){const x=$("cm").value.trim();if(!x)return toast("Write something first.");DB.comp.unshift({t:Date.now(),rk:S.id,name:kit().name,kind:$("ck").value,x});save();$("cm").value="";toast("Sent to support.")}
+/* ---------- login / signup / forgot ---------- */
+function login(){
+ if(S.role)return `<p>You are logged in.</p>`;
+ const tabs=`<div class="tabs">${[["login","Log in"],["signup","Sign up"],["forgot","Forgot password"]].map(([k,t])=>`<button class="${L==k?"on":""}" onclick="L='${k}';OT=null;draw()">${t}</button>`).join("")}</div>`;
+ let b="";
+ if(L=="login")b=`<label>RKID or Email (email is for Admin only)<input id="u" autocomplete="username" oninput="hook()"></label><label><span id="l1">Password</span><input id="p" type="password"></label><label id="c2" hidden>Confirm password<input id="p2" type="password"></label><p class="mut" id="hint"></p><button onclick="doLogin()">Log in</button>`;
+ if(L=="signup")b=`<label>Full name<input id="sn"></label><label>Phone number (10 digits)<input id="sp" inputmode="numeric" maxlength="10"></label><label>Email<input id="se" type="email"></label><label>RKID (printed on your kit box)<input id="sr"></label><button onclick="signup()">Create profile</button>`;
+ if(L=="forgot")b=OT?`<label>OTP sent to your phone<input id="otp" maxlength="6" inputmode="numeric"></label><label>New password<input id="p" type="password"></label><label>Confirm new password<input id="p2" type="password"></label><button onclick="resetPw()">Reset password</button> <button id="rs" onclick="sendOtp(1)" disabled>Resend OTP</button><span id="cd" class="mut"></span>`:`<label>Registered phone number<input id="ph" inputmode="numeric" maxlength="10"></label><button onclick="sendOtp()">Send OTP</button>`;
+ return `<div class="panel narrow"><h2>Account</h2>${tabs}${b}<p id="msg" class="err"></p></div>`}
+function hook(){const v=$("u").value.trim(),em=v.includes("@"),k=DB.kits.find(x=>x.id==v),f=!em&&k&&k.name&&!k.hash;$("l1").textContent=f?"Create password":"Password";$("c2").hidden=!f;$("hint").textContent=f?"First login: choose a strong password with A-Z, a-z, 0-9 and a symbol like @ _ *":""}
+async function doLogin(){
+ const u=$("u").value.trim(),p=$("p").value;
+ if(u.includes("@")){if(u.toLowerCase()=="admin123@gmail.com"&&p=="Admin@123"){setS({role:"admin"});V="students";return draw()}return er("Wrong admin email or password.")}
+ const k=DB.kits.find(x=>x.id==u);
+ if(!k||!k.name)return er("RKID not found. Sign up first using the RKID on your kit box.");
+ if(k.banned)return er("Account banned. Reason: "+k.reason);
+ if(!k.hash){if(!pwOk(p))return er("Password needs 8+ characters with A-Z, a-z, 0-9 and a symbol like @ _ *");if(p!=$("p2").value)return er("Passwords do not match.");k.salt=rnd(16);k.hash=await hash(p,k.salt)}
+ else if(await hash(p,k.salt)!=k.hash)return er("Wrong password.");
+ k.devs=k.devs||{};
+ if(k.devs[DT]&&k.devs[DT]!=DEV){k.req={dev:DEV,type:DT,t:Date.now()};log(k.id,"Requested device change ("+DT+")");save();return er("This RKID is linked to another "+DT+". A permission request was sent to support. Try again after approval.")}
+ k.devs[DT]=DEV;k.sess=DEV;k.seen=Date.now();log(k.id,"Logged in on "+DT);save();setS({role:"client",id:k.id});V="home";draw()}
+function signup(){
+ const g=i=>$(i).value.trim(),k=DB.kits.find(x=>x.id==g("sr"));
+ if(!g("sn")||!/^\d{10}$/.test(g("sp"))||!/^\S+@\S+\.\S+$/.test(g("se")))return er("Enter a name, a 10-digit phone number and a valid email.");
+ if(!k)return er("Invalid RKID. Check the ID printed on your kit box.");if(k.name)return er("This RKID is already registered.");
+ Object.assign(k,{name:g("sn"),phone:g("sp"),email:g("se")});log(k.id,"Signed up");save();L="login";draw();toast("Profile created. Now log in and create your password.")}
+function sendOtp(re){
+ const ph=re?OT.ph:$("ph").value.trim(),k=DB.kits.find(x=>x.phone==ph&&x.hash);
+ if(!k)return er("This phone number is not registered.");
+ if(re&&Date.now()<OT.rs)return;
+ OT={ph,rk:k.id,code:String(100000+crypto.getRandomValues(new Uint32Array(1))[0]%900000),exp:Date.now()+3e5,rs:Date.now()+3e4};
+ draw();toast("DEMO SMS to "+ph+": your OTP is "+OT.code+" (valid 5 minutes)",20000)}
+async function resetPw(){
+ const k=DB.kits.find(x=>x.id==OT.rk);
+ if(Date.now()>OT.exp)return er("OTP expired. Click Resend OTP.");
+ if($("otp").value.trim()!=OT.code)return er("Wrong OTP.");
+ const p=$("p").value;if(!pwOk(p))return er("Password needs 8+ characters with A-Z, a-z, 0-9 and a symbol like @ _ *");if(p!=$("p2").value)return er("Passwords do not match.");
+ k.salt=rnd(16);k.hash=await hash(p,k.salt);k.sess=null;log(k.id,"Password reset by OTP");save();OT=null;L="login";draw();toast("Password reset. Please log in.")}
+function logout(){if(S.role=="client"){const k=kit();if(k){k.sess=null;k.cur=null;log(k.id,"Logged out");save()}}setS({});V="home";draw()}
+/* ---------- shop ---------- */
+function shop(){
+ const c=kit()||{};
+ return `<h2>Shop</h2><div class="shop2"><div class="panel"><div class="prod">RoboKit<small>for Students</small></div><h3>RoboKit for Students</h3><p class="price">₹1,999</p><p class="mut">Stock: ${DB.stock>0?DB.stock+" available":"Out of stock"}</p><ul><li>40 guided robotics projects with wiring, code and logic</li><li>Arduino Uno compatible board, breadboard, jumper wires</li><li>Sensors: ultrasonic, IR, LDR, PIR, sound, soil, LM35</li><li>Motors, servos, motor driver, LCD, Bluetooth, relay, buzzer, LEDs</li><li>Online course access with your unique RKID</li><li>Ages 8+ | 1-year replacement warranty</li></ul><button ${DB.stock>0?"":"disabled"} onclick="CQ++;draw()">Add to cart</button></div>
+ <div class="panel"><h3>Your cart</h3>${CQ?`<div class="row"><span>RoboKit x ${CQ}</span><span><button onclick="CQ=Math.max(0,CQ-1);draw()">-</button> <button onclick="CQ++;draw()">+</button></span></div><p><b>Total: ₹${(CQ*1999).toLocaleString("en-IN")}</b></p>
+ <label>Name<input id="oN" value="${esc(c.name||"")}"></label><label>Email<input id="oE" value="${esc(c.email||"")}"></label><label>Phone<input id="oP" maxlength="10" value="${esc(c.phone||"")}"></label><label>Address<textarea id="oA" rows="2">${esc(c.addr||"")}</textarea></label><label>Landmark<input id="oL"></label>
+ <label>Payment (demo)<select onchange="PAY=this.value;$('f1').hidden=PAY!='UPI';$('f2').hidden=PAY!='Card'"><option value="UPI">UPI</option><option value="Card">Credit / Debit card</option><option value="COD">Cash on delivery</option></select></label>
+ <div id="f1"><label>UPI ID<input id="oU" placeholder="name@bank"></label></div><div id="f2" hidden><label>Card number<input id="oC" maxlength="19" placeholder="16 digits"></label><label>CVV<input id="oV" maxlength="3" type="password"></label></div>
+ <button onclick="order()">Place order</button>`:'<p class="mut">Your cart is empty.</p>'}</div></div>`}
+function order(){
+ const g=i=>$(i).value.trim();PAY=PAY||"UPI";
+ if(!g("oN")||!/^\S+@\S+\.\S+$/.test(g("oE"))||!/^\d{10}$/.test(g("oP"))||!g("oA")||!g("oL"))return toast("Fill name, valid email, 10-digit phone, address and landmark.");
+ if(PAY=="UPI"&&!/^[\w.\-]+@\w+$/.test(g("oU")))return toast("Enter a valid UPI ID (demo).");
+ const cn=PAY=="Card"?g("oC").replace(/\s/g,""):"";
+ if(PAY=="Card"&&!(/^\d{16}$/.test(cn)&&/^\d{3}$/.test(g("oV"))))return toast("Enter a 16-digit card number and 3-digit CVV (demo).");
+ if(CQ>DB.stock)return toast("Only "+DB.stock+" in stock.");
+ const o={id:"ORD"+rnd(6),t:Date.now(),qty:CQ,total:CQ*1999,name:g("oN"),email:g("oE"),phone:g("oP"),addr:g("oA"),land:g("oL"),rk:S.id||"guest",pay:PAY=="Card"?"Card ****"+cn.slice(-4):PAY=="UPI"?"UPI "+g("oU"):"Cash on delivery",status:PAY=="COD"?"Placed, pay on delivery":"Paid (demo)",new:1};
+ DB.orders.unshift(o);DB.stock-=CQ;log(o.rk,"Placed order "+o.id);save();CQ=0;draw();toast("Order "+o.id+" placed. Demo payment: no money was charged.",8000)}
+/* ---------- admin ---------- */
+const on=k=>k.sess&&k.seen&&Date.now()-k.seen<7000;
+function students(){
+ const opts=DB.kits.map(k=>`<option value="${esc(k.id)}">${esc(k.id)} ${k.name?esc(k.name):"(unregistered)"}</option>`).join("");
+ const rows=DB.kits.map(k=>{const dn=Object.entries(DB.prog[k.id]||{}).filter(([i,x])=>x.done);return `<tr><td><b>${esc(k.id)}</b></td><td>${k.name?esc(k.name)+'<br><span class="mut">'+esc(k.email)+" | "+esc(k.phone)+"</span>":'<span class="mut">Not registered</span>'}</td><td>${k.banned?'<span class="tag bad">Banned</span>':on(k)?'<span class="tag good">Online</span>':'<span class="tag">Offline</span>'}<br><span class="mut">${k.cur!=null&&on(k)?"Working on: "+P[k.cur][0]:"Last seen: "+(k.seen?tm(k.seen):"never")}</span></td><td>${dn.length}/${P.length}<br><span class="mut">${dn.map(([i,x])=>"P"+(+i+1)+": "+fmt(x.secs)).join(", ")}</span></td><td>${Object.keys(k.devs||{}).join(", ")||"-"}${k.req?`<br><button onclick="appr('${k.id}')">Approve ${k.req.type} change</button>`:""}</td></tr>`}).join("");
+ return `<h2>Students & Projects</h2><div class="panel"><button onclick="mk()">Create new RKID</button> <span class="mut">Give the RKID to the buyer; print it on the kit box.</span></div>
+ <div class="panel"><h3>Message, notify, ban</h3><label>Student<select id="tg">${opts}</select></label><label>Text (message, notice or ban reason)<input id="tx"></label><button onclick="adm('msg')">Send private message</button> <button onclick="adm('all')">Notify everyone</button> <button class="red" onclick="adm('ban')">Ban (text = reason)</button> <button onclick="adm('unban')">Unban</button></div>
+ <div class="tw"><table><tr><th>RKID</th><th>Student</th><th>Status</th><th>Completed (time taken)</th><th>Devices</th></tr>${rows||'<tr><td colspan="5">No RKIDs yet. Create one.</td></tr>'}</table></div>
+ <h3>Live activity</h3>${DB.act.slice(0,20).map(a=>`<div class="step"><span class="mut">${tm(a.t)}</span> <b>${esc(a.rk)}</b> ${esc(a.m)}</div>`).join("")||'<p class="mut">No activity yet.</p>'}
+ <h3>Complaints & questions</h3>${DB.comp.map(c=>`<div class="step"><b>${c.kind}</b> from ${esc(c.name)} (${esc(c.rk)}): ${esc(c.x)} <span class="mut">${tm(c.t)}</span></div>`).join("")||'<p class="mut">None.</p>'}`}
+function mk(){
+ const used=new Set(DB.kits.map(k=>String(k.id)));let id;
+ do{id=String(100000+(crypto.getRandomValues(new Uint32Array(1))[0]%900000))}while(used.has(id));
+ DB.kits.push({id});save();draw();toast("New RKID: "+id,15000)
+}
+function appr(id){const k=DB.kits.find(x=>x.id==id);k.devs[k.req.type]=k.req.dev;k.req=null;k.sess=null;log("ADMIN","Approved device change for "+id);save();draw()}
+function adm(a){
+ const t=$("tg").value,x=$("tx").value.trim(),k=DB.kits.find(y=>y.id==t);
+ if(a=="all"){if(!x)return toast("Type a notice first.");DB.notes.unshift({t:Date.now(),x});log("ADMIN","Notice to all: "+x)}
+ else{if(!k)return toast("Select a student.");
+  if(a=="msg"){if(!x)return toast("Type a message.");DB.msgs.push({to:t,t:Date.now(),x})}
+  if(a=="ban"){if(!x)return toast("Type the ban reason.");k.banned=1;k.reason=x;k.sess=null;DB.msgs.push({to:t,t:Date.now(),x:"Your account was banned. Reason: "+x})}
+  if(a=="unban"){k.banned=0;k.reason="";DB.msgs.push({to:t,t:Date.now(),x:"Your account has been unbanned."})}
+  log("ADMIN",a+" "+t)}
+ save();toast("Done.");draw()}
+function ashop(){
+ const nw=DB.orders.filter(o=>o.new).length;
+ return `<h2>Shop</h2>${nw?`<div class="panel"><b>${nw} new order(s)!</b> <button onclick="DB.orders.forEach(o=>o.new=0);save();draw()">Mark seen</button></div>`:""}
+ <div class="panel"><h3>Product: RoboKit for Students</h3><p>Price ₹1,999 | In stock: <b>${DB.stock}</b> | Ordered: <b>${DB.orders.reduce((s,o)=>s+o.qty,0)}</b> | Revenue (demo): ₹${DB.orders.reduce((s,o)=>s+o.total,0).toLocaleString("en-IN")}</p><p class="mut">Includes 40 projects, Arduino Uno compatible board, 7 sensor types, motors, servos, driver, LCD, Bluetooth, relay, online course. Ages 8+, 1-year warranty.</p><button onclick="DB.stock+=50;save();draw()">Restock +50</button></div>
+ <div class="tw"><table><tr><th>Order</th><th>Customer</th><th>Delivery</th><th>Qty / Total</th><th>Payment</th></tr>${DB.orders.map(o=>`<tr><td><b>${o.id}</b>${o.new?' <span class="tag bad">NEW</span>':""}<br><span class="mut">${tm(o.t)}</span></td><td>${esc(o.name)}<br><span class="mut">${esc(o.email)} | ${esc(o.phone)}<br>RKID: ${esc(o.rk)}</span></td><td>${esc(o.addr)}<br><span class="mut">Landmark: ${esc(o.land)}</span></td><td>${o.qty} / ₹${o.total.toLocaleString("en-IN")}</td><td>${esc(o.pay)}<br><span class="mut">${esc(o.status)}</span></td></tr>`).join("")||'<tr><td colspan="5">No orders yet.</td></tr>'}</table></div>`}
+/* ===== v2 overrides: 40 projects, new login flow, richer dashboard ===== */
+var DEMO=true; // set to false in production: reset links then work only through the real email server
+var EXPIRED=0,RS=null,AL=0;
+const D5=5*864e5;
+function ldS(){let s=null;try{s=JSON.parse(sessionStorage.getItem("rk_s"))}catch(e){}if(!s||s.role!="admin"){try{s=JSON.parse(localStorage.getItem("rk_s"))}catch(e){s=null}}s=s||{};if(s.exp&&s.exp<Date.now()){EXPIRED=1;try{localStorage.removeItem("rk_s");sessionStorage.removeItem("rk_s")}catch(e){}return{}}return s}
+function setS(s){S=s;try{localStorage.removeItem("rk_s");sessionStorage.removeItem("rk_s");if(s.role=="admin")sessionStorage.setItem("rk_s",JSON.stringify(s));else if(s.role)localStorage.setItem("rk_s",JSON.stringify(s))}catch(e){}}
+/* ---- 10 extra projects ---- */
+P.push(
+["Water Alert","","Easy","Soil Sensor,Buzzer,LED,Resistor","Sounds an alarm when water touches the sensor, like a leak or overflow detector.","Read the sensor value|Water makes the reading drop|If below the limit, buzzer and LED on|Else everything off"],
+["Wave to Light","","Easy","Ultrasonic,LED,Resistor","Wave your hand near the sensor and a light turns on.","Measure distance|If a hand is closer than 15 cm, LED on|Else LED off"],
+["Digital Dice","","Medium","Button,LCD","Press the button to roll a dice from 1 to 6 on the screen.","Wait for a button press|Pick a random number 1 to 6|Show it on the LCD|Repeat"],
+["Combination Knob Lock","","Medium","Potentiometer,Servo,LED,Resistor","Turn the knob to the secret position and hold it to unlock a servo latch.","Read the knob|If near the secret value, start counting|Held for 2 seconds: unlock servo and light LED|Moved away: reset"],
+["Bluetooth RGB Lights","","Medium","Bluetooth,RGB LED,Resistor","Change an RGB light colour from your phone with the letters R, G, B and O.","Listen for Bluetooth letters|R, G, B set that colour|O turns everything off"],
+["Temperature Fan","","Hard","Temp Sensor,DC Motor,Motor Driver","A fan that spins faster as the room gets hotter.","Read the temperature|Map 25 to 40 degrees to speed 0 to 255|Write the speed to the motor driver"],
+["Light Theremin","","Easy","LDR,Buzzer,Resistor","Wave your hand over the sensor to change the pitch of a musical tone.","Read the light level|Map it to a frequency|Play the tone|Repeat"],
+["Street Light","","Medium","LDR,PIR Sensor,LED,Resistor","A street light that turns on only when it is dark and someone moves nearby.","Read light and motion|If dark AND motion, LED on for 5 seconds|Else LED off"],
+["Smart Patrol Car","","Hard","2 IR Sensors,Ultrasonic,2 DC Motors,Motor Driver","A line-following car that stops when an obstacle blocks the way.","Measure distance ahead|If blocked, stop|Else read the IR sensors|Follow the line"],
+["Bluetooth Home Switch","","Hard","Bluetooth,Relay,LED,Resistor","Switch a lamp or fan on and off from your phone through a relay.","Listen for A or B|A: relay and LED on|B: relay and LED off"]);
+W.push("Soil sensor:A0;Buzzer:D8;LED + 220Ω:D9","Ultrasonic Trig:D9;Ultrasonic Echo:D10;LED + 220Ω:D8","Button:D2;LCD RS,E:D12,D11;LCD D4-D7:D5-D2","Potentiometer:A0;Servo:D9;Green LED:D8","HC-05 TX:D2;HC-05 RX:D3;RGB LED (R):D9;RGB LED (G):D10;RGB LED (B):D11","LM35 signal:A0;Driver ENA:D9;Driver IN1:D7;Driver IN2:D8;Motor:Driver OUT","LDR + 10kΩ:A0;Buzzer:D8","LDR + 10kΩ:A0;PIR OUT:D2;LED + 220Ω:D9","Left IR:D2;Right IR:D3;Ultrasonic Trig:A1;Ultrasonic Echo:A2;Driver ENA/ENB:D5,D10;Driver IN1-IN4:D6-D9","HC-05 TX:D2;HC-05 RX:D3;Relay IN:D7;LED + 220Ω:D9");
+K.push(
+`void setup(){
+  pinMode(8,OUTPUT);pinMode(9,OUTPUT);
+}
+void loop(){
+  bool wet=analogRead(A0)<500;   // water lowers the reading
+  digitalWrite(9,wet);
+  if(wet)tone(8,1800);else noTone(8);
+  delay(200);
+}`,
+`${DIST(9,10)}
+void setup(){
+  pinMode(9,OUTPUT);pinMode(10,INPUT);pinMode(8,OUTPUT);
+}
+void loop(){
+  long d=dist();
+  digitalWrite(8,d>0&&d<15);   // hand close -> light on
+  delay(100);
+}`,
+`${LCD}
+void setup(){
+  lcd.begin(16,2);pinMode(2,INPUT_PULLUP);randomSeed(analogRead(A0));
+  lcd.print("Press to roll");
+}
+void loop(){
+  if(!digitalRead(2)){
+    int n=random(1,7);   // 1 to 6
+    lcd.clear();lcd.print("You rolled: ");lcd.print(n);
+    delay(400);
+  }
+}`,
+`#include <Servo.h>
+Servo latch;
+unsigned long since=0;
+void setup(){
+  pinMode(8,OUTPUT);latch.attach(9);latch.write(0);
+}
+void loop(){
+  int k=analogRead(A0);
+  if(abs(k-700)<30){                  // secret position is about 700
+    if(since==0)since=millis();       // start timing
+    if(millis()-since>2000){latch.write(90);digitalWrite(8,HIGH);delay(4000);latch.write(0);digitalWrite(8,LOW);since=0;}
+  } else since=0;                     // moved away: reset
+}`,
+`#include <SoftwareSerial.h>
+SoftwareSerial bt(2,3);
+void setup(){
+  bt.begin(9600);
+  for(int i=9;i<=11;i++)pinMode(i,OUTPUT);
+}
+void rgb(int r,int g,int b){analogWrite(9,r);analogWrite(10,g);analogWrite(11,b);}
+void loop(){
+  if(bt.available()){
+    char c=bt.read();
+    if(c=='R')rgb(255,0,0);
+    else if(c=='G')rgb(0,255,0);
+    else if(c=='B')rgb(0,0,255);
+    else if(c=='O')rgb(0,0,0);   // off
+  }
+}`,
+`void setup(){
+  pinMode(7,OUTPUT);pinMode(8,OUTPUT);pinMode(9,OUTPUT);
+  digitalWrite(7,HIGH);digitalWrite(8,LOW);
+}
+void loop(){
+  float t=analogRead(A0)*0.488;                        // degrees C from LM35
+  int speed=constrain(map(t*10,250,400,0,255),0,255);  // 25C = stop, 40C = full speed
+  analogWrite(9,speed);
+  delay(500);
+}`,
+`void setup(){
+  pinMode(8,OUTPUT);
+}
+void loop(){
+  int light=analogRead(A0);
+  int pitch=map(light,0,1023,200,1500);   // brighter = higher note
+  tone(8,pitch);
+  delay(20);
+}`,
+`unsigned long lastMove=0;
+void setup(){
+  pinMode(2,INPUT);pinMode(9,OUTPUT);
+}
+void loop(){
+  bool dark=analogRead(A0)<400,move=digitalRead(2);
+  if(dark&&move)lastMove=millis();                    // restart the 5 second timer
+  digitalWrite(9,lastMove&&millis()-lastMove<5000);
+}`,
+`${MOT}
+void setup(){
+  ${MSET}
+  pinMode(2,INPUT);pinMode(3,INPUT);pinMode(A1,OUTPUT);pinMode(A2,INPUT);
+}
+${DIST("A1","A2")}
+void loop(){
+  long d=dist();
+  if(d>0&&d<15){drive(0,0,0,0);return;}   // obstacle: stop
+  bool l=digitalRead(2),r=digitalRead(3);  // 1 = sees the line (flip if reversed)
+  if(l&&r)drive(1,0,1,0);
+  else if(l)drive(0,0,1,0);
+  else if(r)drive(1,0,0,0);
+  else drive(0,0,0,0);
+}`,
+`#include <SoftwareSerial.h>
+SoftwareSerial bt(2,3);
+void setup(){
+  bt.begin(9600);pinMode(7,OUTPUT);pinMode(9,OUTPUT);
+}
+void loop(){
+  if(bt.available()){
+    char c=bt.read();
+    if(c=='A'){digitalWrite(7,HIGH);digitalWrite(9,HIGH);}   // on
+    if(c=='B'){digitalWrite(7,LOW);digitalWrite(9,LOW);}     // off
+  }
+}`);
+/* ---- component and function explanations ---- */
+const COMP=[
+[/\brgb\b/i,"Three LEDs (red, green, blue) in one package. Mixing their brightness makes any colour.","Each colour pin through a 220Ω resistor to a PWM pin, the common leg to GND."],
+[/\bleds?\b/i,"A small light-emitting diode. It works one way only: the long leg is + and the short leg is -.","Long leg to the board pin through a 220Ω resistor, short leg to GND."],
+[/resistor/i,"A resistor limits electric current so parts do not burn out. 220Ω protects LEDs, 10kΩ is used with light sensors.","In series with the LED. For an LDR, 10kΩ goes from the sensor pin to GND."],
+[/button/i,"A push button closes a circuit while pressed. The board's built-in pull-up makes pressed = LOW.","One leg to the pin, the opposite leg to GND."],
+[/buzzer/i,"A piezo buzzer that makes a sound when the pin sends a changing signal (tone).","+ leg to the pin, the other leg to GND."],
+[/ldr/i,"Light Dependent Resistor: its resistance falls in bright light, so the voltage changes with light.","5V to the LDR, LDR to the analog pin, and 10kΩ from that pin to GND."],
+[/potentiometer/i,"A knob with a variable resistor. Turning it changes the voltage from 0V to 5V.","Outer legs to 5V and GND, middle leg to the analog pin."],
+[/servo/i,"A motor that turns to an exact angle from 0 to 180 degrees using a control signal.","Brown/black wire to GND, red to 5V, orange/yellow to the signal pin."],
+[/ultrasonic/i,"HC-SR04 distance sensor. It sends a sound pulse and times the echo to measure distance.","VCC to 5V, GND to GND, Trig and Echo to the listed pins."],
+[/driver/i,"A motor driver (L298N) lets the weak board pins control powerful motors from a separate battery.","IN pins to the board, ENA/ENB set speed, motors to OUT, battery to the power terminal, join GND."],
+[/motor/i,"A DC motor spins when current flows. Reversing the current reverses the direction.","Connect to the driver OUT terminals, never directly to the board."],
+[/\birs?\b/i,"Infrared sensor. It tells dark from light surfaces below it, used to follow a black line.","VCC to 5V, GND to GND, OUT to the pin."],
+[/lcd/i,"A 16x2 character screen that shows text and numbers.","RS, E and D4-D7 to the listed pins, 5V and GND, contrast pin to a potentiometer."],
+[/hc-05|bluetooth/i,"Bluetooth module for wireless serial communication with a phone.","Module TX to board RX pin, module RX to board TX pin (use a voltage divider), VCC 5V, GND."],
+[/lm35|temp/i,"LM35 temperature sensor. It gives 10 millivolts for every degree Celsius.","Left pin 5V, middle pin to the analog pin, right pin GND."],
+[/soil/i,"Soil moisture sensor. The reading rises when dry and falls when wet or in water.","VCC to 5V, GND to GND, AO to the analog pin."],
+[/relay/i,"An electrically controlled switch that lets the board switch a lamp, fan or pump.","IN to the pin, VCC 5V, GND. The load connects to COM and NO."],
+[/pir/i,"Passive infrared sensor that detects the movement of warm bodies.","VCC to 5V, GND to GND, OUT to the pin."],
+[/sound/i,"Microphone module that detects loud sounds like claps.","VCC to 5V, GND to GND, DO or AO to the pin."],
+[/joystick/i,"A thumb stick with two potentiometers (X and Y) and a button.","VRx and VRy to analog pins, VCC 5V, GND."],
+[/pump/i,"A small water pump switched through the relay.","Powered through the relay COM and NO terminals from its own supply."]];
+const info=n=>COMP.find(c=>c[0].test(n))||[0,"A component used in this project.","Connect as shown in the wiring table.","" ];
+const FN=[["pinMode","sets a pin as INPUT, OUTPUT or INPUT_PULLUP"],["digitalWrite","sets a pin HIGH (5V) or LOW (0V)"],["digitalRead","reads a pin: HIGH or LOW"],["analogRead","reads a voltage from 0-5V as a number 0-1023"],["analogWrite","outputs PWM 0-255, used for brightness or speed"],["delay","pauses the program for some milliseconds"],["tone","plays a sound of a given frequency (Hz)"],["noTone","stops the sound"],["map","rescales a number from one range to another"],["constrain","keeps a number between a minimum and a maximum"],["pulseIn","measures how long a pin stays HIGH (microseconds)"],["millis","milliseconds since the board started, used as a timer"],["random","picks a random number"],["Serial","sends text to the computer (Serial Monitor)"],["Servo","library that moves a servo to an angle"],["LiquidCrystal","library that controls the LCD screen"],["SoftwareSerial","library that gives Bluetooth its own pins"]];
+const CC=i=>`hsl(${(190+i*8)%360} 85% ${88-i*1.5}%)`;
+/* ---- project pop-up ---- */
+function render(){
+ const p=P[cur],col=C[cur%C.length],T=["Overview","Components","Build Steps","Circuit","Code","Logic","Video"],st=p[5].split("|"),parts=p[3].split(","),w=W[cur].split(";").map(x=>x.split(":"));
+ const S2=a=>a.map((x,k)=>`<div class="step"><b>${k+1}</b><span>${x}</span></div>`).join(""),TM={Easy:"20-30 minutes",Medium:"45 minutes",Hard:"60-90 minutes"};
+ const IN=/button|ldr|potentiometer|ultrasonic|\bir\b|lm35|temp|soil|pir|sound|joystick|tx/i,ins=w.filter(x=>IN.test(x[0])).map(x=>x[0]),outs=w.filter(x=>!IN.test(x[0])).map(x=>x[0]);
+ let b="";
+ if(tab==0)b=`<p class="lead">${p[4]}</p><div class="facts"><span class="tag">Level: ${p[2]}</span><span class="tag">Time: ${TM[p[2]]}</span><span class="tag">Board: Arduino Uno</span><span class="tag">${parts.length} parts</span></div><h4>What you will build</h4><p>You will connect ${w.length} parts to the board, upload a short sketch and test it. The Components tab explains every part, the Circuit tab shows the wiring, the Code tab has the full program and the Logic tab explains how it thinks.</p><h4>Before you start</h4><p class="mut">Complete the one-time Arduino IDE setup in Your products, then gather the parts listed in Components, a USB cable, a breadboard and jumper wires.</p>`;
+ if(tab==1)b=parts.map(t=>{const c=info(t);return `<div class="comp"><b>${t}</b><p>${c[1]}</p><p class="mut"><b>How it connects:</b> ${c[2]}</p></div>`}).join("")+`<p class="mut">Also needed: breadboard, jumper wires and a USB cable.</p>`;
+ if(tab==2)b=S2(["Collect the parts: "+p[3]+".","Place the parts on the breadboard and wire them as in the Circuit tab:<br>"+w.map(x=>x[0]+" to <b>"+x[1]+"</b>").join("<br>"),"Connect board 5V to the red rail and GND to the blue rail. Join every GND together.","Check LED direction (long leg +) and sensor pins before powering. Wrong wiring can damage parts.","Open Arduino IDE, choose Tools > Board > Arduino Uno and your USB port. Paste the sketch from the Code tab and click Upload.","Test it, then change numbers in the code (delays, limits) to see what changes."]);
+ if(tab==3)b=`<div class="svgw">${circuit(cur)}</div><h4>How the circuit works</h4><p>Inputs (${ins.join(", ")||"none"}) send information to the board. The board runs your code and controls the outputs (${outs.join(", ")||"none"}).</p><h4>Wiring table</h4><div class="tw"><table><tr><th>Part</th><th>Board pin</th><th>How to connect</th></tr>${w.map(x=>`<tr><td>${x[0]}</td><td><b>${x[1]}</b></td><td>${info(x[0])[2]}</td></tr>`).join("")}</table></div><p class="mut">Connect the GND of every part to board GND and power sensors from 5V.</p>`;
+ if(tab==4){const fn=FN.filter(f=>new RegExp("\\b"+f[0]+"\\b").test(K[cur]));b=`<button id="cp" onclick="copyCode()">Copy code</button><pre id="code"></pre><h4>How the code works</h4><p>setup() runs once when the board starts. loop() repeats forever.</p>`+fn.map(f=>`<div class="step"><b>+</b><span><code>${f[0]}</code> ${f[1]}</span></div>`).join("")}
+ if(tab==5)b=`<h4>Step-by-step logic</h4>`+S2(st)+`<p class="mut">Each step matches lines in the sketch. Read them side by side.</p>`;
+ if(tab==6)b=`<a class="vid" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${encodeURIComponent(p[0]+" Arduino project tutorial")}">Watch the ${p[0]} tutorial</a><p class="mut">Replace this link with your own video for each project.</p>`;
+ const d=(DB.prog[S.id]||{})[cur]||{},fin=S.role=="client"?(d.done?`<div class="studied-bar is-done">Studied${d.secs?" in "+fmt(d.secs):""}</div>`:`<button class="studied-btn" type="button" onclick="done(${cur})">Mark as studied</button>`):"";
+ $("mb").innerHTML=`<button class="x" onclick="closeM()">Close</button>${fin}<h2 style="margin:0">${cur+1}. ${p[0]}</h2><div class="tabs">${T.map((t,k)=>`<button class="${k==tab?"on":""}" onclick="tab=${k};render()">${t}</button>`).join("")}</div>${b}<div class="row pnav" style="margin-top:14px"><button ${cur||tab?"":"disabled"} onclick="stepNav(-1)">Prev</button><button ${cur<P.length-1||tab<6?"":"disabled"} onclick="stepNav(1)">Next</button></div>`;
+ if(tab==4)$("code").textContent=K[cur]}
+/* ---- home dashboard ---- */
+const MODELS=`<div class="models"><div class="bot"><div class="gear"></div><div class="head"><i></i><i></i></div><div class="body"></div></div><div class="scene"><div class="cube"><div class="f1">LED</div><div class="f2">SENSOR</div><div class="f3">MOTOR</div><div class="f4">CODE</div><div class="f5">WIRE</div><div class="f6">POWER</div></div></div><div class="scene sc2"><div class="stack"><i></i><i></i><i></i></div></div></div>`;
+function home(){
+ const cl=S.role=="client",k=kit()||{},pr=DB.prog[S.id]||{},ds=Object.entries(pr).filter(([i,x])=>x.done),n=ds.length,secs=ds.reduce((s,[i,x])=>s+x.secs,0),N=P.length;
+ const lvl=n<10?"Beginner":n<20?"Maker":n<30?"Engineer":n<N?"Expert":"Master",nx=P.findIndex((p,i)=>!(pr[i]||{}).done),left=cl?Math.max(0,Math.ceil((S.exp-Date.now())/864e5)):0;
+ const lv=["Easy","Medium","Hard"].map(l=>{const t=P.map((p,i)=>[p,i]).filter(([p])=>p[2]==l),d=t.filter(([p,i])=>(pr[i]||{}).done).length;return `<div class="row"><span>${l}</span><span>${d}/${t.length}</span></div><div class="bar"><i style="width:${t.length?d/t.length*100:0}%"></i></div>`}).join("");
+ const tips=["Disconnect the USB cable before changing wires.","The long LED leg is positive (+). Always use a resistor.","Join all GND wires together or sensors give wrong readings.","If nothing happens, check Tools > Port in the Arduino IDE.","Change one number in the code at a time to see what it does."],tip=tips[new Date().getDate()%tips.length];
+ const kitL=["Arduino Uno board","Breadboard","Jumper wires","LEDs and resistors","RGB LED","Push buttons","Buzzer","LDR light sensor","Potentiometer","Servo motors","DC motors + driver","Ultrasonic sensor","IR sensors","PIR sensor","Sound sensor","Soil sensor","LM35 temperature sensor","16x2 LCD","HC-05 Bluetooth","Relay and pump","Joystick"];
+ const inbox=cl?DB.notes.map(x=>({t:x.t,x:"Notice: "+x.x})).concat(DB.msgs.filter(m=>m.to==S.id).map(m=>({t:m.t,x:"Support: "+m.x}))).sort((a,b)=>b.t-a.t).slice(0,6):[];
+ const st=(a,b)=>`<div class="stat"><b>${a}</b>${b}</div>`;
+ return `<div class="hero"><div><h1>${cl?"Welcome, "+esc(k.name)+"!":"Welcome to RoboKit Learning Hub"}</h1><p>${cl?"Your RKID: <b>"+esc(k.id)+"</b> | Level: <b>"+lvl+"</b>":"Scanned the QR on your kit box? Sign up with your RKID to unlock all "+N+" projects."}</p>${cl?`<div class="bar"><i style="width:${n/N*100}%"></i></div><p>${n} of ${N} projects completed</p>`:`<button onclick="L='signup';go('login')">Sign up</button> <button class="ghost" onclick="L='login';go('login')">Log in</button>`}</div>${FUN}</div>`+
+ (cl?`<div class="stats">${st(n+"/"+N,"Projects completed")}${st(secs>=60?Math.round(secs/60)+" min":secs+" s","Build time logged")}${st(lvl,"Your level")}${st(left+" days","Until next required login")}</div>
+ <div class="two"><div class="panel"><h3>Continue learning</h3>${nx>=0?`<p><b>${nx+1}. ${P[nx][0]}</b> <span class="tag">${P[nx][2]}</span></p><p class="mut">${P[nx][4]}</p><button onclick="gate(${nx})">${pr[nx]?"Continue":"Start"} project</button>`:"<p>You finished every project. Amazing work!</p>"}</div><div class="panel"><h3>Learning path</h3>${lv}</div></div>
+ <div class="two"><div class="panel"><h3>Tip of the day</h3><p>${tip}</p></div><div class="panel"><h3>Inbox</h3>${inbox.map(m=>`<div class="step"><span>${esc(m.x)}<br><span class="mut">${tm(m.t)}</span></span></div>`).join("")||'<p class="mut">No messages yet.</p>'}</div></div>
+ <div class="panel"><h3>Your kit contains</h3>${kitL.map(x=>`<span class="tag">${x}</span> `).join("")}</div>`:
+ `<h3>How it works</h3><div class="stats">${st("1","Buy the RoboKit")}${st("2","Scan the QR code on the box")}${st("3","Sign up with your RKID")}${st("4","Build "+N+" projects")}</div><div class="panel"><h3>What you get</h3>${kitL.map(x=>`<span class="tag">${x}</span> `).join("")}</div>`)}
+function courses(){const pr=DB.prog[S.id]||{};return `<h2>Courses: ${P.length} projects, beginner to expert</h2><p class="mut">Colours get darker as projects get more advanced.</p>`+(S.role=="client"?"":`<p class="mut">Log in with your RKID to open projects.</p>`)+`<div class="grid">`+P.map((p,i)=>`<div class="card tilt" onclick="gate(${i})"><div class="top" style="background:${CC(i)};color:${i<20?"#0f172a":"#fff"}">${String(i+1).padStart(2,"0")}<small>${p[2]}</small></div><div class="bd"><h3>${p[0]}</h3>${(pr[i]||{}).done?'<span class="tag good">Done</span>':""}<p class="mut">${p[4]}</p></div></div>`).join("")+"</div>"}
+/* ---- login, signup, forgot, reset ---- */
+function hook(){}
+function login(){
+ if(S.role)return `<p>You are logged in.</p>`;
+ const tabs=L=="forgot"||L=="reset"?"":`<div class="tabs">${[["login","Log in"],["signup","Sign up"]].map(([k,t])=>`<button class="${L==k?"on":""}" onclick="L='${k}';draw()">${t}</button>`).join("")}</div>`;
+ let b="";
+ if(L=="login")b=`<label>RKID or Email<input id="u" autocomplete="username"></label><label>Password<input id="p" type="password" autocomplete="current-password"></label><a class="lnk" onclick="L='forgot';draw()">Forgot password?</a><br><button onclick="doLogin()">Log in</button>`;
+ if(L=="signup")b=`<label>RKID (printed on your kit box)<input id="sr"></label><label>Full name<input id="sn"></label><label>Phone number<input id="sp" inputmode="numeric" maxlength="10"></label><label>Email<input id="se" type="email"></label><label>Create password<input id="p" type="password"></label><label>Confirm password<input id="p2" type="password"></label><button onclick="signup()">Sign up</button>`;
+ if(L=="forgot")b=`<p class="mut">Enter your registered email. We will send you a link to change your password.</p><label>Email<input id="fe" type="email"></label><button onclick="sendLink()">Send reset link</button> <button class="ghost" onclick="L='login';draw()">Back</button>`;
+ if(L=="reset")b=`<p class="mut">Choose a new password for ${esc(RS.email)}.</p><label>New password<input id="p" type="password"></label><label>Confirm password<input id="p2" type="password"></label><button onclick="resetPw()">Change password</button>`;
+ return `<div class="panel narrow"><h2>${L=="signup"?"Create your account":L=="forgot"?"Forgot password":L=="reset"?"Reset password":"Welcome back"}</h2>${tabs}${b}<p id="msg" class="err"></p></div>`}
+function alertA(rk,x){DB.alerts=DB.alerts||[];DB.alerts.unshift({t:Date.now(),rk,x});save()}
+function startSess(k){k.devs=k.devs||{};k.devs[DT]=DEV;
+ if(k.sess&&k.sess!=DEV)alertA(k.id,"RKID "+k.id+" ("+k.name+") was logged in on another device. The earlier device was signed out.");
+ k.sess=DEV;k.seen=Date.now();log(k.id,"Logged in on "+DT);save();setS({role:"client",id:k.id,exp:Date.now()+D5});V=k.agreed?"home":"agree";draw()}
+async function doLogin(){
+ const u=$("u").value.trim(),p=$("p").value;
+ if(!u||!p)return er("Enter your RKID or email and your password.");
+ if(u.includes("@")){if(u.toLowerCase()=="admin123@gmail.com"&&p=="Admin@123"){setS({role:"admin",exp:Date.now()+432e5});V="students";return draw()}return er("Wrong email or password.")}
+ const k=DB.kits.find(x=>x.id==u);
+ if(!k||!k.hash||await hash(p,k.salt)!=k.hash)return er("Wrong RKID or password.");
+ if(k.banned)return er("Account banned. Reason: "+k.reason);
+ if(k.devs&&k.devs[DT]&&k.devs[DT]!=DEV){k.req={dev:DEV,type:DT,t:Date.now()};alertA(k.id,"RKID "+k.id+" ("+k.name+") tried to log in from a new "+DT+". Approval needed.");log(k.id,"Requested device change ("+DT+")");return er("This RKID is linked to another "+DT+". A permission request was sent to support. Try again after approval.")}
+ startSess(k)}
+async function signup(){
+ const g=i=>$(i).value.trim(),k=DB.kits.find(x=>x.id==g("sr")),p=$("p").value;
+ if(!k)return er("Invalid RKID. Check the ID printed on your kit box.");if(k.name)return er("This RKID is already registered. Please log in.");
+ if(!g("sn")||!/^\d{10}$/.test(g("sp"))||!/^\S+@\S+\.\S+$/.test(g("se")))return er("Enter your name, a 10-digit phone number and a valid email.");
+ if(DB.kits.some(x=>x.email&&x.email.toLowerCase()==g("se").toLowerCase()))return er("This email is already used.");
+ if(!pwOk(p))return er("Password needs 8+ characters with A-Z, a-z, 0-9 and a symbol like @ _ *");if(p!=$("p2").value)return er("Passwords do not match.");
+ k.salt=rnd(16);k.hash=await hash(p,k.salt);Object.assign(k,{name:g("sn"),phone:g("sp"),email:g("se")});log(k.id,"Signed up");startSess(k);toast("Welcome! Your account is ready.")}
+async function sendLink(){
+ const e=$("fe").value.trim().toLowerCase(),k=DB.kits.find(x=>x.hash&&x.email&&x.email.toLowerCase()==e);
+ if(!/^\S+@\S+\.\S+$/.test(e))return er("Enter a valid email address.");
+ if(!k)return er("No account found with this email.");
+ try{const r=await fetch("/api/forgot",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:e})});if(!r.ok)throw 0;$("msg").className="ok";return er("A password reset link was sent to "+e+". It is valid for 30 minutes.")}catch(x){}
+ if(!DEMO)return er("We could not send the email right now. Please try again later.");
+ const tk=rnd(24);DB.reset=DB.reset||{};DB.reset[tk]={email:e,exp:Date.now()+18e5};save();
+ $("msg").className="ok";$("msg").innerHTML="No email server is connected in this preview, so no email was sent. Test only: <a class='lnk' onclick=\"openReset('"+tk+"')\">open the reset page</a>"}
+async function openReset(tk){
+ let email=null;
+ try{const r=await fetch("/api/verify?token="+encodeURIComponent(tk));if(r.ok)email=(await r.json()).email}catch(x){}
+ if(!email&&DEMO){const d=(DB.reset||{})[tk];if(d&&d.exp>Date.now())email=d.email}
+ setS({});RS=email?{email,tk}:null;L=email?"reset":"login";V="login";draw();if(!email)er("This reset link is invalid or has expired.")}
+async function resetPw(){
+ const p=$("p").value;if(!pwOk(p))return er("Password needs 8+ characters with A-Z, a-z, 0-9 and a symbol like @ _ *");if(p!=$("p2").value)return er("Passwords do not match.");
+ const k=DB.kits.find(x=>x.email&&x.email.toLowerCase()==RS.email);if(!k)return er("Account not found.");
+ k.salt=rnd(16);k.hash=await hash(p,k.salt);k.sess=null;if(DB.reset)delete DB.reset[RS.tk];log(k.id,"Password changed via email link");save();RS=null;location.hash="";L="login";draw();toast("Password changed. Please log in with your new password.")}
+const bs=students;students=function(){const a=DB.alerts||[];return (a.length?`<div class="panel alert"><b>Security alerts</b>${a.slice(0,8).map(x=>`<div class="step"><span>${esc(x.x)} <span class="mut">${tm(x.t)}</span></span></div>`).join("")}<button onclick="DB.alerts=[];save();draw()">Clear alerts</button></div>`:"")+bs()};
+setInterval(()=>{DB=ld("rk_db")||DB;
+ if(S.role=="client"){const k=kit(),why=!k?"Please log in again.":k.banned?"Your account was banned. Reason: "+k.reason:S.exp<Date.now()?"For your security, please log in again. Login is required every 5 days.":k.sess!=DEV?"You were logged out because this RKID was used on another device.":"";
+  if(why){setS({});V="login";L="login";draw();return toast(why,9000)}k.seen=Date.now();save()}
+ if(S.role=="admin"){const al=(DB.alerts||[])[0];if(al&&al.t>AL){AL=al.t;toast("SECURITY ALERT: "+al.x,12000)}const a=document.activeElement;if(!/INPUT|TEXTAREA|SELECT/.test(a.tagName)&&!(($("tx")||{}).value))draw()}},2500);
+/* ===== v3: Kites branding, animated login scene, new signup, agreement, 100 RKIDs ===== */
+function makeRandomRKIDs(count=100, existing=[]){
+ const used=new Set(existing.map(k=>String(k.id))),out=[];
+ while(out.length<count){const a=crypto.getRandomValues(new Uint32Array(1))[0];const id=String(100000+(a%900000));if(!used.has(id)){used.add(id);out.push({id})}}
+ // Shuffle so neither display nor generation order appears sequential.
+ for(let i=out.length-1;i>0;i--){const j=crypto.getRandomValues(new Uint32Array(1))[0]%(i+1);[out[i],out[j]]=[out[j],out[i]]}
+ return out;
+}
+function initDB(){
+ // v5 is an intentional clean reset: remove every previous admin/customer demo record,
+ // then create exactly 100 fresh, unique, random six-digit RKIDs in shuffled order.
+ const d=ld("rk_db");if(d&&d.ver==5)return d;
+ const kits=makeRandomRKIDs(100);
+ const n={ver:5,kits,act:[],prog:{},msgs:[],notes:[],comp:[],orders:[],stock:50,alerts:[],reset:{},stock50Applied:true};
+ try{localStorage.setItem("rk_db",JSON.stringify(n))}catch(e){}return n
+}
+const LOGOURL="https://www.kitesnet.com/assets/images/kites-web-logo.png";
+function logoFail(i){if(!i.dataset.t){i.dataset.t=1;i.src=LOGOURL}else{const b=document.createElement("b");b.className="logo txt";b.textContent="KITES";i.replaceWith(b)}}
+const statT=(a,b)=>`<div class="stat"><b>${a}</b>${b}</div>`;
+/* ---- 3D scene: layered depth, camera orbit, two kids enter a robot world and a robot waves "Hi!" ---- */
+const rob=(c,arm,x="")=>`<ellipse cy="3" rx="26" ry="6" fill="#000" opacity=".18"/><rect x="-16" y="-42" width="32" height="40" rx="8" fill="${c}"/><rect x="-16" y="-42" width="11" height="40" rx="6" fill="#fff" opacity=".28"/><rect x="6" y="-42" width="10" height="40" rx="6" fill="#000" opacity=".12"/><rect x="-14" y="-72" width="28" height="26" rx="7" fill="${c}"/><rect x="-14" y="-72" width="9" height="26" rx="5" fill="#fff" opacity=".28"/><circle cx="-6" cy="-60" r="5" fill="#fff"/><circle cx="6" cy="-60" r="5" fill="#fff"/><circle cx="-6" cy="-60" r="2.2" fill="#0f172a"/><circle cx="6" cy="-60" r="2.2" fill="#0f172a"/><path d="M0-72V-82" stroke="${c}" stroke-width="3"/><circle cy="-85" r="4" fill="#fbbf24" class="blink"/><rect x="-9" y="-32" width="18" height="8" rx="3" fill="#fff" opacity=".7"/><rect x="-21" y="-40" width="6" height="26" rx="3" fill="${c}"/><g class="arm ${arm}"><rect x="15" y="-40" width="6" height="26" rx="3" fill="${c}"/></g>${x}`;
+const kid=(x,sh,hair,girl)=>`<g transform="translate(${x},250)"><g class="kid"><ellipse cy="3" rx="22" ry="5" fill="#000" opacity=".2"/><g class="lg"><rect x="-9" y="-20" width="7" height="22" rx="3" fill="#334155"/></g><g class="lg r"><rect x="2" y="-20" width="7" height="22" rx="3" fill="#334155"/></g>${girl?`<path d="M-14-18L-9-52H9L14-18Z" fill="${sh}"/><path d="M-14-18L-9-52H-3L-6-18Z" fill="#fff" opacity=".25"/>`:`<rect x="-12" y="-52" width="24" height="34" rx="8" fill="${sh}"/><rect x="-12" y="-52" width="8" height="34" rx="6" fill="#fff" opacity=".25"/>`}<rect x="-18" y="-50" width="6" height="22" rx="3" fill="#f1c27d"/><g class="arm wave kw"><rect x="12" y="-50" width="6" height="22" rx="3" fill="#f1c27d"/></g><circle cy="-64" r="14" fill="#f1c27d"/><circle cx="-9" cy="-58" r="3" fill="#ff8fab" opacity=".7"/><circle cx="9" cy="-58" r="3" fill="#ff8fab" opacity=".7"/><path d="M-15-66Q0-90 15-66Q0-74-15-66Z" fill="${hair}"/>${girl?`<circle cx="-16" cy="-62" r="6" fill="${hair}"/><circle cx="16" cy="-62" r="6" fill="${hair}"/>`:""}<circle cx="-5" cy="-63" r="1.8" fill="#0f172a"/><circle cx="5" cy="-63" r="1.8" fill="#0f172a"/><path d="M-4-57Q0-54 4-57" stroke="#0f172a" fill="none"/></g></g>`;
+function scene(){
+ const L=(z,c)=>`<svg class="lay" style="transform:translateZ(${z}px) scale(${(900-z)/900})" viewBox="0 0 800 320">${c}</svg>`;
+ const bl=[0,1,2,3,4,5,6].map(i=>{const x=-20+i*130,h=60+i%3*35;return `<rect x="${x}" y="${230-h}" width="84" height="${30+h}" rx="6" fill="${["#8b5cf6","#ec4899","#3b82f6"][i%3]}" opacity=".55"/>`+[0,1,2].map(j=>`<rect class="win" x="${x+10+j*22}" y="${240-h}" width="11" height="11" rx="2" fill="#fde047" style="animation-delay:${(i+j)*.4}s"/>`).join("")}).join("");
+ const gears=[[90,60,16],[700,50,20],[420,40,12]].map(([x,y,r])=>`<circle class="gr" cx="${x}" cy="${y}" r="${r}" fill="none" stroke="#f59e0b" stroke-width="6" stroke-dasharray="6 5"/>`).join("");
+ const sp=[...Array(8)].map((_,i)=>`<circle class="fl2" cx="${40+i*100}" cy="${90+i%3*40}" r="3" fill="#fff" opacity=".8" style="animation-delay:${i*.5}s"/>`).join("");
+ const fl=[30,95,705,770].map((x,i)=>`<line x1="${x}" y1="330" x2="${x}" y2="${288+i%2*8}" stroke="#2f9e44" stroke-width="4"/><circle cx="${x}" cy="${288+i%2*8}" r="9" fill="${["#ff4fa3","#ffd400","#ff8a1f","#fff"][i]}"/><circle cx="${x}" cy="${288+i%2*8}" r="3.5" fill="#7c3aed"/>`).join("");
+ return `<div class="stage"><div class="rig">`+
+ L(-150,`<defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6ec6ff"/><stop offset="1" stop-color="#ffe29a"/></linearGradient></defs><rect x="-300" y="-200" width="1400" height="700" fill="url(#sk)"/><circle cx="650" cy="70" r="36" fill="#fff" opacity=".75"/><ellipse class="cl" cx="0" cy="50" rx="42" ry="14" fill="#fff" opacity=".85"/><ellipse class="cl" cx="0" cy="110" rx="30" ry="10" fill="#fff" opacity=".7" style="animation-delay:-18s"/><path d="M-300 230Q150 120 300 205T600 190T1100 170V400H-300Z" fill="#b8f2d3"/>${gears}${sp}`)+
+ L(-80,bl)+
+ L(0,`<defs><linearGradient id="gd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7ddc8a"/><stop offset="1" stop-color="#3fb35a"/></linearGradient></defs><rect x="-300" y="250" width="1400" height="300" fill="url(#gd)"/>
+ <rect x="62" y="226" width="56" height="24" fill="#b45309"/><rect x="74" y="210" width="30" height="16" rx="3" fill="#475569"/><circle class="steam" cx="89" cy="204" r="5" fill="#fff"/><circle class="steam" cx="95" cy="204" r="4" fill="#fff" style="animation-delay:.8s"/>
+ <g transform="translate(150,252)">${rob("#f97316","stir",`<rect x="-12" y="-86" width="24" height="12" rx="6" fill="#fff"/>`)}</g>
+ <rect x="615" y="176" width="46" height="56" fill="#fff" stroke="#94a3b8"/><circle cx="630" cy="195" r="6" fill="#ef4444"/><circle cx="648" cy="210" r="6" fill="#3b82f6"/><g transform="translate(590,252)">${rob("#a855f7","paint")}</g>
+ <g transform="translate(730,252)">${rob("#14b8a6","sweep")}</g>
+ <g transform="translate(470,252) scale(1.4)">${rob("#ef4444","wave")}</g>
+ <g class="bub"><rect x="478" y="60" width="70" height="38" rx="16" fill="#fff"/><path d="M494 98l-10 16 22-16z" fill="#fff"/><text x="513" y="86" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Hi!</text></g>`)+
+ L(55,`${kid(260,"#2563eb","#1e293b",0)}${kid(320,"#ec4899","#7c2d12",1)}`)+
+ L(120,fl)+`</div></div>`}
+/* ---- signup form (shared by page and pop-up) ---- */
+const ser=m=>{const e=$("smsg");if(e)e.textContent=m};
+function signupForm(){return `<div class="signup-form"><div class="signup-copy"><span class="eyebrow">YOUR ROBOTICS JOURNEY STARTS HERE</span><h2>Create your account</h2><p>Join the RoboKit lab and turn ideas into real builds.</p></div><div class="signup-fields"><label>Email<input id="se" type="email" autocomplete="email"></label><label>Phone number<input id="sp" inputmode="numeric" maxlength="10" autocomplete="tel"></label><label>RKID (6 digits on your kit box)<input id="sr" inputmode="numeric" maxlength="6" autocomplete="off"></label><label>Full name<input id="sn" autocomplete="name"></label><label>Class<select id="sc">${[...Array(12)].map((_,i)=>`<option>${i+1}</option>`).join("")}</select></label><label>Parent<select id="sf"><option>Father</option><option>Mother</option></select><input id="sq" placeholder="Parent's name" autocomplete="off"></label><label>Address<input id="sa" autocomplete="street-address"></label><label>School<input id="ss" autocomplete="organization"></label><label>Create password<input id="sw" type="password" autocomplete="new-password"></label><label>Confirm password<input id="sw2" type="password" autocomplete="new-password"></label></div><div class="signup-actions"><button onclick="signup()">Create account</button><p>Already have an account? <a class="lnk" onclick="closeM();L='login';go('login')">Log in</a></p><p id="smsg" class="err"></p></div></div>`}
+async function signup(){
+ const g=i=>$(i).value.trim(),k=DB.kits.find(x=>x.id==g("sr")),p=$("sw").value;
+ if(!/^\S+@\S+\.\S+$/.test(g("se")))return ser("Enter a valid email address.");
+ if(!/^\d{10}$/.test(g("sp")))return ser("Enter a 10-digit phone number.");
+ if(!/^\d{6}$/.test(g("sr")))return ser("The RKID is 6 digits, printed on your kit box.");
+ if(!k)return ser("This RKID is not valid. Check the number on your kit box.");if(k.name)return ser("This RKID is already registered. Please log in.");
+ if(!g("sn")||!g("sq")||!g("sa")||!g("ss"))return ser("Please fill in your name, parent's name, address and school.");
+ if(DB.kits.some(x=>x.email&&x.email.toLowerCase()==g("se").toLowerCase()))return ser("This email is already used.");
+ if(!pwOk(p))return ser("Password needs 8+ characters with A-Z, a-z, 0-9 and a symbol like @ _ *");if(p!=$("sw2").value)return ser("Passwords do not match.");
+ k.salt=rnd(16);k.hash=await hash(p,k.salt);Object.assign(k,{name:g("sn"),phone:g("sp"),email:g("se"),cls:g("sc"),parentType:g("sf"),parent:g("sq"),addr:g("sa"),school:g("ss")});
+ log(k.id,"Signed up");closeM();startSess(k)}
+function showSignup(){$("mb").innerHTML=`<button class="x" onclick="closeM()">Close</button>`+signupForm();$("m").classList.add("show")}
+function login(){
+ if(S.role)return `<p>You are logged in.</p>`;
+ let b="";
+ if(L=="login")b=`<h2>Welcome back!</h2><label>RKID or Email<input id="u" autocomplete="username"></label><label>Password<input id="p" type="password" autocomplete="current-password"></label><a class="lnk" onclick="L='forgot';draw()">Forgot password?</a><br><button onclick="doLogin()">Log in</button><p>New here? <a class="lnk" onclick="L='signup';draw()">Create an account</a></p>`;
+ if(L=="signup")b=signupForm();
+ if(L=="forgot")b=`<h2>Forgot password</h2><p class="mut">Enter your registered email. We will send you a link to change your password.</p><label>Email<input id="fe" type="email"></label><button onclick="sendLink()">Send reset link</button> <button class="ghost" onclick="L='login';draw()">Back</button>`;
+ if(L=="reset")b=`<h2>Reset password</h2><p class="mut">Choose a new password for ${esc(RS.email)}.</p><label>New password<input id="p" type="password"></label><label>Confirm password<input id="p2" type="password"></label><button onclick="resetPw()">Change password</button>`;
+ const bg=`<div class="signup-scene-backdrop auth-scene-backdrop" aria-hidden="true">${scene()}</div>`;
+ return bg+`<div class="panel narrow float auth-panel ${L=="signup"?"signup-panel":"login-panel"}">${b}<p id="msg" class="err"></p></div>`}
+var POPPED=0,PT=0;
+/* Signup intro: show the robot world for five seconds, then reveal the form with an inside-out slide. */
+var AUTHINTRO_DONE=false,AUTHINTRO_TIMER=0,AUTHINTRO_KEY="";
+const bdraw=draw;
+draw=function(){
+ bdraw();
+ if(V!=="login"||S.role){if(AUTHINTRO_TIMER){clearTimeout(AUTHINTRO_TIMER);AUTHINTRO_TIMER=0}return}
+ if(L==="signup"&&!AUTHINTRO_DONE){
+  if(AUTHINTRO_TIMER&&AUTHINTRO_KEY==="signup"){
+   $("main").innerHTML=`<section class="auth-intro" aria-label="RoboKit animation intro"><div class="intro-scene">${scene()}</div><div class="intro-caption"><span class="intro-mark">RK / LAB</span><h2>Building the future, one idea at a time.</h2><p>Welcome to the RoboKit world</p><div class="intro-progress"><i></i></div></div></section>`;
+   return;
+  }
+  if(AUTHINTRO_TIMER)clearTimeout(AUTHINTRO_TIMER);
+  AUTHINTRO_KEY="signup";
+  $("main").innerHTML=`<section class="auth-intro" aria-label="RoboKit animation intro"><div class="intro-scene">${scene()}</div><div class="intro-caption"><span class="intro-mark">RK / LAB</span><h2>Building the future, one idea at a time.</h2><p>Welcome to the RoboKit world</p><div class="intro-progress"><i></i></div></div></section>`;
+  AUTHINTRO_TIMER=setTimeout(()=>{AUTHINTRO_TIMER=0;AUTHINTRO_DONE=true;if(V==="login"&&L==="signup"&&!S.role){bdraw();const panel=document.querySelector("#main .signup-panel");if(panel)panel.classList.add("auth-reveal");}},5000);
+ }else{
+  if(AUTHINTRO_TIMER){clearTimeout(AUTHINTRO_TIMER);AUTHINTRO_TIMER=0}
+  const panel=document.querySelector("#main .auth-panel");
+  if(panel&&!panel.classList.contains("auth-reveal"))requestAnimationFrame(()=>panel.classList.add("auth-reveal"));
+ }
+ /* Removed: a 12-second timer used to pop the sign-up form over the login page while students were typing. */
+};
+/* ---- funny agreement ---- */
+function agree(){const k=kit()||{},n=esc(k.name||"Friend");
+ return `<div class="panel agree"><div class="minis"><span class="mini"></span><span class="mini"></span><span class="mini"></span><span class="mini"></span><span class="mini"></span></div><h2>Hey ${n}!</h2><p>Before you enter the robot world, please read this <b>super serious</b> agreement:</p><div class="scr"><p>I, <b>${n}</b>, promise on my favourite screwdriver that:</p><p>1. I will complete this course and every project by following the instructions, and not by asking my robot to do my homework.</p><p>2. I will get my <b>100 marks</b> for the project. (The robots have already started clapping.)</p><p>3. I will NOT feed any robot sandwiches, juice or exam papers.</p><p>4. If smoke appears, I will say "oops" and unplug it, not run away screaming.</p><p>5. If I get stuck, I will try again, ask for help and eat a snack. In that order.</p></div><div class="fp" id="fp" onclick="sign()"><svg viewBox="0 0 64 64" width="76" height="76"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 28a20 20 0 0 1 40 0"/><path d="M18 30a14 14 0 0 1 28 0v8"/><path d="M24 32a8 8 0 0 1 16 0v14"/><path d="M32 30v20"/><path d="M14 36c0 10 3 16 6 20"/><path d="M50 34c0 10-2 16-5 22"/></g></svg></div><p><b>Touch the fingerprint to sign</b><br><span class="mut">(washed hands preferred)</span></p></div>`}
+function sign(){const k=kit();if(!k||k.agreed)return;$("fp").classList.add("scan");
+ setTimeout(()=>{k.agreed=Date.now();log(k.id,"Signed the agreement");save();$("fp").classList.remove("scan");$("fp").classList.add("ok");toast("BEEP BOOP! Fingerprint accepted. The robots are doing a happy dance. Your 100 marks are loading... 1%",6000);setTimeout(()=>{V="home";draw()},2800)},1200)}
+const bgate=gate;
+gate=function(i){if(S.role=="client"&&!kit().agreed){V="agree";return draw()}bgate(i)};
+function showWelcome(){const k=kit();if(document.getElementById("wl"))return;const d=document.createElement("div");d.id="wl";
+ d.innerHTML=`<div class="wbox"><img class="logo big" alt="Kites" src="images/kites-logo.png" onerror="logoFail(this)"><h1>${S.role=="client"&&k?"Welcome back, "+esc(k.name)+"!":"Welcome to Kites Robotics"}</h1><p>We are so happy you are here. Get ready to build, learn and have fun with robots!</p><div class="minis"><span class="mini"></span><span class="mini"></span><span class="mini"></span><span class="mini"></span></div><button onclick="closeW()">Let's go!</button></div>`;
+ document.body.appendChild(d);try{sessionStorage.setItem("rk_w","1")}catch(e){}setTimeout(closeW,6000)}
+function closeW(){const d=document.getElementById("wl");if(d){d.classList.add("out");setTimeout(()=>d.remove(),600)}}
+/* ---- control panel: RKID bank, clean data ---- */
+function addR(){const v=$("nr").value.trim();if(!/^\d{6}$/.test(v))return toast("An RKID must be exactly 6 digits.");if(DB.kits.some(k=>k.id==v))return toast("This RKID already exists.");DB.kits.push({id:v});save();draw();toast("Added RKID "+v)}
+function more100(){const fresh=makeRandomRKIDs(100,DB.kits);DB.kits.push(...fresh);save();draw();toast("100 random six-digit RKIDs added.")}
+students=function(){
+ const R=DB.kits.filter(k=>k.name),free=DB.kits.filter(k=>!k.name),a=DB.alerts||[];
+ const rows=R.map(k=>{const dn=Object.entries(DB.prog[k.id]||{}).filter(([i,x])=>x.done);return `<tr><td><b>${k.id}</b></td><td><b>${esc(k.name)}</b> (Class ${esc(k.cls||"-")}, ${esc(k.school||"-")})<br><span class="mut">${esc(k.email)} | ${esc(k.phone)}<br>${esc(k.parentType||"Parent")}: ${esc(k.parent||"-")}<br>${esc(k.addr||"")}</span></td><td>${k.banned?'<span class="tag bad">Banned</span>':on(k)?'<span class="tag good">Online</span>':'<span class="tag">Offline</span>'}<br><span class="mut">${k.cur!=null&&on(k)?"Working on: "+P[k.cur][0]:"Last seen: "+(k.seen?tm(k.seen):"never")}</span></td><td>${dn.length}/${P.length}<br><span class="mut">${dn.map(([i,x])=>"P"+(+i+1)+": "+fmt(x.secs)).join(", ")}</span></td><td>${Object.keys(k.devs||{}).join(", ")||"-"}${k.req?`<br><button onclick="appr('${k.id}')">Approve ${k.req.type} change</button>`:""}</td></tr>`}).join("");
+ return (a.length?`<div class="panel alert"><b>Security alerts</b>${a.slice(0,8).map(x=>`<div class="step"><span>${esc(x.x)} <span class="mut">${tm(x.t)}</span></span></div>`).join("")}<button onclick="DB.alerts=[];save();draw()">Clear alerts</button></div>`:"")+
+ `<h2>Students & Projects</h2><div class="stats">${statT(DB.kits.length,"RKIDs created")}${statT(R.length,"Registered students")}${statT(R.filter(on).length,"Online now")}${statT(R.filter(k=>k.banned).length,"Banned")}</div>
+ <div class="panel"><h3>Message, notify, ban</h3><label>Student<select id="tg">${R.map(k=>`<option value="${k.id}">${k.id} ${esc(k.name)}</option>`).join("")}</select></label><label>Text (message, notice or ban reason)<input id="tx"></label><button onclick="adm('msg')">Send private message</button> <button onclick="adm('all')">Notify everyone</button> <button class="red" onclick="adm('ban')">Ban (text = reason)</button> <button onclick="adm('unban')">Unban</button></div>
+ <div class="tw"><table><tr><th>RKID</th><th>Student</th><th>Status</th><th>Completed (time taken)</th><th>Devices</th></tr>${rows||'<tr><td colspan="5">No students have signed up yet.</td></tr>'}</table></div>
+ <div class="panel"><h3>RKID bank</h3><p class="mut">${free.length} unused of ${DB.kits.length}. Give one RKID to each buyer.</p><label>Add your own 6-digit RKID<input id="nr" inputmode="numeric" maxlength="6"></label><button onclick="addR()">Add RKID</button> <button class="ghost" onclick="more100()">Generate 100 more</button><details><summary>Unused RKIDs (${free.length})</summary>${free.map(k=>`<span class="tag">${k.id}</span> `).join("")}</details><details><summary>Used RKIDs (${R.length})</summary>${R.map(k=>`<span class="tag">${k.id}</span> `).join("")||"None yet."}</details></div>
+ <h3>Live activity</h3>${DB.act.slice(0,20).map(x=>`<div class="step"><span><span class="mut">${tm(x.t)}</span> <b>${esc(x.rk)}</b> ${esc(x.m)}</span></div>`).join("")||'<p class="mut">No activity yet.</p>'}
+ <h3>Complaints & questions</h3>${DB.comp.map(c=>`<div class="step"><span><b>${c.kind}</b> from ${esc(c.name)} (${esc(c.rk)}): ${esc(c.x)} <span class="mut">${tm(c.t)}</span></span></div>`).join("")||'<p class="mut">None.</p>'}`};
+const bash=ashop;ashop=function(){return bash()+`<div class="panel"><label>Set stock<input id="stk" type="number" min="0" value="${DB.stock}"></label><button onclick="DB.stock=Math.max(0,+$('stk').value||0);save();draw()">Update stock</button></div>`};
+const bset=settings;settings=function(){const h=bset(),k=kit();return k?h.replace("<h3>Profile</h3>",'<h3>Profile</h3><p class="mut">Class '+esc(k.cls||"-")+" | "+esc(k.school||"-")+" | "+esc(k.parentType||"Parent")+": "+esc(k.parent||"-")+"<br>"+esc(k.addr||"")+"</p>"):h};
+
+/* ===== v4: childish colourful UI, slide transitions, big project window ===== */
+const FUN=`<div class="fun"><div class="ball" style="left:0;top:8px;background:#ff4fa3"></div><div class="ball" style="left:160px;top:0;background:#2ecc71;animation-delay:.6s"></div><div class="toy"><i></i><i></i></div><div class="smile"></div><div class="ta l"></div><div class="ta r"></div><div class="tb"></div><span class="st" style="left:8px;top:120px">⭐</span><span class="st" style="left:168px;top:112px;animation-delay:.5s">✨</span></div>`;
+const AN={home:"pop",courses:"slide",shop:"rise",login:"wob",settings:"spin",students:"slide",ashop:"rise",agree:"pop"},OR=["home","courses","shop","login","students","ashop"];
+var DIR="",LV="",LL="";
+const bgo=go;go=function(v){const a=OR.indexOf(v),b=OR.indexOf(V);DIR=a>=0&&b>=0&&a<b?"L":"";bgo(v)};
+const bdraw2=draw;draw=function(){bdraw2();if(V!=LV||L!=LL){LV=V;LL=L;const m=$("main");m.className="";void m.offsetWidth;m.className="in-"+(DIR&&AN[V]=="slide"?"slideL":AN[V]||"pop")}};
+const bom=openM;openM=function(i){$("m").classList.add("big");bom(i)};
+const bcm=closeM;closeM=function(){bcm();$("m").classList.remove("big")};
+
+window.addEventListener("hashchange",()=>{if(location.hash.startsWith("#r-"))openReset(location.hash.slice(3))});
+if(location.hash=="#dev2")DEV+="2";
+
+/* Kites Robotics requested dashboard, product access and cart improvements */
+const _homeOriginal=home;
+home=function(){let h=_homeOriginal();const start=h.indexOf('<h3>How it works</h3>');if(start>=0){const end=h.indexOf('</div></div>',start);if(end>=0){const flow=`<h3>How it works</h3><div class="flowchart">${[
+['1','Explore the RoboKit and check the kit contents'],['2','Order the RoboKit from Shop'],['3','Receive the kit and locate your RKID / QR code'],['4','Create a student account or log in with your RKID'],['5','Install Arduino IDE on your computer'],['6','Connect the Arduino board with a USB cable'],['7','Select Arduino Uno and the correct port in Tools'],['8','Open the first introduction project and identify components'],['9','Build the circuit using the circuit diagram'],['10','Read the code and logic explanation, then upload the sketch'],['11','Test the project, troubleshoot and mark it complete'],['12','Unlock the next project and progress through the levels']
+].map((x,i)=>`<div class="flowstep"><b>${x[0]}</b><span>${x[1]}</span></div>${i<11?'<div class="flowarrow">↓</div>':''}`).join('')}</div>`;h=h.slice(0,start)+flow+h.slice(end+12);}}
+return h.replace(/<div class="panel"><h3>What you get<\/h3>[\s\S]*?<\/div>/,'');};
+const _coursesOriginal=courses;
+courses=function(){const k=kit(),orders=(DB.orders||[]).filter(o=>k&&o.rk===k.id&&/Placed|Paid/i.test(o.status||''));const bought=orders.length>0;return `<div class="row" style="align-items:center"><h2>Your products</h2><button class="ghost" onclick="go('shop')" aria-label="Go to shop" title="Shop">＋</button></div><div class="panel product-access"><div><h3>Buy product</h3><p class="mut">Purchase a RoboKit to unlock your guided project learning area.</p></div><button onclick="go('shop')">＋</button></div>${bought?`<div class="card owned" onclick="openOwnedProduct()"><div class="top">🤖</div><div class="bd"><h3>RoboKit for Students</h3><span class="tag good">Purchased</span><p>Open installation instructions and your guided robotics projects.</p></div></div>`:`<div class="panel"><p class="mut">Your purchased products will appear here after an order is placed using your student RKID.</p></div>`}`;};
+function openOwnedProduct(){const k=kit();if(!k)return toast('Please log in with your student RKID.');const d=DB.prog[S.id]||{};const next=P.findIndex((p,i)=>!(d[i]||{}).done);openM(Math.max(0,next));tab=0;render();}
+const _shopOriginal=shop;
+shop=function(){const base=_shopOriginal();return `<div class="row shop-heading"><h2>Shop</h2><button class="cart-icon" onclick="showCart()" aria-label="View shopping cart" title="View cart">🛒 <span>${CQ}</span></button></div><div id="cartNotice"></div>`+base.replace('<h2>Shop</h2>','');};
+function showCart(){const notice=document.getElementById('cartNotice');if(!notice)return;notice.innerHTML=`<div class="panel"><h3>🛒 Your cart</h3>${CQ?`<div class="row"><span>RoboKit for Students × ${CQ}</span><b>₹${(CQ*1999).toLocaleString('en-IN')}</b></div><button onclick="go('shop')">Continue to checkout</button>`:'<p class="mut">Your cart is empty.</p>'}</div>`;notice.scrollIntoView({behavior:'smooth',block:'start'});}
+const _gateOriginal=gate;
+gate=function(i){const k=kit();if(k){const pr=DB.prog[S.id]||{};if(i>2&&![0,1].every(j=>(pr[j]||{}).done)){toast('Complete both introduction projects to unlock the next level.');return;}if(i>0&&!(pr[i-1]||{}).done){toast('Complete the previous project to unlock this level.');return;}}return _gateOriginal(i);};
+const _renderOriginal=render;
+render=function(){_renderOriginal();const mb=document.getElementById('mb');if(mb&&!mb.dataset.installAdded){mb.dataset.installAdded='1';const p=mb.querySelector('.lead');if(p){const ins=document.createElement('div');ins.className='panel install-panel';ins.innerHTML='<h3>Before your first project: install Arduino IDE</h3><ol><li>Download Arduino IDE for your operating system.</li><li>Run the installer and accept the required permissions.</li><li>Open Arduino IDE and connect the Arduino board with USB.</li><li>Choose <b>Tools → Board → Arduino Uno</b>.</li><li>Choose the correct board port under <b>Tools → Port</b>.</li><li>Allow any driver installation prompts, then reopen the IDE if needed.</li></ol><a class="install-link" href="https://www.arduino.cc/en/software" target="_blank" rel="noopener">Download Arduino IDE ↗</a>';p.insertAdjacentElement('afterend',ins);}}};
+const extraStyle=document.createElement('style');extraStyle.textContent=`.flowchart{display:flex;flex-direction:column;align-items:center;gap:4px;margin:12px 0 24px}.flowstep{display:flex;align-items:center;gap:12px;width:min(650px,100%);padding:12px 16px;background:var(--card);border:2px solid #2ec4b6;border-radius:14px;box-shadow:0 3px 0 rgba(0,0,0,.1)}.flowstep b{display:grid;place-items:center;min-width:34px;height:34px;border-radius:50%;background:#ff4d8d;color:#fff}.flowarrow{font-size:24px;font-weight:bold;color:#2ec4b6;line-height:1.1}.product-access{display:flex;align-items:center;justify-content:space-between;gap:16px;border:2px solid #2ec4b6}.product-access button{font-size:25px;border-radius:12px;min-width:54px;background:#2ec4b6}.owned{max-width:360px}.shop-heading{justify-content:flex-end}.shop-heading h2{margin-right:auto}.cart-icon{position:relative;background:var(--card);color:var(--tx);border:2px solid #2ec4b6;border-radius:14px;font-size:20px;padding:8px 14px}.cart-icon span{font-size:12px;background:#ff4d8d;color:#fff;border-radius:50%;padding:3px 7px}.install-panel{margin:14px 0}.install-link{display:inline-block;padding:10px 14px;background:#2ec4b6;color:white;text-decoration:none;border-radius:10px;font-weight:bold}.hd .logo{display:block;margin:0 auto 6px;background:transparent!important}@media(min-width:700px){.hd{display:flex;align-items:center;justify-content:center;gap:20px}.hd .logo{margin:0}.hd .ttl{text-align:left}}`;document.head.appendChild(extraStyle);
+
+// Keep cart quantity within available stock and ensure the cart icon always opens a visible summary.
+const _shopCartBase=shop;
+shop=function(){let html=_shopCartBase();html=html.replace('onclick="CQ++;draw()"','onclick="if(CQ<DB.stock)CQ++;else toast(\'No more units available.\');draw()"');html=html.replace('onclick="CQ=Math.max(0,CQ-1);draw()"','onclick="CQ=Math.max(0,CQ-1);draw()"');html=html.replace('onclick="CQ++;draw()"','onclick="if(CQ<DB.stock)CQ++;else toast(\'No more units available.\');draw()"');return html;};
+function showCart(){const notice=document.getElementById('cartNotice');if(!notice)return;notice.innerHTML=`<div class="panel cart-summary"><h3>🛒 Your cart</h3>${CQ?`<div class="row"><span>RoboKit for Students × ${CQ}</span><b>₹${(CQ*1999).toLocaleString('en-IN')}</b></div><div class="row"><button onclick="CQ=Math.max(0,CQ-1);draw()" aria-label="Remove one">−</button><button onclick="if(CQ<DB.stock)CQ++;else toast('No more units available.');draw()" aria-label="Add one">＋</button><button onclick="go('shop')">Continue to checkout</button></div>`:'<p class="mut">Your cart is empty.</p><button onclick="go(\'shop\')">Browse shop</button>'}</div>`;notice.scrollIntoView({behavior:'smooth',block:'start'});}
+// Correct the completion meter and navigation button behavior.
+const _gateFixedBase=gate;
+gate=function(i){
+ if(!Number.isInteger(i)||i<0||i>=P.length)return toast('That project is not available.');
+ if(S.role!=='client')return _gateFixedBase(i);
+ const pr=DB.prog[S.id]||{};
+ if(i>=2&&![0,1].every(j=>pr[j]&&pr[j].done)){toast('🔒 Complete both introduction projects first!');return;}
+ if(i>0&&!(pr[i-1]&&pr[i-1].done)){toast('🔒 Complete project '+i+' first to unlock this level.');return;}
+ return _gateFixedBase(i);
+};
+function candyMap(){
+ const pr=DB.prog[S.id]||{},doneCount=Object.values(pr).filter(x=>x&&x.done).length;
+ const nodes=P.map((p,i)=>({p,i,done:!!(pr[i]&&pr[i].done),unlocked:i===0||!!(pr[i-1]&&pr[i-1].done)}));
+ // Candy-Crush layout: a single winding path, Level 1 at the bottom and the final level at the top.
+ const step=104, width=320, height=Math.max(520,nodes.length*step+56);
+ const xAt=i=>[160,218,246,202,126,76,94,154,224,246,190,112,70,126,204,250,218,146,84,72][i%20];
+ const pointAt=i=>({x:xAt(i),y:height-step/2-i*step});
+ let path='';
+ for(let i=0;i<nodes.length;i++){
+   const a=pointAt(i);
+   if(i===0){path=`M ${a.x} ${a.y}`;continue;}
+   const b=pointAt(i-1),cy=(a.y+b.y)/2;
+   path+=` C ${b.x} ${cy} ${a.x} ${cy} ${a.x} ${a.y}`;
+ }
+ const svg=`<svg class="candy-path-svg" viewBox="0 0 ${width} ${height}" preserveAspectRatio="none" aria-hidden="true"><path class="path-shadow" d="${path}"/><path class="path-main" d="${path}"/></svg>`;
+ const levelNodes=nodes.map(n=>{
+   const pt=pointAt(n.i);
+   const state=n.done?'is-done':n.unlocked?'is-open':'is-locked';
+   return `<div class="candy-stop" style="left:${pt.x/width*100}%;top:${pt.y}px"><button type="button" class="level-node candy-circle ${state} ${n.unlocked&&!n.done?'level-pulse':''}" ${n.unlocked?'':'disabled'} data-level-index="${n.i}" onclick="gate(${n.i})" title="${n.unlocked?'Open':'Locked'}: ${esc(n.p[0])}" aria-label="Level ${n.i+1}: ${esc(n.p[0])}"><span class="node-num">${n.done?'✓':n.unlocked?'★':'🔒'}</span><span class="circle-level">${n.i+1}</span></button><span class="candy-level-name">${esc(n.p[0])}</span></div>`;
+ }).join('');
+ return `<section class="candy-wrap"><div class="candy-head"><div><span class="eyebrow">YOUR ROBOTICS QUEST</span><h3>Adventure Map</h3><p class="mut">Follow the winding path from Level 1 at the bottom to Level ${nodes.length} at the top.</p></div><div class="candy-progress">⭐ ${doneCount}/${P.length}</div></div><div class="candy-map candy-winding" style="height:${height}px"><div class="candy-finish">🏁 Robotics Master!</div>${svg}${levelNodes}</div><div class="candy-legend"><span>⭐ Completed</span><span>✨ Current level</span><span>🔒 Locked</span></div><p class="mut candy-foot">Complete each project to unlock the next level. Your progress is saved in this browser.</p></section>`;
+}
+const _coursesFixedBase=courses;
+courses=function(){
+ const k=kit(),orders=(DB.orders||[]).filter(o=>k&&o.rk===k.id&&/Placed|Paid/i.test(o.status||'')),bought=orders.length>0;
+ const installer=`<section class="panel install-panel" id="arduino-install"><h3>🛠️ Arduino IDE setup — complete this once</h3><p>Install the software one time on your computer before starting the project levels. You do not need to repeat these steps for every project.</p><ol><li>Download Arduino IDE for your operating system.</li><li>Run the installer and accept the required permissions.</li><li>Open Arduino IDE and connect the Arduino board with a USB data cable.</li><li>Choose <b>Tools → Board → Arduino Uno</b>. Install the board package if prompted.</li><li>Choose the board's port under <b>Tools → Port</b>.</li><li>Open <b>File → Examples → 01.Basics → Blink</b> and upload it once to check the board and port.</li></ol><a class="install-link" href="https://www.arduino.cc/en/software" target="_blank" rel="noopener">Download Arduino IDE ↗</a></section>`;
+ return `<div class="row" style="align-items:center"><h2>Your products</h2><button class="ghost" onclick="go('shop')" aria-label="Go to shop" title="Shop">＋</button></div><div class="panel product-access"><div><h3>Buy product</h3><p class="mut">Purchase a RoboKit to unlock your guided project learning area.</p></div><button onclick="go('shop')" aria-label="Browse products">＋</button></div>${bought?`<div class="card owned" onclick="openOwnedProduct()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openOwnedProduct()}"><div class="top">🤖</div><div class="bd"><h3>RoboKit for Students</h3><span class="tag good">Purchased</span><p>Open the product details and your guided robotics projects.</p></div></div>${installer}${S.role==='client'?candyMap():''}`:`<div class="panel"><p class="mut">Your purchased products will appear here after an order is placed using your student RKID.</p><button onclick="go('shop')">Browse shop</button></div>`}`;
+};
+
+// Every project navigation route now respects level locks; completing a project celebrates unlocks.
+function navigateProject(direction){
+ const next=cur+direction;
+ if(next<0||next>=P.length)return;
+ if(S.role==='client'){
+   const pr=DB.prog[S.id]||{};
+   if(direction>0&&!((pr[cur]||{}).done)){toast('📘 Tap “Mark as studied” to unlock the next project.');return;}
+   if(next>=2&&![0,1].every(j=>(pr[j]||{}).done)){toast('🔒 Complete both introduction projects first.');return;}
+   if(next>0&&!((pr[next-1]||{}).done)){toast('🔒 Complete project '+next+' first to unlock this level.');return;}
+ }
+ openM(next);
+}
+// Prev / Next walk through every tab (Overview > ... > Video) and then across projects.
+function stepNav(dir){
+ const LAST=6;
+ const top=()=>{const m=document.getElementById('m'),b=document.getElementById('mb');if(m)m.scrollTop=0;if(b)b.scrollTop=0;};
+ if(dir>0){
+   if(tab<LAST){tab++;render();top();return;}
+   if(cur>=P.length-1)return;
+   navigateProject(1);top();                    // locks: current project must be studied first
+ }else{
+   if(tab>0){tab--;render();top();return;}
+   if(cur<=0)return;
+   navigateProject(-1);                         // opens previous project on its Overview tab...
+   tab=LAST;render();top();                     // ...then jump to its Video tab
+ }
+}
+extraStyle.textContent+=`.studied-btn{display:block;width:100%;margin:0 0 14px;padding:clamp(16px,4vw,26px) 14px;font-size:clamp(1.5rem,6vw,2.6rem);font-weight:1000;letter-spacing:.04em;text-transform:uppercase;line-height:1.1;color:#fff;background:linear-gradient(135deg,#f97316,#ef4444);border:4px solid #fff;border-radius:20px;box-shadow:0 8px 0 #b91c1c,0 12px 22px #7f1d1d40;cursor:pointer;animation:studiedPulse 1.8s ease-in-out infinite}.studied-btn:before{content:"📘 "}.studied-btn:active{transform:translateY(4px);box-shadow:0 4px 0 #b91c1c}.studied-bar.is-done{display:block;margin:0 0 14px;padding:clamp(14px,3.5vw,22px);text-align:center;font-size:clamp(1.4rem,5.5vw,2.3rem);font-weight:1000;letter-spacing:.04em;text-transform:uppercase;color:#14532d;background:linear-gradient(135deg,#bbf7d0,#4ade80);border:4px solid #fff;border-radius:20px;box-shadow:0 6px 0 #16a34a}.studied-bar.is-done:before{content:"✅ "}@keyframes studiedPulse{50%{transform:scale(1.025)}}@media (prefers-reduced-motion:reduce){.studied-btn{animation:none}}`;
+// Use the original project renderer; the previous patch injected the Arduino installer into every project modal.
+render=function(){
+ _renderOriginal();
+ const mb=document.getElementById('mb');if(!mb)return;
+ mb.querySelectorAll('.install-panel').forEach(el=>el.remove());
+ const rowButtons=mb.querySelectorAll('.pnav button');
+ if(rowButtons.length>=2){
+   rowButtons[0].onclick=()=>stepNav(-1);
+   rowButtons[0].disabled=cur<=0&&tab<=0;
+   rowButtons[1].onclick=()=>stepNav(1);
+   rowButtons[1].disabled=cur>=P.length-1&&tab>=6;
+ }
+};
+const _doneFixedBase=done;
+done=function(i){
+ if(S.role!=='client'||!Number.isInteger(i)||i<0||i>=P.length)return;
+ const pr=DB.prog[S.id]||{};
+ if(pr[i]&&pr[i].done){closeM();go('courses');return;}
+ // Do not allow completion to skip earlier levels.
+ if(i>0&&!(pr[i-1]&&pr[i-1].done)){toast('🔒 Complete the previous project first.');return;}
+ if(i>=2&&![0,1].every(j=>pr[j]&&pr[j].done)){toast('🔒 Complete both introduction projects first.');return;}
+ const before=Object.values(pr).filter(x=>x&&x.done).length;
+ _doneFixedBase(i);
+ const after=Object.values(DB.prog[S.id]||{}).filter(x=>x&&x.done).length;
+ if(after>before){
+   const next=i+1;
+   closeM();
+   go('courses');
+   if(after===2)toast('🎉 Congratulations! You passed the introduction level! Level 3 is now unlocked! 🎊',7000);
+   else if(after===P.length)toast('🏆 Amazing! You completed all 40 robotics levels!',8000);
+   else toast('🎉 Project studied! Returning to your level map…',4500);
+   if(next<P.length){
+     setTimeout(()=>{
+       const node=document.querySelector('.level-node[data-level-index="'+next+'"]');
+       if(node){node.classList.remove('level-unlock-pop');void node.offsetWidth;node.classList.add('level-unlock-pop');node.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center',inline:'center'});}
+     },100);
+   }
+ }
+};
+copyCode=async function(){try{await navigator.clipboard.writeText(K[cur]);const b=document.getElementById('cp');if(b)b.textContent='Copied ✓';toast('Code copied to clipboard.');}catch(e){const el=document.getElementById('code');if(el){const r=document.createRange();r.selectNodeContents(el);const sel=window.getSelection();sel.removeAllRanges();sel.addRange(r);toast('Code selected. Press Ctrl+C to copy.');}}};
+extraStyle.textContent+=`.candy-wrap{margin:20px 0 28px;padding:clamp(14px,3vw,28px);border-radius:24px;background:linear-gradient(180deg,#fff8d8,#ffe5f1 50%,#dff8ff);color:#172554;border:2px solid #f9a8d4;box-shadow:0 14px 35px #0f172a12}.candy-head{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}.candy-head h3{font-size:clamp(1.4rem,3vw,2rem);margin:5px 0}.candy-progress{padding:10px 15px;background:#fff;border:2px solid #fbbf24;border-radius:999px;font-weight:900}.candy-map{display:flex;flex-direction:column;gap:14px;padding:22px 0 8px;overflow-x:auto}.candy-row{display:flex;justify-content:space-around;align-items:center;gap:8px;min-width:620px}.candy-row.reverse{flex-direction:row-reverse}.level-node{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;flex:0 1 112px;min-width:86px;min-height:100px;padding:9px 6px;border:3px solid #fff;border-radius:24px;background:#cbd5e1;color:#475569;box-shadow:0 6px 0 #94a3b8,0 9px 12px #17255420;cursor:pointer;transition:transform .25s,box-shadow .25s}.level-node:disabled{cursor:not-allowed;opacity:.75;filter:grayscale(.25)}.level-node:not(:disabled):hover,.level-node:focus-visible{transform:translateY(-5px) scale(1.04);outline:3px solid #0f172a;outline-offset:2px}.level-node.is-open{background:linear-gradient(145deg,#fde047,#fb923c);color:#713f12;box-shadow:0 6px 0 #d97706,0 9px 12px #17255420}.level-node.is-done{background:linear-gradient(145deg,#86efac,#22c55e);color:#064e3b;box-shadow:0 6px 0 #15803d,0 9px 12px #17255420}.node-num{font-size:1.6rem;font-weight:1000}.node-label{font-size:.72rem;font-weight:900;line-height:1.2;text-align:center}.node-level{font-size:.62rem;letter-spacing:.08em;font-weight:900}.candy-connector{font-size:1.15rem;color:#ec4899;flex:0 0 auto}.level-pulse{animation:levelPulse 1.8s ease-in-out infinite}.level-unlock-pop{animation:levelUnlockPop .95s cubic-bezier(.2,.9,.25,1.35) both!important;z-index:2;position:relative}@keyframes levelUnlockPop{0%{transform:scale(.15) rotate(-18deg);opacity:.15;filter:brightness(1.8)}55%{transform:scale(1.22) rotate(5deg);opacity:1;filter:brightness(1.25)}78%{transform:scale(.92) rotate(-2deg)}100%{transform:scale(1) rotate(0);opacity:1;filter:brightness(1)}}@keyframes levelPulse{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}.candy-finish{text-align:center;font-weight:1000;font-size:1.1rem;padding:15px;background:#fff;border:2px dashed #f59e0b;border-radius:16px;margin:12px auto 0;max-width:400px}.candy-foot{margin-bottom:0}.owned[role=button]{cursor:pointer}.owned[role=button]:focus-visible{outline:3px solid #2ec4b6;outline-offset:3px}@media(max-width:650px){.candy-wrap{padding:12px;border-radius:16px}.candy-row{min-width:560px}.level-node{min-width:78px;min-height:88px;border-radius:18px}.node-label{font-size:.65rem}.candy-map{padding-top:14px}}@media(prefers-reduced-motion:reduce){.level-pulse,.level-node,.level-unlock-pop{animation:none!important;transition:none!important}}`;
+
+// Final interaction fixes: cart controls preserve their state, and every project modal uses the clean renderer above.
+let CART_OPEN=false;
+function addToCart(){
+ if(CQ>=DB.stock){toast('No more units available.');return;}
+ CQ++;draw();toast('RoboKit added to your cart.');
+}
+function adjustCart(delta){
+ const wasOpen=CART_OPEN;
+ if(delta>0&&CQ>=DB.stock){toast('No more units available.');return;}
+ CQ=Math.max(0,Math.min(DB.stock,CQ+delta));
+ draw();
+ if(wasOpen&&V==='shop')showCart();
+}
+function closeCartSummary(){
+ CART_OPEN=false;
+ const n=document.getElementById('cartNotice');if(n)n.innerHTML='';
+ const checkout=document.querySelector('.shop2 .panel:nth-child(2)');
+ if(checkout)checkout.scrollIntoView({behavior:'smooth',block:'start'});
+}
+const _shopFinalBase=_shopCartBase;
+shop=function(){
+ let html=_shopFinalBase();
+ html=html.replaceAll('onclick="CQ++;draw()"','onclick="addToCart()"');
+ html=html.replaceAll('onclick="CQ=Math.max(0,CQ-1);draw()"','onclick="adjustCart(-1)"');
+ html=html.replaceAll("onclick=\"if(CQ<DB.stock)CQ++;else toast('No more units available.');draw()\"",'onclick="adjustCart(1)"');
+ return html;
+};
+showCart=function(){
+ const notice=document.getElementById('cartNotice');if(!notice)return;
+ CART_OPEN=true;
+ notice.innerHTML=`<div class="panel cart-summary"><div class="row"><h3>🛒 Your cart</h3><button class="x" onclick="closeCartSummary()" aria-label="Close cart">×</button></div>${CQ?`<div class="row"><span>RoboKit for Students × ${CQ}</span><b>₹${(CQ*1999).toLocaleString('en-IN')}</b></div><div class="row"><button onclick="adjustCart(-1)" aria-label="Remove one">−</button><span>Quantity: ${CQ}</span><button onclick="adjustCart(1)" aria-label="Add one">＋</button></div><p class="mut">Stock remaining: ${Math.max(0,DB.stock-CQ)}</p><button onclick="closeCartSummary()">Continue to checkout</button>`:'<p class="mut">Your cart is empty.</p><button onclick="closeCartSummary()">Browse shop</button>'}</div>`;
+ notice.scrollIntoView({behavior:'smooth',block:'start'});
+};
+
+
+/* ===== Accessibility and navigation refinements ===== */
+(function(){
+  // Simplify the dashboard workflow to five clear, child-friendly steps.
+  const priorHome=home;
+  home=function(){
+    let html=priorHome();
+    const steps=[
+      ['1','Get your RoboKit and find the RKID on the box.'],
+      ['2','Create your account or log in with your RKID.'],
+      ['3','Install Arduino IDE once on your computer.'],
+      ['4','Follow the parts list and circuit picture to build.'],
+      ['5','Upload the code, test your robot, and unlock the next level!']
+    ];
+    const flow=`<h3>How it works</h3><div class="flowchart">${steps.map((x,i)=>`<div class="flowstep flowstep-${i+1}"><b>${x[0]}</b><span>${x[1]}</span></div>${i<steps.length-1?'<div class="flowarrow">↓</div>':''}`).join('')}</div>`;
+    const start=html.indexOf('<h3>How it works</h3>');const end=start>=0?html.indexOf('</div></div>',start):-1;if(start>=0&&end>=0)html=html.slice(0,start)+flow+html.slice(end+12);
+    return html;
+  };
+
+  // Retain opened admin disclosure panels when the live status refresh redraws the page.
+  const priorDraw=draw;
+  draw=function(){
+    const main=document.getElementById('main');
+    const opened=main?[...main.querySelectorAll('details')].map((d,i)=>({i,open:d.open,summary:d.querySelector('summary')?.textContent||''})).filter(x=>x.open):[];
+    priorDraw();
+    const next=document.getElementById('main');
+    if(next&&opened.length){
+      const details=[...next.querySelectorAll('details')];
+      opened.forEach(x=>{const d=details.find(el=>(el.querySelector('summary')?.textContent||'')===x.summary)||details[x.i];if(d)d.open=true;});
+    }
+  };
+
+  // Admin can deliberately open an RKID card and close it only with its Close button.
+  window.viewRKID=function(id){
+    let panel=document.getElementById('rkid-viewer');
+    if(!panel){panel=document.createElement('div');panel.id='rkid-viewer';panel.className='rkid-overlay';document.body.appendChild(panel);}
+    panel.innerHTML=`<section class="rkid-dialog" role="dialog" aria-modal="true" aria-labelledby="rkid-title"><h2 id="rkid-title">Student RKID</h2><p class="rkid-number">${String(id).replace(/[^0-9]/g,'')}</p><p>Share this ID only with the intended student or parent.</p><button type="button" id="rkid-close">Close</button></section>`;
+    panel.hidden=false;
+    panel.querySelector('#rkid-close').addEventListener('click',()=>{panel.hidden=true;});
+    panel.querySelector('#rkid-close').focus();
+  };
+  const priorStudents=students;
+  students=function(){return priorStudents().replace(/<td><b>(\d{6})<\/b><\/td>/g,'<td><button type="button" class="rkid-view-button" onclick="viewRKID(\'$1\')">View RKID</button></td>');};
+
+  // Enter submits the current account action, including when the user is on a phone/tablet keyboard.
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Enter'||e.defaultPrevented||e.isComposing)return;
+    const el=e.target;
+    if(!el||!['INPUT','SELECT'].includes(el.tagName))return;
+    if(el.tagName==='INPUT'&&el.type==='password'&&el.id==='p2'){
+      const b=document.querySelector('#main button[onclick*="signup()"]');if(b){e.preventDefault();b.click();}return;
+    }
+    if(el.closest('#rkid-viewer'))return;
+    const scope=el.closest('.panel,.signup-card,.narrow')||document.getElementById('main');
+    const btn=scope?.querySelector('button[onclick*="doLogin()"],button[onclick*="signup()"],button[onclick*="sendOtp()"],button[onclick*="sendLink()"],button[onclick*="resetPw()"],button[onclick*="addR()"]');
+    if(btn&&!btn.disabled){e.preventDefault();btn.click();}
+  });
+
+  // In-app history: phone/tablet Back returns to the previous page instead of leaving the site.
+  // From Home/Dashboard the browser's normal Back action remains available to exit.
+  let pageTrail=['home'];
+  let internalNav=false;
+  const baseGo=go;
+  go=function(v){
+    if(v!==V){
+      if(internalNav){pageTrail.push(v);}
+      else {pageTrail.push(v);try{history.pushState({kitesPage:v},'',location.pathname+location.search+'#page-'+v);}catch(_){}}
+      pageTrail=pageTrail.slice(-30);
+    }
+    internalNav=false;
+    baseGo(v);
+  };
+  try{if(!location.hash.startsWith('#r-')){history.replaceState({kitesPage:V},'',location.pathname+location.search+'#page-home');history.pushState({kitesPage:'home'},'',location.pathname+location.search+'#page-home');}}catch(_){}
+  window.addEventListener('popstate',function(){
+    if(V==='home')return;
+    internalNav=true;
+    const prev=pageTrail.length>1?pageTrail[pageTrail.length-2]:'home';
+    pageTrail.pop();
+    baseGo(prev);
+    try{history.pushState({kitesPage:prev},'',location.pathname+location.search+'#page-'+prev);}catch(_){}
+  });
+
+  // Do not allow a second device login to forcibly eject the student on this browser.
+  // Shared cross-device RKID records still require a hosted, shared database (see README).
+  const loginBase=doLogin;
+  doLogin=async function(){
+    const u=document.getElementById('u')?.value.trim();
+    const k=u&&!u.includes('@')?DB.kits.find(x=>x.id===u):null;
+    if(k&&k.devs&&k.devs[DT]&&k.devs[DT]!==DEV)delete k.devs[DT];
+    return loginBase();
+  };
+
+  const css=document.createElement('style');
+  css.textContent=`
+    /* Larger headings and touch-friendly controls for younger learners */
+    h1{font-size:clamp(2rem,5vw,3.2rem)!important;line-height:1.15} h2{font-size:clamp(1.65rem,4vw,2.35rem)!important;line-height:1.2} h3{font-size:clamp(1.3rem,3vw,1.8rem)!important;line-height:1.25} h4{font-size:1.2rem!important}
+    .card h3{font-size:clamp(1.05rem,2.6vw,1.4rem)!important}.mut{font-size:1rem;line-height:1.5}button,a,input,select,summary{touch-action:manipulation}button{min-height:48px;font-size:1rem}
+    .flowstep{border-width:3px;background:#fff;color:#172554;font-size:1.05rem;font-weight:700}.flowstep-1{border-color:#fb7185}.flowstep-2{border-color:#f59e0b}.flowstep-3{border-color:#8b5cf6}.flowstep-4{border-color:#06b6d4}.flowstep-5{border-color:#22c55e}.flowstep b{min-width:42px;height:42px;font-size:1.2rem;background:#1d4ed8}.flowarrow{color:#ec4899}
+    .rkid-view-button{padding:8px 12px;min-height:42px;white-space:nowrap}.rkid-overlay{position:fixed;inset:0;z-index:9999;background:rgba(15,23,42,.75);display:grid;place-items:center;padding:20px}.rkid-overlay[hidden]{display:none}.rkid-dialog{width:min(420px,100%);background:var(--card);color:var(--tx);border-radius:18px;padding:24px;text-align:center;box-shadow:0 16px 48px #0004}.rkid-number{font-size:clamp(2.2rem,8vw,3.4rem);font-weight:900;letter-spacing:.14em;margin:18px 0;overflow-wrap:anywhere}
+    @media(max-width:600px){main{padding-left:12px;padding-right:12px}.hero{padding:18px}.card h3{font-size:1.05rem!important}.candy-map{overflow-x:auto;overscroll-behavior-x:contain}.candy-row{min-width:520px}.node-label{font-size:.75rem}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  `;
+  document.head.appendChild(css);
+})();
+
+
+/* Final fixes: Candy-Crush bottom-up map, single completion action, student flowchart and tip priority. */
+(function(){
+  const priorHomeFinal=home;
+  home=function(){
+    let html=priorHomeFinal();
+    const cl=S.role==='client';
+    if(!cl)return html;
+    // Keep the Tip of the Day immediately below the welcome banner, before stats/learning panels.
+    const tipMatch=html.match(/<div class="panel"><h3>Tip of the day<\/h3><p>([\s\S]*?)<\/p><\/div>/);
+    if(tipMatch){
+      const tipBlock=tipMatch[0];
+      html=html.replace(tipBlock,'');
+      const heroEnd=html.indexOf('</div>');
+      // Insert after the complete hero container (the first hero closes after its inner content).
+      const statsPos=html.indexOf('<div class="stats">');
+      if(statsPos>=0)html=html.slice(0,statsPos)+tipBlock+html.slice(statsPos);
+      else if(heroEnd>=0)html=html.slice(heroEnd+6)+tipBlock+html.slice(0,heroEnd+6);
+    }
+    // Always show the same five-step How It Works flowchart in student accounts.
+    if(!html.includes('student-how-flow')){
+      const steps=[
+        ['1','Get your RoboKit and find the RKID on the box.'],
+        ['2','Sign in with your RKID and open Your Products.'],
+        ['3','Install Arduino IDE once on your computer.'],
+        ['4','Build the circuit using the components and diagram.'],
+        ['5','Upload the code, test your project, and unlock the next level!']
+      ];
+      const flow='<section class="panel student-how-flow"><h3>How it works</h3><div class="flowchart">'+steps.map((x,i)=>'<div class="flowstep flowstep-'+(i+1)+'"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>'+(i<steps.length-1?'<div class="flowarrow" aria-hidden="true">↓</div>':'')).join('')+'</div></section>';
+      const kitPos=html.indexOf('<div class="panel"><h3>Your kit contains</h3>');
+      if(kitPos>=0)html=html.slice(0,kitPos)+flow+html.slice(kitPos); else html+=flow;
+    }
+    return html;
+  };
+
+  // Put the finish banner at the top of the map; level 1 remains at the bottom, ascending upward.
+  const priorCoursesFinal=courses;
+  courses=function(){
+    let html=priorCoursesFinal();
+    const finish='<div class="candy-finish">🏁 Finish line — Robotics Master!</div>';
+    if(html.includes(finish)){
+      html=html.replace(finish,'');
+      html=html.replace('<div class="candy-map">','<div class="candy-map">'+finish);
+    }
+    return html;
+  };
+
+  // Ensure exactly one Mark as completed control is visible in a project modal.
+  const priorRenderFinal=render;
+  render=function(){
+    priorRenderFinal();
+    const modal=document.getElementById('mb');
+    if(!modal)return;
+    const matches=[...modal.querySelectorAll('button')].filter(b=>b.textContent.trim().toLowerCase()==='mark as studied');
+    matches.slice(1).forEach(b=>b.remove());
+    const complete=matches[0];
+    if(complete){
+      complete.type='button';
+      complete.onclick=function(){done(cur);};
+    }
+  };
+
+  // A completed level should return to Your Products and refresh the map; unlock one level at a time.
+  const priorDoneFinal=done;
+  done=function(i){
+    if(!Number.isInteger(i)||i<0||i>=P.length)return;
+    const pr=DB.prog[S.id]||{};
+    if(pr[i]&&pr[i].done){closeM();go('courses');return;}
+    if(i>0&&!((pr[i-1]||{}).done)){toast('🔒 Complete the previous project first.');return;}
+    if(i>=2&&![0,1].every(j=>(pr[j]||{}).done)){toast('🔒 Complete both introduction projects first.');return;}
+    priorDoneFinal(i);
+  };
+})();
+
+
+/* True Candy Crush-style ascending winding path and bright child-friendly flowchart. */
+extraStyle.textContent+=`.candy-map.candy-winding{position:relative;display:block;min-width:0;overflow:hidden;height:auto;padding:0 0 24px;margin-top:20px;background:linear-gradient(180deg,#dff7ff 0%,#fff1fb 48%,#fff8d9 100%);border:2px solid #f8b4d9;border-radius:22px;isolation:isolate}.candy-map.candy-winding .candy-finish{position:absolute;z-index:3;top:8px;left:50%;transform:translateX(-50%);width:max-content;max-width:90%;margin:0;padding:8px 12px;font-size:.9rem}.candy-path-svg{position:absolute;inset:0;width:100%;height:100%;z-index:0;overflow:visible}.candy-path-svg path{fill:none;stroke-linecap:round;stroke-linejoin:round}.candy-path-svg .path-shadow{stroke:#fff;stroke-width:18;opacity:.98}.candy-path-svg .path-main{stroke:#f472b6;stroke-width:10;stroke-dasharray:2 2}.candy-stop{position:absolute;z-index:2;width:clamp(82px,28%,104px);display:flex;flex-direction:column;align-items:center;gap:5px;transform:translate(-50%,-50%)}.candy-circle.level-node{flex:none;width:68px;height:68px;min-width:68px;min-height:68px;padding:4px;gap:0;border-radius:50%;border:4px solid #fff;display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 5px 0 #d9468d,0 8px 12px #713f5a35}.candy-circle .node-num{font-size:1.1rem;line-height:1}.candy-circle .circle-level{font-size:1.15rem;font-weight:1000;line-height:1.1}.candy-circle.is-open{background:radial-gradient(circle at 30% 22%,#fff9a8,#ffb52e 62%,#fb7185);color:#70244f;box-shadow:0 5px 0 #d9468d,0 8px 12px #713f5a35}.candy-circle.is-done{background:radial-gradient(circle at 30% 22%,#dcfce7,#4ade80 65%,#16a34a);color:#064e3b;box-shadow:0 5px 0 #15803d,0 8px 12px #713f5a35}.candy-circle.is-locked{background:radial-gradient(circle at 30% 22%,#e2e8f0,#94a3b8);color:#475569;box-shadow:0 5px 0 #64748b,0 8px 12px #713f5a35}.candy-circle:disabled{opacity:.95;filter:none}.candy-level-name{display:block;max-width:100%;padding:4px 7px;border-radius:9px;background:#fffdf4eF;color:#43315d;font-size:.7rem;font-weight:800;line-height:1.15;text-align:center;box-shadow:0 2px 5px #4c1d9515;overflow-wrap:anywhere}.candy-legend{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.candy-legend span{padding:7px 10px;border-radius:999px;background:#fff;border:2px solid #fbcfe8;font-size:.85rem;font-weight:800}.flowstep{border:0!important;border-radius:15px!important;color:#183047!important;box-shadow:0 4px 0 #00000012!important}.flowstep-1{background:#bbf7d0!important}.flowstep-2{background:#fecaca!important}.flowstep-3{background:#bfdbfe!important}.flowstep-4{background:#fef08a!important}.flowstep-5{background:#ddd6fe!important}.flowstep-1 b{background:#15803d!important}.flowstep-2 b{background:#b91c1c!important}.flowstep-3 b{background:#1d4ed8!important}.flowstep-4 b{background:#a16207!important}.flowstep-5 b{background:#6d28d9!important}.flowarrow{color:#2563eb!important;font-size:28px!important}@media(max-width:420px){.candy-map.candy-winding{border-radius:14px}.candy-stop{width:84px}.candy-circle.level-node{width:58px;height:58px;min-width:58px;min-height:58px;border-width:3px}.candy-level-name{font-size:.64rem;max-width:82px}.candy-path-svg .path-shadow{stroke-width:15}.candy-path-svg .path-main{stroke-width:8}}@media(prefers-reduced-motion:reduce){.candy-circle.level-pulse{animation:none!important}}`;
+
+/* ===== Kid-friendly layer: clear guidance, big buttons, no agreement loop ===== */
+(function(){
+  const owns=()=>{const k=kit();return !!k&&(DB.orders||[]).some(o=>o.rk===k.id&&/Placed|Paid/i.test(o.status||''))};
+  let PENDING=null;
+
+  // 1. Agreement loop fix: the 2.5-second refresh replaces DB, so the old sign() saved "agreed" on a stale copy.
+  sign=function(){
+    const k0=kit();if(!k0||k0.agreed)return;
+    const fp0=$("fp");if(fp0)fp0.classList.add("scan");
+    setTimeout(()=>{
+      const k=kit();if(!k)return;            // always use the fresh record
+      k.agreed=Date.now();log(k.id,"Signed the agreement");save();
+      const fp=$("fp");if(fp){fp.classList.remove("scan");fp.classList.add("ok")}
+      toast("🎉 Yay! The robots are clapping! Let's build something!",5000);
+      setTimeout(()=>{
+        if(S.role!=="client")return;
+        const p=PENDING;PENDING=null;
+        if(p!=null&&owns()){V="courses";draw();setTimeout(()=>gate(p),400)}
+        else{V=owns()?"courses":"shop";draw()}
+      },2000);
+    },1200);
+  };
+
+  // 2. Starting a project without a product goes to the Shop, never to the agreement.
+  const gateBefore=gate;
+  gate=function(i){
+    if(S.role==="client"&&!owns()){
+      toast("🛒 First buy your RoboKit, then we can start learning! Tap the big orange button.",7000);
+      go("shop");return;
+    }
+    PENDING=i;gateBefore(i);
+  };
+
+  // 3. Home: big friendly Start Learning card
+  const homeBefore=home;
+  home=function(){
+    let html=homeBefore();
+    if(S.role!=="client")return html;
+    const bought=owns();
+    const card=bought
+      ?`<div class="kid-go"><div class="kid-go-bot">🤖</div><div><h2>Ready to learn? 🚀</h2><p>Tap the big green button to open your robot adventure!</p></div><button class="kid-big green" onclick="go('courses')">⭐ START LEARNING</button></div>`
+      :`<div class="kid-go need"><div class="kid-go-bot">🎁</div><div><h2>Get your RoboKit first!</h2><p>To start learning you need a RoboKit. Tap the big orange button to buy it. Ask a grown-up to help you.</p></div><button class="kid-big" onclick="go('shop')">🛒 BUY A PRODUCT TO START LEARNING</button></div>`;
+    if(!bought)html=html.replace(/<div class="panel"><h3>Continue learning<\/h3>[\s\S]*?<\/div>/,"");
+    const pos=html.search(/<div class="(stats|two|feat)"/);
+    return pos>=0?html.slice(0,pos)+card+html.slice(pos):html+card;
+  };
+
+  // 4. Your products: huge Buy button and a friendly empty state
+  const coursesBefore=courses;
+  courses=function(){
+    let html=coursesBefore();
+    html=html.replace(/(<button[^>]*aria-label="(?:Go to shop|Browse products)"[^>]*>)＋(<\/button>)/g,'$1<span class="plus-sign">＋</span> Buy product$2');
+    html=html.replace(/<div class="panel"><p class="mut">Your purchased products[\s\S]*?<\/div>/,`<div class="kid-go need"><div class="kid-go-bot">🎁</div><div><h2>Your box is empty!</h2><p>Buy a RoboKit and it will show up here.</p></div><button class="kid-big" onclick="go('shop')">🛒 BUY A PRODUCT TO START LEARNING</button></div>`);
+    return html;
+  };
+
+  // 5. Draw: emoji menu + Robo Helper that always says what to do next
+  const drawBefore=draw;
+  draw=function(){
+    drawBefore();
+    const em={home:"🏠 Home",courses:"🎁 Your products",shop:"🛒 Shop",login:"🔑 Login",students:"👩‍🏫 Students & Projects",ashop:"🛒 Shop"};
+    document.querySelectorAll("#nav button").forEach(b=>{if(em[b.dataset.k])b.textContent=em[b.dataset.k]});
+    const main=$("main");if(!main||S.role==="admin"||main.querySelector(".auth-intro"))return;
+    main.querySelectorAll(".robo-help").forEach(e=>e.remove());
+    const cl=S.role==="client",o=cl&&owns();let m="";
+    if(V==="home")m=cl?(o?"Tap the big green ⭐ START LEARNING button!":"Tap the big orange 🛒 button to buy your RoboKit. Ask a grown-up to help you!"):"Hello friend! 👋 Tap SIGN UP to make your account. Your RKID is the 6 numbers on your kit box.";
+    else if(V==="courses")m=cl?(o?"Tap the glowing ⭐ star to start. Go up the path, one star at a time!":"You do not have a robot kit yet. Tap the big ＋ Buy product button."):"Please log in first. Tap 🔑 Login.";
+    else if(V==="shop")m="Tap ＋ to choose your RoboKit, then follow the buttons to buy it. Ask a grown-up to help with payment.";
+    else if(V==="login")m=L==="signup"?"Fill the boxes one by one. RKID = the 6 numbers on your kit box. Then press Create account.":L==="forgot"?"Type your email. We will send you a link to make a new password.":"Type your RKID (6 numbers) and your password. Then press the Log in button.";
+    else if(V==="agree")m="Press your finger on the big fingerprint ONE time. Then wait for the happy robot dance! 🎉";
+    else if(V==="settings")m="Here you can change your name and colours.";
+    if(m)main.insertAdjacentHTML("afterbegin",`<div class="robo-help"><span class="rh-bot">🤖</span><div><b>Robo Helper says:</b><p>${m}</p></div></div>`);
+  };
+
+  // 6. Project pop-up: tell the child what to do on every tab
+  const TH=["👀 Look! This is what we will make.","🧰 Collect these parts from your kit.","🪜 Build it one small step at a time.","🔌 Connect the wires just like the picture.","⌨️ Copy this code into the Arduino app.","💡 This shows how the code thinks.","🎬 Watch the video. Then tap the big MARK AS STUDIED button!"];
+  const renderBefore=render;
+  render=function(){
+    renderBefore();
+    const mb=$("mb");if(!mb)return;
+    mb.querySelectorAll(".kid-tabhelp").forEach(e=>e.remove());
+    const h=mb.querySelector("h2");
+    if(h)h.insertAdjacentHTML("afterend",`<div class="kid-tabhelp"><b>Step ${tab+1} of 7:</b> ${TH[tab]}${tab<6?" Then press the big Next ➡️ button.":""}</div>`);
+    const pb=mb.querySelectorAll(".pnav button");
+    if(pb.length>=2){pb[0].textContent="⬅️ Prev";pb[1].textContent="Next ➡️"}
+  };
+
+  // 7. Childish look
+  const st=document.createElement("style");
+  st.textContent=`
+  body{font-family:'Baloo 2','Comic Neue','Comic Sans MS','Chalkboard SE','Trebuchet MS',system-ui,sans-serif}
+  button:not(.level-node):not(.x){border-radius:999px!important;font-weight:900;min-height:52px;font-size:1.1rem;box-shadow:0 4px 0 rgba(0,0,0,.18)}
+  button:not(.level-node):not(.x):active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.18)}
+  #nav button{font-size:1.15rem}
+  .panel,.card{border-radius:24px!important}
+  .kid-go{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:20px;margin:16px 0;border-radius:28px;background:linear-gradient(135deg,#fef08a,#86efac);border:4px dashed #fff;color:#14532d;box-shadow:0 8px 20px #0002}
+  .kid-go.need{background:linear-gradient(135deg,#fed7aa,#fda4af);color:#7c2d12}
+  .kid-go h2{margin:0 0 6px}.kid-go p{margin:0;font-size:1.15rem;font-weight:700}.kid-go>div:nth-child(2){flex:1;min-width:200px}
+  .kid-go-bot{font-size:4rem;animation:kidBounce 1.4s ease-in-out infinite}
+  .kid-big{display:block;width:100%;font-size:clamp(1.2rem,5vw,1.9rem)!important;padding:20px 16px!important;min-height:76px;color:#fff!important;background:linear-gradient(135deg,#fb923c,#ef4444)!important;border:4px solid #fff!important;box-shadow:0 8px 0 #b91c1c!important;animation:kidPulse 1.8s ease-in-out infinite}
+  .kid-big.green{background:linear-gradient(135deg,#4ade80,#16a34a)!important;box-shadow:0 8px 0 #166534!important}
+  button[aria-label="Go to shop"],button[aria-label="Browse products"]{font-size:1.5rem!important;padding:16px 28px!important;min-height:76px;color:#fff!important;background:linear-gradient(135deg,#fb923c,#ef4444)!important;border:4px solid #fff!important;box-shadow:0 7px 0 #b91c1c!important;animation:kidPulse 1.8s ease-in-out infinite}
+  .plus-sign{font-size:2.6rem;line-height:1;vertical-align:middle;margin-right:6px}
+  .robo-help{display:flex;gap:12px;align-items:center;margin:0 0 16px;padding:14px 16px;border-radius:24px;background:#fff;color:#172554;border:4px solid #60a5fa;box-shadow:0 5px 0 #3b82f6;font-size:1.15rem;font-weight:700}
+  .robo-help p{margin:4px 0 0}.rh-bot{font-size:2.6rem;animation:kidBounce 1.6s ease-in-out infinite}
+  .kid-tabhelp{margin:10px 0;padding:12px 14px;border-radius:18px;background:#fef9c3;border:3px dashed #f59e0b;color:#713f12;font-size:1.1rem;font-weight:800}
+  .pnav{gap:12px}.pnav button{flex:1;font-size:1.4rem!important;min-height:64px;color:#fff!important;background:linear-gradient(135deg,#38bdf8,#6366f1)!important}.pnav button:disabled{opacity:.4;filter:grayscale(.6)}
+  .agree .fp{transform:scale(1.3);margin:22px auto;animation:kidPulse 1.8s ease-in-out infinite}
+  @keyframes kidBounce{50%{transform:translateY(-8px)}}@keyframes kidPulse{50%{transform:scale(1.04)}}
+  @media(prefers-reduced-motion:reduce){.kid-big,.kid-go-bot,.rh-bot,.agree .fp,button[aria-label="Go to shop"],button[aria-label="Browse products"]{animation:none}}`;
+  document.head.appendChild(st);
+})();
+
+
+/* ===== Fix: "Mark as studied" crashed when a project was opened without a progress record ===== */
+(function(){
+  const openMBase=openM;
+  openM=function(i){
+    if(S.role==="client"&&Number.isInteger(i)&&i>=0&&i<P.length){
+      const pr=DB.prog[S.id]=DB.prog[S.id]||{};
+      if(!pr[i]){pr[i]={start:Date.now()};save()}
+    }
+    openMBase(i);
+  };
+  const doneBase=done;
+  done=function(i){
+    if(S.role==="client"&&Number.isInteger(i)&&i>=0&&i<P.length){
+      const pr=DB.prog[S.id]=DB.prog[S.id]||{};
+      if(!pr[i])pr[i]={start:Date.now()};
+    }
+    return doneBase(i);
+  };
+  // The logo's onerror can fire before the script is ready; run the fallback again once the page is loaded.
+  document.querySelectorAll("img.logo").forEach(im=>{if(im.complete&&im.naturalWidth===0&&typeof logoFail==="function")logoFail(im)});
+})();
+
+
+applyPF();draw();
+if(EXPIRED)toast("For your security, please log in again. Login is required every 5 days.",9000);
+if(location.hash.startsWith("#r-"))openReset(location.hash.slice(3));
+try{if(!sessionStorage.getItem("rk_w"))showWelcome();const pk=document.createElement("div");pk.className="peek";document.body.appendChild(pk)}catch(e){}
+</script></body></html>
